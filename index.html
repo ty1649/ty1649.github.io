@@ -4,6 +4,8 @@
 <title>Terry Yu Website</title>
 <meta name="google-site-verification" content="-yAzYtsG5CNLvD299Sl787ZO6-siX4KiVmkEjEUNIMQ" />
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <style>
 * {
   box-sizing: border-box;
@@ -42,13 +44,23 @@ h3 { margin : 16px}
   margin:10px;
 }
 
-#footer {
+/* #footer {
     position: fixed;
     padding: 7px 10px 0px 10px;
     bottom: 10px;
     width: 99%;
     height: 30px;
     background:#ddd
+} */
+
+.main {
+  margin-left: 160px;
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
 
 .alignleft {
@@ -68,93 +80,78 @@ h3 { margin : 16px}
     float: left;
     width:33.33333%;
     text-align:right;
-}​
+}
+
+.sidenav {
+  width: 90px;
+  position: fixed;
+  z-index: 1;
+  bottom: 20px;
+  right: 10px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 1px 1px 1px 16px;
+  text-decoration: none;
+  /* font-size: 25px; */
+  color: #000000;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  margin-left: 140px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/* ---- */
+.bgimg-1 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bgimg-1 {
+  background-image: url('/w3images/parallax1.jpg');
+  min-height: 100%;
+}
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+
 
 </style>
 </head>
 <body>
 
+
+​
+
+</style>
+</head>
+<body>
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">MY <span class="w3-hide-small">WEBSITE</span> LOGO</span>
+  </div>
+</div>
+
 <h3 class="section-title">TERRY YU WEBSITE</h3>
 <p>here's my website with random stuff I've made</p>
 
-<div class="row">
-  <div class="column" style="background-color:#bbb;">
-    <h2 class = "box-title"> Math Notes </h2>
-      <div class="member">
-          <a
-            target="_blank" 
-            href="notes/calc1.pdf"
-            >
-            Calculus 1 Equation Sheet</a>
-      </div>
-      <div class="member">
-          <a
-            target="_blank" 
-            href="notes/calc2.pdf"
-            >
-            Calc 2 Notes (unfinished)</a>
-      </div>
-      <div class="member">
-          <a
-            target="_blank" 
-            href="notes/calc3.pdf"
-            >
-            Calculus 3 Notes</a>
-      </div>
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2 class = "box-title"> Physics Notes </h2>
-    <p> 
-      <div class="member">
-          <a
-            target="_blank" 
-            href="notes/physics4b.pdf"
-            >
-            Physics 4B: Electricity and Magnetism Notes (unfinished)</a>
-      </div> 
-    </p>
-    <p> 
-      <div class="member">
-          <a
-            target="_blank" 
-            href="notes/physics4c.pdf"
-            >
-            Physics 4C: Thermodynamics, Waves, and Optics (in progress)</a>
-      </div> 
-    </p>
-    <p> 
-      <div class="member">
-          <a
-            target="_blank" 
-            href="notes/hallidayresnickkrane.pdf"
-            >
-            Halliday Resnick Krane, 5th ed. Notes (unfinished)</a>
-      </div> 
-    </p>
-    <p> 
-      <div class="member">
-          <a
-            target="_blank" 
-            href="notes/workenergyeqsheet.pdf"
-            >
-            Work and Energy Equation Sheet</a>
-      </div> 
-    </p>
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2 class = "box-title"> Handouts </h2>
-    <p> 
-      <div class="member">
-          <a
-            target="_blank" 
-            href="https://drive.google.com/file/d/1z0--yu9lg5hVvIBzy2a4tPojm5HerprM/view?usp=sharing"
-            >
-            Work and Energy Equation Sheet</a>
-      </div> 
-    </p>
-  </div>
-</div>
-<br>
+
 <div class="row">
   <div class="column" style="background-color:#bbb;">
     <h2 class = "box-title"> Math Notes </h2>
@@ -180,12 +177,19 @@ h3 { margin : 16px}
 <p>filler</p>
 <p>filler</p>
 
-
+<!-- /* 
 <div id="footer">
-    <!-- <p>discord: ty#2234<span style = "float:right;">-ty1649</span></p> -->
+    <p>discord: ty49#4673<span style = "float:right;">-ty1649</span></p>
     <p class="alignleft">discord: ty#2234</p><p class="aligncenter">about me</p><p class="alignright">-ty1649</p>
-</div>
-    
+</div> */
+     -->
+     <div class="sidenav">
+      <a href="index.html">Home</a>
+      <a href="/notes/">Notes</a>
+      <a href="#clients">Blog</a>
+      <a href="#contact">Contact</a>
+    </div>
+         
     
 
 </body>

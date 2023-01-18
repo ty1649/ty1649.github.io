@@ -1,8 +1,222 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+p { margin:4px }
+h3 { margin : 16px}
+a:visited { 
+ text-decoration: none; 
+ color: blue; 
+}
+
+.column {
+  float: left;
+  width: 33%;
+  margin-right: .33%;
+  padding: 10px;
+  height: 400px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.section-title {
+  font-size: 45px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration: underline;
+  font-weight: 400;
+}
+
+.box-title {
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-weight: 300;
+  margin:10px;
+}
+.main {
+  margin-left: 160px;
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.alignleft {
+    margin:0;
+    float: left;
+    width:33.33333%;
+    text-align:left;
+}
+.aligncenter {
+    margin:0;
+    float: left;
+    width:33.33333%;
+    text-align:center;
+}
+.alignright {
+    margin:0;
+    float: left;
+    width:33.33333%;
+    text-align:right;
+}
+
+.sidenav {
+  width: 90px;
+  position: fixed;
+  z-index: 1;
+  bottom: 20px;
+  right: 10px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 1px 1px 1px 16px;
+  text-decoration: none;
+  /* font-size: 25px; */
+  color: #000000;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  margin-left: 140px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
 <body>
-<h1>TERRY YU</h1>
-<p><a src="calc3.pdf">Multivaribale Calculus</a></p>
+
+
+​
+
+</style>
+</head>
+<body>
+
+<h3 class="section-title">TERRY YU WEBSITE</h3>
+<p>latexed notes for a couple of my classes:</p>
+
+<div class="row">
+  <div class="column" style="background-color:#bbb;">
+    <h2 class = "box-title"> Math Notes </h2>
+      <div class="member">
+          <a
+            target="_blank" 
+            href="calc1.pdf"
+            >
+            Calculus 1 Equation Sheet</a>
+      </div>
+      <div class="member">
+          <a
+            target="_blank" 
+            href="calc2.pdf"
+            >
+            Calc 2 Notes (unfinished)</a>
+      </div>
+      <div class="member">
+          <a
+            target="_blank" 
+            href="calc3.pdf"
+            >
+            Calculus 3 Notes</a>
+      </div>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2 class = "box-title"> Physics Notes </h2>
+    <p> 
+      <div class="member">
+          <a
+            target="_blank" 
+            href="physics4b.pdf"
+            >
+            Physics 4B: Electricity and Magnetism Notes (unfinished)</a>
+      </div> 
+    </p>
+    <p> 
+      <div class="member">
+          <a
+            target="_blank" 
+            href="physics4c.pdf"
+            >
+            Physics 4C: Thermodynamics, Waves, and Optics (in progress)</a>
+      </div> 
+    </p>
+    <p> 
+      <div class="member">
+          <a
+            target="_blank" 
+            href="hallidayresnickkrane.pdf"
+            >
+            Halliday Resnick Krane, 5th ed. Notes (unfinished)</a>
+      </div> 
+    </p>
+    <p> 
+      <div class="member">
+          <a
+            target="_blank" 
+            href="workenergyeqsheet.pdf"
+            >
+            Work and Energy Equation Sheet</a>
+      </div> 
+    </p>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2 class = "box-title"> Handouts </h2>
+    <p> 
+      <div class="member">
+          <a
+            target="_blank" 
+            href="https://drive.google.com/file/d/1z0--yu9lg5hVvIBzy2a4tPojm5HerprM/view?usp=sharing"
+            >
+            Inheritance APCS</a>
+      </div> 
+    </p>
+  </div>
+</div>
+<br>
+
+
+<!-- <div class="row">
+  <div class="column" style="background-color:#bbb;">
+    <h2 class = "box-title"> Math Notes </h2>
+    test
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2 class = "box-title"> Physics Notes </h2>
+    <p> filler </p>
+  </div> -->
+
+  <div class="sidenav">
+    <a href="/index.html">Home</a>
+    <a href="/notes/">Notes</a>
+    <a href="#clients">Blog</a>
+    <a href="#contact">Contact</a>
+  </div>
+       
+
 
 </body>
 </html>
+
