@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+/* nav bar */
+.sidenav {
+  width: 55px;
+  position: fixed;
+  z-index: 1;
+  bottom: 11px;
+  right: 13px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 7px 0;
+}
+
+.sidenav a {
+  padding: 1px 11px 1px 7px;
+  text-decoration: none;
+  text-align: right;
+  font-size: 13px;
+  color: #000000;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #0d528a;
+  font-size: 14px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/* tweetbody */
+.tweet-body {
+    
+}
+
+.tweet-body textarea{
+    overflow: scroll;
+    resize: none;
+    /* margin-top: 40px; */
+    /* height: 80px; */
+    /* border: 1px solid red; */
+    border-radius: 2px;
+    padding: 4px;
+    font-size: 11px;
+}
+</style>
+</head>
+<body>
+    <div class="tweet-body"> 
+        <form method="post" enctype="multipart/form-data"> 
+        <textarea class="status" name="status" placeholder="Write your post here!" rows="4" cols="50"></textarea> 
+    </div> 
+    
+    <div class="sidenav">
+        <a href="/index.html">Home</a>
+        <a href="/notes/">Notes</a>
+        <a href="/blog/">Blog</a>
+    </div>
+</body>
+</html>
