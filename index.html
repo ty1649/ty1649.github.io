@@ -1,156 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Terry Yu Website</title>
-<meta name="google-site-verification" content="-yAzYtsG5CNLvD299Sl787ZO6-siX4KiVmkEjEUNIMQ" />
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta charset="UTF-8">
+    <title>Terry Yu | Portfolio</title>
+    <meta name="google-site-verification" content="-yAzYtsG5CNLvD299Sl787ZO6-siX4KiVmkEjEUNIMQ" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Terry Yu's portfolio website featuring mechanical engineering projects and class notes">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Georgia, Garamond;
+        }
 
-<style>
-* {
-  box-sizing: border-box;
-}
+        body {
+            padding: 40px;
+            padding-left: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
 
-p { margin:4px }
-h3 { margin : 16px}
+        /* Header */
+        .header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 20px;
+        }
 
-/* boxes */
-.column {
-  float: left;
-  width: 33%;
-  margin-right: .33%;
-  padding: 10px;
-  height: 400px;
-}
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+        .subtitle {
+            font-size: 14px;
+        }
 
-.section-title {
-  font-size: 45px;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  text-decoration: underline;
-  font-weight: 490;
-}
+        /* Content Grid */
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+/* 
+        .column {
+            border: 1px solid #000;
+            padding: 20px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        } */
+        .column {
+            border: 1px solid #000;
+            padding: 20px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+         }
 
-.box-title {
-  font-size: 30px;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  font-weight: 300;
-  margin:10px;
-}
+         .column:hover {
+            transform: scale(1.05);
+            background-color: #f0f0f0;
+            text-decoration: underline;
+         }
 
-.main {
-  margin-left: 160px;
-  padding: 0px 10px;
-}
+          .column-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+          }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
+          .column-link .column {
+            height: 100%;
+          }
 
-.alignleft {
-    margin:0;
-    float: left;
-    width:33.33333%;
-    text-align:left;
-}
-.aligncenter {
-    margin:0;
-    float: left;
-    width:33.33333%;
-    text-align:center;
-}
-.alignright {
-    margin:0;
-    float: left;
-    width:33.33333%;
-    text-align:right;
-}
+          .column-link .box-title {
+              text-decoration: none;
+          }
 
-/* nav bar */
-.sidenav {
-  width: 55px;
-  position: fixed;
-  z-index: 1;
-  bottom: 11px;
-  right: 13px;
-  background: #eee;
-  overflow-x: hidden;
-  padding: 7px 0;
-}
+        .box-title {
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: normal;
+            text-align: center;
+        }
 
-.sidenav a {
-  padding: 1px 11px 1px 7px;
-  text-decoration: none;
-  text-align: right;
-  font-size: 13px;
-  color: #000000;
-  display: block;
-}
+        /* About Section */
+        .about-section {
+            margin: 40px 0;
+            padding: 40px 0;
+            border-top: 1px solid #000;
+        }
+        .about-section a {
+            color: blue; 
+            text-decoration: none; 
+        }
 
-.sidenav a:hover {
-  color: #0d528a;
-  /* text-decoration: underline; */
-  font-size: 14px;
-}
+        .about-section a:visited {
+            color: blue; 
+        }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
-</head>
-
-<body>
-<h1 class="section-title">TERRY YU WEBSITE</h1>
-
-<p>here's my website with random stuff I've made</p>
-
-<div class="row">
-  <div class="column" style="background-color:#bbb;">
-    <h2 class = "box-title"> 1 </h2>
-    test
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2 class = "box-title"> 2 </h2>
-    <p> filler </p>
-  </div>
+        .about-section a:hover {
+            text-decoration: underline;
+        }
   
-</div>
-<p>test</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
+        .about-content {
+            font-size: 14px;
+            max-width: 600px;
+        }
 
-<!-- /* 
-<div id="footer">
-    <p>discord: ty49#4673<span style = "float:right;">-ty1649</span></p>
-    <p class="alignleft">discord: ty#2234</p><p class="aligncenter">about me</p><p class="alignright">-ty1649</p>
-</div> */
-     -->
-     <div class="sidenav">
-      <a href="index.html">Home</a>
-      <a href="/notes/">Notes</a>
-      <a href="/blog/">Blog</a>
-    </div>
-         
-    
+        /* Navigation */
+        .sidenav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 60px;
+            border-right: 1px solid #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            background: #fff;
+        }
 
+        .sidenav a {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+        }
+
+        .sidenav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #000;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px;
+                padding-bottom: 80px;
+            }
+
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .sidenav {
+                height: 60px;
+                width: 100%;
+                bottom: 0;
+                top: auto;
+                left: 0;
+                flex-direction: row;
+                border-right: none;
+                border-top: 1px solid #000;
+            }
+
+            .sidenav a {
+                writing-mode: horizontal-tb;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="section-title">TERRY YU</h1>
+        <p class="subtitle">Mechanical Engineering at UCLA</p>
+    </header>
+
+    <main>
+        <div class="row">
+            <div class="column">
+                <h2 class="box-title">PROJECTS</h2>
+            </div>
+          <a href="/notes/index.html" class="column-link">
+            <div class="column">
+                <h2 class="box-title">NOTES</h2>
+            </div>
+          </a>
+        </div>
+
+        <section class="about-section">
+          <h2 class="about-title">CONTACT</h2>
+          <div class="about-content">
+              <p>Email: <a href="mailto: terryyu05@gmail.com" class="contact-link">terryyu05@gmail.com</a></p>
+              <p>Linkedin: <a href="https://www.linkedin.com/in/terryyu05/">linkedin.com/in/terryyu05/</a></p>
+              <p>Phone: <a href="tel:6692816222">(669) 281-6222</a></p>
+          </div>
+      </section>
+
+        <section class="about-section">
+            <h2 class="about-title">ABOUT</h2>
+            <div class="about-content">
+                <p>Mechanical engineering student focused on mechatronics and cars.</p>
+                <p style="margin-top: 15px">I love hiking INSERT MORE</p>
+            </div>
+        </section>
+    </main>
+
+    <nav class="sidenav">
+        <a href="index.html">HOME</a>
+        <a href="/projects/">PROJECTS</a>
+        <a href="/notes/">NOTES</a>
+    </nav>
+
+    <footer class="footer">
+        <p>© 2024 Terry Yu</p>
+    </footer>
 </body>
 </html>
 
