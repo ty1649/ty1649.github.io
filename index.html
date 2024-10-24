@@ -99,10 +99,11 @@
 
         .theme-toggle.hover {
             transform: rotate(10deg);
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .theme-toggle.clicked {
-            transform: scale(1.1);
+            transform: scale(1.3);
         }
 
         .theme-toggle.dark-mode {
@@ -320,7 +321,7 @@
 </head>
 <body>
     <header class="header">
-        <img src="/path/to/your-photo.jpg" alt="Terry Yu" class="profile-photo">
+        <img src="/images/pfp2.png" alt="Terry Yu" class="profile-photo">
         <div class="header-text">
             <h1 class="section-title">TERRY YU</h1>
             <div class="social-icons">
@@ -429,11 +430,11 @@
                 } else {
                     toggleButton.textContent = '🌞';
                 }
-            } else {
-                setTimeout(() => {
+            }
+
+            setTimeout(() => {
                     toggleButton.classList.remove('hover');
                 }, 100);
-            }
 
             cantoggle = true;
         });

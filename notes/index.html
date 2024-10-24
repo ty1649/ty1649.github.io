@@ -1,213 +1,362 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Terry Yu | Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Body and Theme styles */
+        :root {
+          --line-color-light: #000000;
+          --line-color-dark: #ffffff;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            padding: 40px;
+            padding-left: 100px;
+            max-width: 1200px;
+            margin: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-<style>
-* {
-  box-sizing: border-box;
-}
+        body.dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
 
-p { margin:4px }
-h3 { margin : 16px}
-a:visited { 
- text-decoration: none; 
- color: blue; 
-}
-a:hover {
-  color:rgb(100, 100, 209);
-}
+        /* Container for notes */
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
 
-.column {
-  float: left;
-  width: 33%;
-  margin-right: .33%;
-  padding: 10px;
-  height: 400px;
-}
+        /* Section headers */
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+        /* Grid layout for the notes */
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 0.25fr)); /* 3 per row on larger screens, auto on small */
+            grid-gap: 20px; /* Spacing between boxes */
+            margin-bottom: 30px;
+        }
 
-.section-title {
-  font-size: 37px;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  font-weight: 400;
-}
+        /* Notes box styling */
+        .note {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid black;
+            transition: background-color 0.3s ease, border 0.3s ease;
+            cursor: pointer;
+        }
 
-.box-title {
-  font-size: 27px;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  font-weight: 300;
-  margin:10px;
-}
-.main {
-  margin-left: 160px;
-  padding: 0px 10px;
-}
+        body.dark-mode .note {
+            background-color: #333;
+            border: 2px solid #fff;
+        }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
+        .note:hover { 
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+            transition: transform 0.2s ease;
+        }
+        .note:active {
+            transform: scale(1.3);
+        }
 
-.alignleft {
-    margin:0;
-    float: left;
-    width:33.33333%;
-    text-align:left;
-}
-.aligncenter {
-    margin:0;
-    float: left;
-    width:33.33333%;
-    text-align:center;
-}
-.alignright {
-    margin:0;
-    float: left;
-    width:33.33333%;
-    text-align:right;
-}
+        body.dark-mode .note:hover {
+            background-color: #444;
+        }
 
-/* nav bar */
-.sidenav {
-  width: 55px;
-  position: fixed;
-  z-index: 1;
-  bottom: 11px;
-  right: 13px;
-  background: #eee;
-  overflow-x: hidden;
-  padding: 7px 0;
-}
+        .note-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-.sidenav a {
-  padding: 1px 11px 1px 7px;
-  text-decoration: none;
-  text-align: right;
-  font-size: 13px;
-  color: #000000;
-  display: block;
-}
+        .note-summary {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
 
-.sidenav a:hover {
-  color: #0d528a;
-  font-size: 14px;
-}
+        /* General styling for links */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
+        /* Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            cursor: pointer;
+            background-color: var(--bg-color-light);
+            color: var(--text-color-light);
+            font-size: 16px;
+            /* border: none; */
+            border: 1px solid var(--line-color-light);
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .theme-toggle.hover {
+            transform: rotate(10deg);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .theme-toggle.clicked {
+            transform: scale(1.3);
+        }
+
+        /* .theme-toggle.dark-mode {
+            background-color: var(--bg-color-dark);
+            color: var(--text-color-dark);
+        } */
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 10px;
+            width: 80%;
+            height: 80%;
+            max-width: 900px;
+            border-radius: 7px;
+            position: relative;
+        }
+
+        /* Dark mode for modal */
+        body.dark-mode .modal-content {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Close button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 4px 6px;
+            border-radius: 5px;
+            cursor: pointer;
+            transform: scale(1.3);
+        }
+
+        /* Dark mode for close button */
+        body.dark-mode .close-btn {
+            background-color: #f44336;
+        }
+        .close-btn:hover {
+            transition: transform 0.2s ease;
+            transform: scale(1.5);
+        }
+
+        /* PDF iframe */
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+        }
+
+        .sidenav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 60px;
+            border-right: 1px solid var(--line-color-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            background: var(--bg-color-light);
+        }
+
+        body.dark-mode .sidenav {
+            background-color: var(--bg-color-dark);
+            border-right-color: var(--line-color-dark);
+        }
+
+        .sidenav a {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-decoration: none;
+            color: var(--text-color-light);
+            font-size: 14px;
+        }
+
+        body.dark-mode .sidenav a {
+            color: var(--text-color-dark);
+        }
+
+        .sidenav a:hover {
+            text-decoration: underline;
+            transform: scale(-1.1);
+        }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 600px) {
+            .pdf-viewer {
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-<p class="section-title">Latexed Shit</p>
-<p>latexed notes and Handouts for various subjects and classes</p>
+    <!-- Theme Toggle Button -->
 
-<div class="row">
-  <div class="column" style="background-color:#bbb;">
-    <h2 class = "box-title"> Math </h2>
-      <div class="member">
-          <a
-            target="_blank" 
-            href="calc1.pdf"
-            >
-            Calculus 1 Equation Sheet</a>
+    <!-- Notes Page Content -->
+    <div class="container">
+        <!-- High School Section -->
+        <h2>High School</h2>
+        <div class="notes-grid">
+            <div class="note" data-pdf="path/to/Physics_EM.pdf">
+                <div class="note-title">Physics E&M</div>
+                <div class="note-summary">An overview of electricity and magnetism concepts, including Coulomb's Law, Gauss's Law, and Faraday's Law.</div>
+            </div>
+            <div class="note" data-pdf="path/to/Calculus_AB.pdf">
+                <div class="note-title">Calculus AB</div>
+                <div class="note-summary">Covers derivatives, integrals, and the Fundamental Theorem of Calculus with practice problems and solutions.</div>
+            </div>
+        </div>
+
+        <!-- Bachelors Section -->
+        <h2>Bachelors</h2>
+        <div class="notes-grid">
+            <div class="note" data-pdf="/notes/calc3.pdf">
+                <div class="note-title">Thermodynamics</div>
+                <div class="note-summary">Discusses the principles of thermodynamics, including the laws of thermodynamics, entropy, and thermodynamic cycles.</div>
+            </div>
+            <div class="note" data-pdf="path/to/Fluid_Mechanics.pdf">
+                <div class="note-title">Fluid Mechanics</div>
+                <div class="note-summary">Explains fluid behavior under various conditions, focusing on the Bernoulli principle, flow dynamics, and turbulence.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for PDF Preview -->
+    <div id="pdf-modal" class="modal">
+      <div class="modal-content">
+          <button class="close-btn" id="close-modal">X</button>
+          <iframe id="pdf-viewer" class="pdf-viewer" src="" frameborder="0"></iframe>
       </div>
-      <div class="member">
-          <a
-            target="_blank" 
-            href="calc2.pdf"
-            >
-            Calc 2 Notes (unfinished)</a>
-      </div>
-      <div class="member">
-          <a
-            target="_blank" 
-            href="calc3.pdf"
-            >
-            Calculus 3 Notes</a>
-      </div>
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2 class = "box-title"> Physics </h2>
-    <p> 
-      <div class="member">
-          <a
-            target="_blank" 
-            href="physics1.pdf"
-            >
-            Physics Notes, Pt 1 (Newton's Laws, Gravitation, Fluids, Waves, etc.)</a>
-      </div> 
-    </p>
-    <p> 
-      <div class="member">
-          <a
-            target="_blank" 
-            href="physics2.pdf"
-            >
-            Physics Notes, Pt 2 (Electricity and Magnetism) (unfinished)</a>
-      </div> 
-    </p>
-    <p> 
-      <div class="member">
-          <a
-            target="_blank" 
-            href="physics4c.pdf"
-            >
-            Physics 4C: Thermodynamics, Waves, and Optics (in progress)</a>
-      </div> 
-   </p>
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2 class = "box-title"> Random Handouts </h2>
-    <p> 
-      <div class="member">
-          <a
-            target="_blank" 
-            href="https://drive.google.com/file/d/1z0--yu9lg5hVvIBzy2a4tPojm5HerprM/view?usp=sharing"
-            >
-            Inheritance APCS (Java) </a>
-      </div> 
-    </p>
-    <p> 
-      <div class="member">
-          <a
-            target="_blank" 
-            href="workenergyeqsheet.pdf"
-            >
-            Work and Energy Equation Sheet</a>
-      </div> 
-    </p>
-  </div>
-</div>
-<br>
+    </div>
+
+    <nav class="sidenav">
+      <button id="theme-toggle" class="theme-toggle">🌞</button>
+      <a href="../">HOME</a>
+      <a href="/projects/">PROJECTS</a>
+      <a href="/notes/">NOTES</a>
+    </nav>
+
+    <!-- Script to handle theme toggle and modal behavior -->
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      const modal = document.getElementById('pdf-modal');
+      const closeModal = document.getElementById('close-modal');
+      const pdfViewer = document.getElementById('pdf-viewer');
+
+      const toggleButton = document.getElementById('theme-toggle');
+      const body = document.body;
+      let cantoggle = true;
 
 
-<!-- <div class="row">
-  <div class="column" style="background-color:#bbb;">
-    <h2 class = "box-title"> Math Notes </h2>
-    test
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2 class = "box-title"> Physics Notes </h2>
-    <p> filler </p>
-  </div> -->
+      toggleButton.addEventListener('click', () => {
+          // body.classList.toggle('dark-mode');
 
-  <div class="sidenav">
-    <a href="/index.html">Home</a>
-    <a href="/notes/">Notes</a>
-    <a href="/blog/">Blog</a>
-  </div>
-       
+          // if (body.classList.contains('dark-mode')) {
+          //     toggleButton.textContent = '🌚';
+          // } else {
+          //     toggleButton.textContent = '🌞';
+          // }
+          toggleButton.classList.add('clicked');
+          setTimeout(() => {
+              toggleButton.classList.remove('clicked');
+          }, 100);
+          setTimeout(() => {
+              toggleButton.classList.remove('hover');
+          }, 160);
 
+          cantoggle = false;
+      });
+      toggleButton.addEventListener('mouseover', () => {
+          toggleButton.classList.add('hover');
 
+          if(cantoggle) {
+              body.classList.toggle('dark-mode');
+
+              if (body.classList.contains('dark-mode')) {
+                  toggleButton.textContent = '🌚';
+              } else {
+                  toggleButton.textContent = '🌞';
+              }
+          }
+      });
+      toggleButton.addEventListener('mouseout', () => {    
+          if(cantoggle) {
+              body.classList.toggle('dark-mode');
+
+              if (body.classList.contains('dark-mode')) {
+                  toggleButton.textContent = '🌚';
+              } else {
+                  toggleButton.textContent = '🌞';
+              }
+          }
+
+          setTimeout(() => {
+                  toggleButton.classList.remove('hover');
+              }, 100);
+
+          cantoggle = true;
+      });
+
+          // Open PDF in modal
+        document.querySelectorAll('.note').forEach(note => {
+          note.addEventListener('click', function() {
+              const pdfPath = this.getAttribute('data-pdf');
+              pdfViewer.src = pdfPath;
+              modal.style.display = 'flex';
+          });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            pdfViewer.src = '';  // Clear the PDF source when closing
+        });
+
+        // Close modal by clicking outside the modal content
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                pdfViewer.src = '';  // Clear the PDF source
+            }
+        });
+
+  </script>
 </body>
 </html>
-
-
