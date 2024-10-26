@@ -4,440 +4,420 @@
     <meta charset="UTF-8">
     <title>Terry Yu | Projects</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Terry Yu's portfolio projects showcasing mechanical engineering work and other projects.">
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <meta name="description" content="Terry Yu's engineering projects showcase">
     <style>
-      :root {
-          --bg-color-light: #ffffff;
-          --text-color-light: #000000;
-          --bg-color-dark: #121212;
-          --text-color-dark: #ffffff;
-          --border-color: #000;
-          --line-color-light: #000000;
-          --line-color-dark: #ffffff;
-      }
+        :root {
+            --bg-color-light: #ffffff;
+            --text-color-light: #000000;
+            --bg-color-dark: #121212;
+            --text-color-dark: #ffffff;
+            --border-color: #000;
+            --line-color-light: #000000;
+            --line-color-dark: #ffffff;
+            --fsae-color: #e63946;
+            --supermileage-color: #2a9d8f;
+            --personal-color: #6d597a;
+        }
 
-      body {
-          background-color: var(--bg-color-light);
-          color: var(--text-color-light);
-          padding: 40px;
-          padding-left: 100px;
-          max-width: 1200px;
-          margin: 0 auto;
-          line-height: 1.5;
-          transition: background-color 0.3s, color 0.3s;
-      }
+        body {
+            background-color: var(--bg-color-light);
+            color: var(--text-color-light);
+            padding: 40px;
+            padding-left: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            line-height: 1.5;
+            transition: background-color 0.3s, color 0.3s;
+            font-family: Georgia, Garamond;
+        }
 
-      body.dark-mode {
-          background-color: var(--bg-color-dark);
-          color: var(--text-color-dark);
-      }
+        body.dark-mode {
+            background-color: var(--bg-color-dark);
+            color: var(--text-color-dark);
+        }
 
-      * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: Georgia, Garamond;
-      }
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
 
-      /* Header */
-      .header {
-          margin-bottom: 40px;
-          border-bottom: 1px solid var(--line-color-light);
-          padding-bottom: 20px;
-          display: flex;
-          align-items: center;
-          gap: 40px;
-          transition: border-color 0.3s;
-      }
+        /* Filter Styles */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
 
-      body.dark-mode .header {
-          border-bottom-color: var(--line-color-dark);
-      }
+        .filter-button {
+            padding: 8px 16px;
+            border: 2px solid;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: transparent;
+            font-family: Georgia, Garamond;
+        }
 
-      .header-text {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-      }
+        .filter-button.fsae {
+            color: var(--fsae-color);
+            border-color: var(--fsae-color);
+        }
 
-      .profile-photo {
-          width: 150px;
-          height: 150px;
-          border-radius: 50%;
-          object-fit: cover;
-          border: 2px solid var(--border-color);
-          transition: border-color 0.3s, border-width 0.3s;
-      }
+        .filter-button.supermileage {
+            color: var(--supermileage-color);
+            border-color: var(--supermileage-color);
+        }
 
-      body.dark-mode .profile-photo {
-          border-color: var(--line-color-dark);
-          border-width: 2px;
-      }
+        .filter-button.personal {
+            color: var(--personal-color);
+            border-color: var(--personal-color);
+        }
 
-      .section-title {
-          font-size: 24px;
-          margin-bottom: 20px; /* Adjusted margin for better spacing */
-          font-weight: bold;
-      }
+        .filter-button.active {
+            color: white;
+        }
 
-      /* Toggle Button */
-      .theme-toggle {
-          position: absolute;
-          top: 20px;
-          cursor: pointer;
-          background-color: var(--bg-color-light);
-          color: var(--text-color-light);
-          font-size: 16px;
-          border: 1px solid var(--line-color-light);
-          padding: 8px 12px;
-          border-radius: 5px;
-          transition: background-color 0.3s, color 0.3s;
-      }
+        .filter-button.fsae.active {
+            background-color: var(--fsae-color);
+        }
 
-      .theme-toggle.hover {
-          transform: rotate(10deg);
-          transition: transform 0.3s ease, background-color 0.3s ease;
-      }
+        .filter-button.supermileage.active {
+            background-color: var(--supermileage-color);
+        }
 
-      .theme-toggle.clicked {
-          transform: scale(1.3);
-      }
+        .filter-button.personal.active {
+            background-color: var(--personal-color);
+        }
 
-      .theme-toggle.dark-mode {
-          background-color: var(--bg-color-dark);
-          color: var(--text-color-dark);
-      }
+        /* Project Grid Styles */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
 
-      /* Social Icons */
-      .social-icons {
-          display: flex;
-          gap: 5px;
-      }
+        .project-card {
+            position: relative;
+            border: 1px solid var(--line-color-light);
+            padding: 25px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
 
-      .social-icons a {
-          color: var(--text-color-light);
-          text-decoration: none;
-          transition: all 0.2s ease;
-          display: flex;
-          align-items: center;
-          opacity: 0.7;
-      }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            filter: blur(8px);
+            opacity: 0.1;
+            z-index: -1;
+        }
 
-      body.dark-mode .social-icons a {
-          color: var(--text-color-dark);
-      }
+        body.dark-mode .project-card {
+            border-color: var(--line-color-dark);
+        }
 
-      .social-icons a:hover {
-          transform: translateY(-2px);
-          opacity: 1;
-      }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
 
-      .social-icons svg {
-          width: 18px;
-          height: 18px;
-          stroke-width: 1.5;
-      }
+        .project-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
 
-      .row {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
-          margin-bottom: 40px;
-      }
+        .project-description {
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
 
-      .column {
-          border: 1px solid var(--line-color-light);
-          padding: 20px;
-          min-height: 200px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          transition: transform 0.3s ease;
-          background-size: cover;
-          background-position: center; 
-      }
+        .category-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+            color: white;
+        }
 
-      .column:hover {
-          transform: scale(1.05);
-      }
+        .category-tag.fsae {
+            background-color: var(--fsae-color);
+        }
 
-      body.dark-mode .column {
-          border-color: var(--line-color-dark); 
-      }
+        .category-tag.supermileage {
+            background-color: var(--supermileage-color);
+        }
 
-      body.dark-mode .column:hover {
-          transform: scale(1.05);
-      }
+        .category-tag.personal {
+            background-color: var(--personal-color);
+        }
 
-      .column-link {
-          display: block;
-          text-decoration: none;
-          color: inherit;
-      }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
 
-      .box-title {
-          font-size: 16px;
-          margin-bottom: 15px;
-          font-weight: normal;
-          text-align: center;
-      }
+        .skill-tag {
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+            color: white;
+        }
 
-      .tags {
-          display: flex;
-          justify-content: center;
-          gap: 10px; /* Space between tags */
-          margin-top: 10px; /* Margin above tags */
-      }
+        .tag-coding {
+            background-color: #007bff;
+        }
 
-      .tag {
-          background-color: #e0e0e0; /* Tag background color */
-          border-radius: 5px; /* Rounded corners */
-          padding: 5px 10px; /* Padding for tags */
-          font-size: 12px; /* Font size for tags */
-      }
+        .tag-electronics {
+            background-color: #dc3545;
+        }
 
-      .about-section {
-          margin: 40px 0;
-          padding: 40px 0;
-          border-top: 1px solid var(--line-color-light);
-          transition: border-color 0.3s;
-      }
+        .tag-mechanical {
+            background-color: #28a745;
+        }
 
-      body.dark-mode .about-section {
-          border-top-color: var(--line-color-dark);
-      }
+        .hidden {
+            display: none;
+        }
 
-      .about-title {
-          font-size: 16px;
-          margin-bottom: 20px;
-          font-weight: Medium;
-      }
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px;
+                padding-bottom: 80px;
+            }
 
-      .about-content {
-          font-size: 14px;
-          max-width: 600px;
-      }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
 
-      .sidenav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 60px;
-          border-right: 1px solid var(--line-color-light);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 30px;
-          background: var(--bg-color-light);
-      }
+            .project-card {
+                min-height: 250px;
+            }
+        }
 
-      body.dark-mode .sidenav {
-          background-color: var(--bg-color-dark);
-          border-right-color: var(--line-color-dark);
-      }
+        /* Sidenav styles remain the same */
+        .sidenav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 60px;
+            border-right: 1px solid var(--line-color-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            background: var(--bg-color-light);
+        }
 
-      .sidenav a {
-          writing-mode: vertical-rl;
-          transform: rotate(180deg);
-          text-decoration: none;
-          color: var(--text-color-light);
-          font-size: 14px;
-      }
+        body.dark-mode .sidenav {
+            background-color: var(--bg-color-dark);
+            border-right-color: var(--line-color-dark);
+        }
 
-      body.dark-mode .sidenav a {
-          color: var(--text-color-dark);
-      }
+        .sidenav a {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-decoration: none;
+            color: var(--text-color-light);
+            font-size: 14px;
+        }
 
-      .sidenav a:hover {
-          text-decoration: underline;
-          transform: scale(-1.1);
-      }
+        body.dark-mode .sidenav a {
+            color: var(--text-color-dark);
+        }
 
-      .footer {
-          margin-top: 40px;
-          padding-top: 20px;
-          border-top: 1px solid var(--line-color-light);
-          font-size: 14px;
-          transition: border-color 0.3s;
-      }
+        .sidenav a:hover {
+            text-decoration: underline;
+            transform: scale(-1.1);
+        }
 
-      body.dark-mode .footer {
-          border-top-color: var(--line-color-dark);
-      }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line-color-light);
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
 
-      @media screen and (max-width: 768px) {
-          body {
-              padding: 20px;
-              padding-bottom: 80px;
-          }
+        body.dark-mode .footer {
+            border-top-color: var(--line-color-dark);
+        }
 
-          .header {
-              flex-direction: column;
-              text-align: center;
-              gap: 20px;
-          }
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            cursor: pointer;
+            background-color: var(--bg-color-light);
+            color: var(--text-color-light);
+            font-size: 16px;
+            border: 1px solid var(--line-color-light);
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-          .header-text {
-              align-items: center;
-          }
+        .theme-toggle.hover {
+            transform: rotate(10deg);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
 
-          .profile-photo {
-              width: 120px;
-              height: 120px;
-          }
+        .theme-toggle.clicked {
+            transform: scale(1.3);
+        }
 
-          .social-icons {
-              justify-content: center;
-          }
-
-          .row {
-              grid-template-columns: 1fr;
-          }
-
-          .sidenav {
-              height: 60px;
-              width: 100%;
-              bottom: 0;
-              top: auto;
-              left: 0;
-              flex-direction: row;
-              border-right: none;
-              border-top: 1px solid var(--border-color);
-          }
-
-          .sidenav a {
-              writing-mode: horizontal-tb;
-              transform: none;
-          }
-
-          .theme-toggle {
-              right: 20px;
-              top: 10px;
-          }
-      }
-  </style>
+        .theme-toggle.dark-mode {
+            background-color: var(--bg-color-dark);
+            color: var(--text-color-dark);
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-text">
-            <h1 class="section-title">Projects</h1> <!-- Bold title for the Projects page -->
-        </div>
-    </header>
-    
     <main>
-        <div class="row">
-            <div class="column" style="background-image: url('/images/proj1.png');">
-                <h2 class="box-title">Project 1</h2>
-                <p>Brief description of Project 1. Highlight key features, technologies used, and your role in the project.</p>
-                <div class="tags">
-                    <span class="tag">Coding</span>
-                    <span class="tag">Electronics</span>
+        <h1 class="section-title">PROJECTS</h1>
+        
+        <div class="filter-container">
+            <button class="filter-button fsae active" data-category="fsae">Formula SAE</button>
+            <button class="filter-button supermileage" data-category="supermileage">Supermileage</button>
+            <button class="filter-button personal" data-category="personal">Personal Projects</button>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Example FSAE Project -->
+            <div class="project-card" data-category="fsae" style="background-image: url('/images/fsae-project.jpg')">
+                <span class="category-tag fsae">Formula SAE</span>
+                <h2 class="project-title">Suspension Design</h2>
+                <p class="project-description">Design and optimization of the suspension system for the FSAE race car.</p>
+                <div class="tags-container">
+                    <span class="skill-tag tag-mechanical">Mechanical Engineering</span>
+                    <span class="skill-tag tag-coding">Coding</span>
                 </div>
-                <a href="link-to-your-project1.html" class="column-link">View Project</a>
             </div>
-            <div class="column" style="background-image: url('path-to-your-image2.jpg');">
-                <h2 class="box-title">Project 2</h2>
-                <p>Brief description of Project 2. Highlight key features, technologies used, and your role in the project.</p>
-                <div class="tags">
-                    <span class="tag">Mechanical Engineering</span>
-                    <span class="tag">Coding</span>
+
+            <!-- Example Supermileage Project -->
+            <div class="project-card" data-category="supermileage" style="background-image: url('/images/supermileage-project.jpg')">
+                <span class="category-tag supermileage">Supermileage</span>
+                <h2 class="project-title">Engine Control Unit</h2>
+                <p class="project-description">Custom ECU development for optimal fuel efficiency.</p>
+                <div class="tags-container">
+                    <span class="skill-tag tag-electronics">Electronics</span>
+                    <span class="skill-tag tag-coding">Coding</span>
                 </div>
-                <a href="link-to-your-project2.html" class="column-link">View Project</a>
             </div>
-            <div class="column" style="background-image: url('path-to-your-image3.jpg');">
-                <h2 class="box-title">Project 3</h2>
-                <p>Brief description of Project 3. Highlight key features, technologies used, and your role in the project.</p>
-                <div class="tags">
-                    <span class="tag">Electronics</span>
-                    <span class="tag">Mechanical Engineering</span>
+
+            <!-- Example Personal Project -->
+            <div class="project-card" data-category="personal" style="background-image: url('/images/personal-project.jpg')">
+                <span class="category-tag personal">Personal Project</span>
+                <h2 class="project-title">Home Automation</h2>
+                <p class="project-description">Custom-built home automation system with IoT integration.</p>
+                <div class="tags-container">
+                    <span class="skill-tag tag-coding">Coding</span>
+                    <span class="skill-tag tag-electronics">Electronics</span>
                 </div>
-                <a href="link-to-your-project3.html" class="column-link">View Project</a>
             </div>
-            <div class="column" style="background-image: url('path-to-your-image4.jpg');">
-                <h2 class="box-title">Project 4</h2>
-                <p>Brief description of Project 4. Highlight key features, technologies used, and your role in the project.</p>
-                <div class="tags">
-                    <span class="tag">Coding</span>
-                    <span class="tag">Electronics</span>
-                    <span class="tag">Mechanical Engineering</span>
-                </div>
-                <a href="link-to-your-project4.html" class="column-link">View Project</a>
-            </div>
-            <!-- Add more project columns as needed -->
         </div>
     </main>
 
     <nav class="sidenav">
         <button class="theme-toggle" id="theme-toggle">🌞</button>
-        <a href="../">HOME</a>
+        <a href="/">HOME</a>
         <a href="/projects/">PROJECTS</a>
         <a href="/notes/">NOTES</a>
     </nav>
 
-    <footer class="footer">
-        <p>© 2024 Terry Yu</p>
-    </footer>
-
     <script>
+        // Theme toggle functionality
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+        let cantoggle = true;
 
-      const toggleButton = document.getElementById('theme-toggle');
-      const body = document.body;
-      let cantoggle = true;
+        toggleButton.addEventListener('click', () => {
+            toggleButton.classList.add('clicked');
+            setTimeout(() => {
+                toggleButton.classList.remove('clicked');
+            }, 100);
+            setTimeout(() => {
+                toggleButton.classList.remove('hover');
+            }, 160);
 
-      toggleButton.addEventListener('click', () => {
-          // body.classList.toggle('dark-mode');
+            cantoggle = false;
+        });
 
-          // if (body.classList.contains('dark-mode')) {
-          //     toggleButton.textContent = '🌚';
-          // } else {
-          //     toggleButton.textContent = '🌞';
-          // }
-          toggleButton.classList.add('clicked');
-          setTimeout(() => {
-              toggleButton.classList.remove('clicked');
-          }, 100);
-          setTimeout(() => {
-              toggleButton.classList.remove('hover');
-          }, 160);
+        toggleButton.addEventListener('mouseover', () => {
+            toggleButton.classList.add('hover');
 
-          cantoggle = false;
-      });
-      toggleButton.addEventListener('mouseover', () => {
-          toggleButton.classList.add('hover');
+            if(cantoggle) {
+                body.classList.toggle('dark-mode');
+                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+            }
+        });
 
-          if(cantoggle) {
-              body.classList.toggle('dark-mode');
+        toggleButton.addEventListener('mouseout', () => {    
+            if(cantoggle) {
+                body.classList.toggle('dark-mode');
+                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+            }
 
-              if (body.classList.contains('dark-mode')) {
-                  toggleButton.textContent = '🌚';
-              } else {
-                  toggleButton.textContent = '🌞';
-              }
-          }
-      });
-      toggleButton.addEventListener('mouseout', () => {    
-          if(cantoggle) {
-              body.classList.toggle('dark-mode');
+            setTimeout(() => {
+                toggleButton.classList.remove('hover');
+            }, 100);
 
-              if (body.classList.contains('dark-mode')) {
-                  toggleButton.textContent = '🌚';
-              } else {
-                  toggleButton.textContent = '🌞';
-              }
-          }
+            cantoggle = true;
+        });
 
-          setTimeout(() => {
-                  toggleButton.classList.remove('hover');
-              }, 100);
+        // Project filtering functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const projectCards = document.querySelectorAll('.project-card');
 
-          cantoggle = true;
-      });
-  </script>
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Check if the clicked button is already active
+                const isActive = button.classList.contains('active');
+
+                // Reset all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                if (isActive) {
+                    // If it was already active, show all projects (unclick functionality)
+                    projectCards.forEach(card => card.classList.remove('hidden'));
+                } else {
+                    // Otherwise, activate the clicked button and filter projects
+                    button.classList.add('active');
+                    const category = button.dataset.category;
+                    projectCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
 </body>
 </html>
