@@ -293,6 +293,34 @@
             background-color: var(--bg-color-dark);
             color: var(--text-color-dark);
         }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px;
+                padding-bottom: 80px;
+            }
+            
+            .sidenav {
+                height: 60px;
+                width: 100%;
+                bottom: 0;
+                top: auto;
+                left: 0;
+                flex-direction: row;
+                border-right: none;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .sidenav a {
+                writing-mode: horizontal-tb;
+                transform: none;
+            }
+
+            .theme-toggle {
+                right: 20px;
+                top: 10px;
+            }
+        }
     </style>
 </head>
 <body>
