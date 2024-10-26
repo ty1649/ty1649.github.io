@@ -257,6 +257,7 @@
             text-decoration: none;
             color: var(--text-color-light);
             font-size: 14px;
+            transition: transform 0.2s;
         }
 
         body.dark-mode .sidenav a {
@@ -310,12 +311,20 @@
                 left: 0;
                 flex-direction: row;
                 border-right: none;
-                border-top: 1px solid var(--border-color);
+                border-top: 1px solid var(--line-color-light);
+                z-index: 3;
+            }
+            body.dark-mode .sidenav {
+                border-top-color: var(--line-color-dark);
             }
 
             .sidenav a {
                 writing-mode: horizontal-tb;
                 transform: none;
+            }
+            .sidenav a:hover {
+                writing-mode: horizontal-tb;
+                transform: scale(1.1);
             }
 
             .theme-toggle {

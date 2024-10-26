@@ -58,8 +58,10 @@
         .header-text {
             flex: 1;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
         }
 
         .profile-photo {
@@ -111,6 +113,92 @@
             color: var(--text-color-dark);
         }
 
+        .resume-button-container {
+            display: flex;
+            align-items: stretch;
+            margin-right: 40px;
+        }
+        .resume-button {
+            padding: 13px;
+            padding-right: 7px;
+            border-radius: 5px 0px 0px 5px;
+            background-color: #eedd82;
+            color: var(--text-color-light);
+            border: 1px solid var(--line-color-light);
+            border-right: none;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.5s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .resume-download {
+            padding: 13px;
+            padding-left: 3px;
+            border-radius: 0px 5px 5px 0px;
+            background-color: #eedd82;
+            color: var(--text-color-light);
+            border: 1px solid var(--line-color-light);
+            border-left: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background-color 0.5s ease;
+        }
+
+        body.dark-mode .resume-button,
+        body.dark-mode .resume-download {
+            background-color: darkgoldenrod;
+            color: var(--text-color-dark);
+            border-color: var(--line-color-dark);
+        }
+
+        .resume-button-container:hover .resume-button {
+            transform: scale(1.05);
+            transform-origin: right;
+            background-color: lightgoldenrodyellow;
+        }
+        .resume-button-container:hover .resume-download {
+            transform: scale(1.05);
+            transform-origin: left;
+            background-color: lightgoldenrodyellow;
+        }
+        body.dark-mode .resume-button-container:hover .resume-button,
+        body.dark-mode .resume-button-container:hover .resume-download {
+            background-color: goldenrod;
+        }
+
+        .resume-text {
+            font-size: 16px;
+        }
+
+        /* Add styles for the home icon in sidenav */
+        .home-link {
+            position: absolute;
+            top: 20px;
+            writing-mode: horizontal-tb !important;
+            transform: none !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home-link:hover {
+            transform: scale(1.1) !important;
+        }
+
+        .home-link svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .name-and-socials {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
         /* Social Icons */
         .social-icons {
             display: flex;
@@ -158,41 +246,66 @@
             align-items: center;
             text-align: center;
             transition: transform 0.3s ease, background-color 0.3s ease;
-         }
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
 
-         .column:hover {
+        .column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            z-index: 1;
+            transition: background-color 0.3s ease;
+        }
+
+
+        body.dark-mode .column::before {
+            background-color: rgba(18, 18, 18, 0.9);
+        }
+
+        .column:hover {
             transform: scale(1.05);
             background-color: #f0f0f0;
-         }
+        }
 
-         .column:active {
+        .column:active {
             transform: scale(1.3);
-         }
+        }
 
-         body.dark-mode .column {
+        body.dark-mode .column {
             border-color: var(--line-color-dark); 
-         }
+        }
 
-         body.dark-mode .column:hover {
+        body.dark-mode .column:hover {
             transform: scale(1.05);
             background-color: #2a2a2a;
-         }
+        }
 
-         body.dark-mode .column:active {
+        body.dark-mode .column:active {
             transform: scale(1.3);
-         }
+        }
 
-         .column-link {
+        .column-link {
             display: block;
             text-decoration: none;
             color: inherit;
-          }
+        }
 
-          .box-title {
+        .box-title {
             font-size: 16px;
             margin-bottom: 15px;
             font-weight: normal;
             text-align: center;
+        }
+        .column .box-title {
+            position: relative;
+            z-index: 2;
         }
 
         .about-section {
@@ -243,6 +356,7 @@
             text-decoration: none;
             color: var(--text-color-light);
             font-size: 14px;
+            transition: transform 0.2s;
         }
 
         body.dark-mode .sidenav a {
@@ -266,6 +380,54 @@
             border-top-color: var(--line-color-dark);
         }
 
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pdf-modal.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 60%;
+            height: 90%;
+            margin: 2% auto;
+            background: var(--bg-color-light);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .modal-content {
+            background: var(--bg-color-dark);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -20px;
+            right: -40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            color: white;
+            transition: transform 0.2s ease;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.1);
+        }
 
         @media screen and (max-width: 768px) {
             body {
@@ -280,7 +442,26 @@
             }
 
             .header-text {
+                flex-direction: column;
+            }
+
+            .name-and-socials {
                 align-items: center;
+            }
+
+            .resume-button-container {
+                margin-right: 0;
+                width: 100%;
+            }
+            
+            .resume-button {
+                flex: 1;
+                justify-content: center;
+            }
+
+            .home-link {
+                left: 20px;
+                writing-mode: horizontal-tb !important;
             }
 
             .profile-photo {
@@ -304,17 +485,41 @@
                 left: 0;
                 flex-direction: row;
                 border-right: none;
-                border-top: 1px solid var(--border-color);
+                border-top: 1px solid var(--line-color-light);
+                z-index: 3;
+            }
+            body.dark-mode .sidenav {
+                border-top-color: var(--line-color-dark);
             }
 
             .sidenav a {
                 writing-mode: horizontal-tb;
                 transform: none;
             }
+            .sidenav a:hover {
+                writing-mode: horizontal-tb;
+                transform: scale(1.1);
+            }
 
             .theme-toggle {
                 right: 20px;
                 top: 10px;
+            }
+
+            .modal-content {
+                width: 95%;
+                height: 95%;
+                margin: 2.5% auto;
+            }
+            
+            .modal-close {
+                top: 10px;
+                right: 10px;
+                color: var(--text-color-light);
+            }
+            
+            body.dark-mode .modal-close {
+                color: var(--text-color-dark);
             }
         }
     </style>
@@ -323,8 +528,9 @@
     <header class="header">
         <img src="/images/pfp2.png" alt="Terry Yu" class="profile-photo">
         <div class="header-text">
-            <h1 class="section-title">TERRY YU</h1>
-            <div class="social-icons">
+            <div class="name-and-socials">
+                <h1 class="section-title">TERRY YU</h1>
+                <div class="social-icons">
                 <a href="https://www.linkedin.com/in/terryyu05/" target="_blank" title="LinkedIn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
@@ -350,20 +556,33 @@
                 </a>
             </div>
         </div>
-    </header>
+        <div class="resume-button-container">
+            <button class="resume-button" onclick="openPdfModal()">
+                <span class="resume-text">RESUME</span>
+            </button>
+            <a href="/Terry_Yu_resume.pdf" class="resume-download" download="Terry_Yu_Resume.pdf">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+            </a>
+        </div>
+    </div>
+</header>
 
     <main>
         <div class="row">
             <a href="/projects/" class="column-link">
-                <div class="column">
+                <div class="column" style="background-image: url('images/projects.jpeg');">
                     <h2 class="box-title">PROJECTS</h2>
                 </div>
             </a>
-          <a href="/notes/" class="column-link">
-            <div class="column">
-                <h2 class="box-title">NOTES</h2>
-            </div>
-          </a>
+            <a href="/notes/" class="column-link">
+                <div class="column" style="background-image: url('/images/proj1.png');">
+                    <h2 class="box-title">NOTES</h2>
+                </div>
+            </a>
         </div>
 
         <section class="about-section">
@@ -377,7 +596,12 @@
 
     <nav class="sidenav">
         <button class="theme-toggle" id="theme-toggle">🌞</button>
-        <a href="">HOME</a>
+        <a href="" class="home-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
         <a href="/projects/">PROJECTS</a>
         <a href="/notes/">NOTES</a>
     </nav>
@@ -387,7 +611,44 @@
     </footer>
 
     <script>
+        function openPdfModal() {
+            const modal = document.getElementById('pdf-modal');
+            const iframe = document.getElementById('pdf-iframe');
+            iframe.src = '/Terry_Yu_resume.pdf';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
 
+        // Add event listeners when the document loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('pdf-modal');
+            const closeButton = modal.querySelector('.modal-close');
+            
+            closeButton.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+                // Clear iframe src to stop pdf loading
+                document.getElementById('pdf-iframe').src = '';
+            });
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                    document.getElementById('pdf-iframe').src = '';
+                }
+            });
+            
+            // Close modal on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                    document.getElementById('pdf-iframe').src = '';
+                }
+            });
+        });
         const toggleButton = document.getElementById('theme-toggle');
         const body = document.body;
         let cantoggle = true;
@@ -441,5 +702,17 @@
             cantoggle = true;
         });
     </script>
+
+    <div id="pdf-modal" class="pdf-modal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <iframe id="pdf-iframe" src="" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+    </div>
 </body>
 </html>

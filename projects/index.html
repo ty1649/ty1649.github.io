@@ -103,7 +103,7 @@
         /* Project Grid Styles */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 0.33fr));
             gap: 30px;
             margin-bottom: 40px;
         }
@@ -111,7 +111,8 @@
         .project-card {
             position: relative;
             border: 1px solid var(--line-color-light);
-            padding: 25px;
+            color: var(--text-color-light);
+            padding: 40px;
             min-height: 300px;
             display: flex;
             flex-direction: column;
@@ -128,10 +129,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: inherit;
-            filter: blur(8px);
-            opacity: 0.1;
-            z-index: -1;
+            /* background: inherit; */
+            /* filter: blur(3px); */
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1;
         }
 
         body.dark-mode .project-card {
@@ -146,12 +147,14 @@
             font-size: 20px;
             margin-bottom: 15px;
             font-weight: bold;
+            z-index: 2;
         }
 
         .project-description {
             font-size: 14px;
             margin-bottom: 20px;
             line-height: 1.6;
+            z-index: 2;
         }
 
         .category-tag {
@@ -163,6 +166,7 @@
             font-size: 12px;
             font-weight: 500;
             color: white;
+            z-index: 2;
         }
 
         .category-tag.fsae {
@@ -185,6 +189,7 @@
         }
 
         .skill-tag {
+            z-index: 2;
             padding: 4px 12px;
             border-radius: 15px;
             font-size: 12px;
@@ -250,6 +255,7 @@
             text-decoration: none;
             color: var(--text-color-light);
             font-size: 14px;
+            transition: transform 0.2s;
         }
 
         body.dark-mode .sidenav a {
@@ -314,12 +320,20 @@
                 left: 0;
                 flex-direction: row;
                 border-right: none;
-                border-top: 1px solid var(--border-color);
+                border-top: 1px solid var(--line-color-light);
+                z-index: 3;
+            }
+            body.dark-mode .sidenav {
+                border-top-color: var(--line-color-dark);
             }
 
             .sidenav a {
                 writing-mode: horizontal-tb;
                 transform: none;
+            }
+            .sidenav a:hover {
+                writing-mode: horizontal-tb;
+                transform: scale(1.1);
             }
 
             .theme-toggle {
@@ -341,7 +355,7 @@
 
         <div class="projects-grid">
             <!-- Example FSAE Project -->
-            <div class="project-card" data-category="fsae" style="background-image: url('/images/fsae-project.jpg')">
+            <div class="project-card" data-category="fsae" style="background-image: url('/images/projects.jpeg')">
                 <span class="category-tag fsae">Formula SAE</span>
                 <h2 class="project-title">Suspension Design</h2>
                 <p class="project-description">Design and optimization of the suspension system for the FSAE race car.</p>
