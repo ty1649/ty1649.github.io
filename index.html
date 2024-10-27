@@ -501,7 +501,11 @@
 
         @media screen and (max-width: 1024px) {
             .photo-grid {
-                grid-template-columns: repeat(3, 1fr);  /* Switch to 2 columns on mobile */
+                grid-template-columns: repeat(4, 1fr);  /* Switch to 2 columns on mobile */
+            }
+                        
+            .photo-item {
+                grid-column: span 2; 
             }
         }
 
