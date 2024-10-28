@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Suspension Design | Terry Yu</title>
+    <title>Mk10 Sprocket and Chain | Terry Yu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Project">
     <style>
@@ -77,7 +77,7 @@
         .project-header {
             margin-bottom: 40px;
             border-bottom: 1px solid var(--line-color-light);
-            padding-top: 100px;
+            padding-top: 70px;
             padding-bottom: 20px;
         }
 
@@ -266,14 +266,19 @@
             }
 
             .back-button {
-                position: static;
-                display: inline-flex;
+                left: 30px;
+                position: fixed;
+                /* display: inline-flex; */
                 margin-bottom: 20px;
+            }
+            .project-header {
+                padding-top: 10px;
             }
 
             .table-of-contents {
                 position: static;
                 width: 100%;
+                margin-top: 70px;
                 margin-bottom: 30px;
                 border-radius: 0;
                 box-shadow: none;
@@ -341,15 +346,15 @@
 
     <main>
         <header class="project-header">
-            <h1 class="project-title">FSAE Suspension Design</h1>
+            <h1 class="project-title">Mk10 Sprocket and Chain Design</h1>
             <div class="skills-section">
                 <h2 class="skills-title">Skills Gained</h2>
                 <div class="skills-list">
                     <span class="skill-tag">CAD Modeling</span>
                     <span class="skill-tag">FEA Analysis</span>
-                    <span class="skill-tag">Project Management</span>
-                    <span class="skill-tag">Technical Documentation</span>
-                    <span class="skill-tag">Manufacturing Processes</span>
+                    <span class="skill-tag">GD&T</span>
+                    <span class="skill-tag">Manufacturing</span>
+                    <span class="skill-tag">Topology Optimization</span>
                 </div>
             </div>
         </header>
@@ -357,33 +362,37 @@
         <section id="problem" class="content-section">
             <h2 class="section-title">Problem Statement</h2>
             <div class="section-content">
-                <p>The Formula SAE team needed to design and implement a new suspension system that would improve vehicle handling while maintaining compliance with competition regulations. The system needed to be lightweight, adjustable, and manufacturable within our constraints.</p>
-            </div>
+                <p>As the Sprocket Responsible Engineer for Bruin Formula Racing, I needed to optimize the sprocket and chain assembly for our Formula SAE competition vehicle. The assembly, which included front/rear sprockets, chain, and motor shaft, required significant weight reduction while maintaining structural integrity and meeting competition regulations.</p>
+            </div>            
         </section>
 
         <section id="work" class="content-section">
             <h2 class="section-title">My Work</h2>
             <div class="section-content">
-                <p>Led the suspension design team through the complete development cycle:</p>
+                <p>Led the complete development cycle of the drivetrain components:</p>
                 <ul>
-                    <li>Conducted kinematic analysis using simulation software</li>
-                    <li>Created detailed CAD models of all components</li>
-                    <li>Performed FEA to validate design decisions</li>
-                    <li>Coordinated with manufacturing team for production</li>
-                    <li>Developed testing protocols for validation</li>
+                    <li>Performed topology optimization using Altair software to identify areas for weight reduction while maintaining structural integrity</li>
+                    <li>Conducted comprehensive FEA simulations in Ansys to validate design changes and ensure safety factors</li>
+                    <li>Created detailed engineering drawings following GD&T standards to ensure precise manufacturing specifications</li>
+                    <li>Integrated the sprocket assembly with other drivetrain components, including custom-designed CV boots</li>
+                    <li>Manually machined spacers and tabs to properly connect drivetrain components to the chassis</li>
                 </ul>
+                
+                <!-- Image placeholder could go here -->
+                <!-- <img src="path_to_image.jpg" alt="Sprocket Assembly Design" class="project-image"> -->
             </div>
         </section>
 
         <section id="results" class="content-section">
             <h2 class="section-title">Results</h2>
             <div class="section-content">
-                <p>The new suspension system achieved several key improvements:</p>
+                <p>The optimized sprocket and chain assembly achieved several key improvements:</p>
                 <ul>
-                    <li>20% reduction in overall weight</li>
-                    <li>Improved cornering performance by 15%</li>
-                    <li>Enhanced adjustability for different track conditions</li>
-                    <li>Successfully passed all technical inspections</li>
+                    <li>Achieved a 42% weight reduction in sprockets through topology optimization</li>
+                    <li>Successfully integrated all drivetrain components with the chassis</li>
+                    <li>Maintained structural integrity while significantly reducing material usage</li>
+                    <li>Created manufacturing-friendly designs that could be produced cost-effectively</li>
+                    <li>Developed comprehensive documentation for future team reference</li>
                 </ul>
             </div>
         </section>
@@ -393,10 +402,11 @@
             <div class="section-content">
                 <p>This project provided valuable insights into:</p>
                 <ul>
-                    <li>Balancing theoretical design with practical constraints</li>
-                    <li>Importance of iterative testing and refinement</li>
-                    <li>Value of clear documentation and communication</li>
-                    <li>Managing timeline and resource constraints</li>
+                    <li>Balancing weight reduction with structural requirements</li>
+                    <li>Importance of proper GD&T in manufacturing documentation</li>
+                    <li>Integration challenges between multiple drivetrain components</li>
+                    <li>Value of simulation tools in optimization processes</li>
+                    <li>Manufacturing considerations in design decisions</li>
                 </ul>
             </div>
         </section>
