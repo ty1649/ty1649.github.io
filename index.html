@@ -349,16 +349,17 @@
         }
 
         .photo-wrap {
-            padding-left: 20px;
-            padding-right: 50px;
-            align-items: center;
+            /* padding-left: 20px; */
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
         }
 
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             margin-top: 30px;
-            width: 100%;
+            flex:1;
             /* border-top: 1px solid var(--line-color-light); */
             /* border-left: 1px solid var(--line-color-light); */
         }
@@ -402,6 +403,50 @@
             line-height: 1.3;
             padding: 0 4px;
             margin-bottom: 8px;
+        }
+
+        .music-player {
+            margin-top: 20px;
+            padding: 7px;
+            border: 1px solid var(--line-color-light);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: border-color 0.3s, transform 0.3s ease;
+            width: 300px;
+            flex-shrink: 0;
+        }
+        .music-player:hover {
+            transform: scale(1.02);
+        }
+
+        body.dark-mode .music-player {
+            border-color: var(--line-color-dark);
+        }
+
+        .music-controls {
+            display: flex;
+            gap: 11px;
+            align-items: center;
+        }
+
+        .music-icon {
+            opacity: 0.7;
+            /* transition: opacity 0.3s, transform 0.2s; */
+            /* cursor: pointer; */
+        }
+/* 
+        .music-icon:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        } */
+
+        .spotify-embed {
+            width: 100%;
+            max-width: 270px;
+            margin-top: 4px;
         }
 
         .sidenav {
@@ -500,12 +545,23 @@
         }
 
         @media screen and (max-width: 1024px) {
-            .photo-grid {
-                grid-template-columns: repeat(4, 1fr);  /* Switch to 2 columns on mobile */
+            .photo-wrap {
+                flex-direction: column;
+                padding-right: 50px;
+                padding-left: 20px;
             }
-                        
+
+            .spotify-embed {
+                max-width: 300px;
+            }
+            
+            .photo-grid {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 520px;
+            }
+            
             .photo-item {
-                grid-column: span 2; 
+                grid-column: span 2;
             }
         }
 
@@ -607,8 +663,14 @@
                 color: var(--text-color-dark);
             }
 
+            .photo-wrap {
+                padding-left: 0;
+                padding-right: 0;
+                max-width: 280px;
+            }
+
             .photo-grid {
-                grid-template-columns: repeat(2, 1fr);  /* Switch to 2 columns on mobile */
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -663,12 +725,12 @@
     <main>
         <div class="row">
             <a href="/projects/" class="column-link">
-                <div class="column" style="background-image: url('images/projects.jpeg');">
+                <div class="column" style="background-image: url('images/projects.png');">
                     <h2 class="box-title">PROJECTS</h2>
                 </div>
             </a>
             <a href="/notes/" class="column-link">
-                <div class="column" style="background-image: url('/images/proj1.png');">
+                <div class="column" style="background-image: url('/images/notes.png');">
                     <h2 class="box-title">NOTES</h2>
                 </div>
             </a>
@@ -678,36 +740,42 @@
             <div class="about-wrapper">
                 <h2 class="about-title">ABOUT</h2>
                 <div class="about-content">
-                    <p>Hey! I'm a mechanical engineering student @ UCLA, with particular interest in mechatronics and cars -- I'm always looking for more projects to work on, so let me know if there's any projects I can help out with!</p>
+                    <p>Hey! I'm a mechanical engineering student @ UCLA, with particular interest in mechatronics and cars -- I'm always looking for more projects to work on, so let me know if there's anything I can help out with!</p>
                     <p style="margin-top: 7px">Aside from learning/creating, I love hiking, lifting, and music.</p>
+                    
                     <div class="photo-wrap">
                         <div class="photo-grid">
                             <div class="photo-item">
-                                <img src="/images/pfp2.png" alt="Drive team celebrating">
-                                <p class="photo-caption">Drive team celebrating after a</p>
+                                <img src="/images/about-car.png" alt="Drive team celebrating">
+                                <p class="photo-caption">Auto Shop</p>
                             </div>
                             <div class="photo-item large">
-                                <img src="/images/proj1.png" alt="asdf">
-                                <p class="photo-caption">asf</p>
+                                <img src="/images/about-backpacking.png" alt="asdf">
+                                <p class="photo-caption">Backpacking in Norcal</p>
                             </div>
                             <div class="photo-item">
-                                <img src="images/hiking.jpg" alt="Hasdf">
-                                <p class="photo-caption">HikiasdfA</p>
-                            </div>
-                            <div class="photo-item large">
-                                <img src="images/hiking.jpg" alt="Hasdf">
-                                <p class="photo-caption">Hikinasdf WA</p>
-                            </div>
-                            <div class="photo-item">
-                                <img src="images/pfp.png" alt="Hiadfe">
-                                <p class="photo-caption">Hasf</p>
-                            </div>
-                            <div class="photo-item">
-                                <img src="images/proj1.png" alt="Hikiasdf">
-                                <p class="photo-caption">Hiadsfa</p>
+                                <img src="images/about-waffles.png" alt="Hasdf">
+                                <p class="photo-caption">Camp Counselor</p>
                             </div>
                         </div>
-                    </div>
+                
+                        <div class="music-player">
+                            <div class="music-controls">
+                                <svg class="music-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 18V5l12-2v13"></path>
+                                    <circle cx="6" cy="18" r="3"></circle>
+                                    <circle cx="18" cy="16" r="3"></circle>
+                                </svg>
+                                <svg class="music-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 2.1l4 4-4 4"></path>
+                                    <path d="M3 12.2v-2a4 4 0 0 1 4-4h12.8M7 21.9l-4-4 4-4"></path>
+                                    <path d="M21 11.8v2a4 4 0 0 1-4 4H4.2"></path>
+                                </svg>
+                            </div>
+                            <div class="spotify-embed">
+                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/63TYyeXlBYoYKNvE6rT3hI?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>                            </div>
+                        </div>     
+                    </div>               
                 </div>
             </div>
         </section>
