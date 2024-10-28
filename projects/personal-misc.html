@@ -1,7 +1,487 @@
-- mnist handwriting
-- GitHub projects
-- oil filter for honda accord
-- shovel for backpacking
-- wind up car
-- usaco/coding projects
-- handouts math club
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Misc Projects | Terry Yu</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Miscellaneous Engineering Projects">
+        <style>
+            :root {
+                --bg-color-light: #ffffff;
+                --text-color-light: #333333;
+                --bg-color-dark: #121212;
+                --text-color-dark: #dddddd;
+                --line-color-light: #000000;
+                --line-color-dark: #ffffff;
+                --border-color: #e0e0e0;
+                --accent-color: #e63946;
+            }
+    
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Georgia, Garamond;
+            }
+    
+            body {
+                background-color: var(--bg-color-light);
+                color: var(--text-color-light);
+                padding: 30px;
+                padding-left: 90px;
+                max-width: 1200px;
+                margin: 0 auto;
+                line-height: 1.6;
+                transition: background-color 0.3s, color 0.3s;
+            }
+    
+            body.dark-mode {
+                background-color: var(--bg-color-dark);
+                color: var(--text-color-dark);
+            }
+    
+            .back-button {
+                position: fixed;
+                top: 30px;
+                left: 90px;
+                padding: 5px 10px;
+                background-color: var(--bg-color-light);
+                border: 1px solid var(--text-color-light);
+                color: var(--text-color-light);
+                text-decoration: none;
+                font-size: 12px;
+                transition: all 0.2s ease;
+                z-index: 3;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                border-radius: 15px;
+            }
+
+            body.dark-mode .back-button {
+                border-color: var(--text-color-dark);
+                color: var(--text-color-dark);
+                background-color: var(--bg-color-dark);
+            }
+
+            .back-button:hover {
+                transform: scale(1.05);
+            }
+
+            .back-button svg {
+                width: 14px;
+                height: 14px;
+            }
+    
+            .project-header {
+                margin-bottom: 40px;
+                border-bottom: 1px solid var(--line-color-light);
+                padding-top: 70px;
+                padding-bottom: 20px;
+            }
+    
+            .project-title {
+                font-size: 20px;
+                margin-bottom: 20px;
+                font-weight: bold;
+                letter-spacing: 0.5px;
+            }
+    
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 30px;
+                margin-top: 30px;
+            }
+    
+            .project-card {
+                border: 1px solid var(--line-color-light);
+                border-radius: 8px;
+                overflow: hidden;
+                transition: transform 0.2s ease;
+                display: flex;
+                flex-direction: column;
+            }
+    
+            body.dark-mode .project-card {
+                border-color: var(--line-color-dark);
+            }
+    
+            /* .project-card:hover {
+                transform: translateY(-5px);
+            } */
+    
+            .project-image {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-bottom: 1px solid var(--line-color-light);
+            }
+    
+            body.dark-mode .project-image {
+                border-color: var(--line-color-dark);
+            }
+    
+            .project-info {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+            }
+    
+            .project-name-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--line-color-light);
+            }
+    
+            body.dark-mode .project-name-container {
+                border-color: var(--line-color-dark);
+            }
+    
+            .project-name {
+                font-size: 16px;
+                font-weight: normal;
+            }
+    
+            .github-link {
+                color: var(--text-color-light);
+                transition: transform 0.2s ease;
+            }
+    
+            body.dark-mode .github-link {
+                color: var(--text-color-dark);
+            }
+    
+            .github-link:hover {
+                transform: scale(1.1);
+            }
+    
+            .project-date {
+                font-size: 12px;
+                color: #666;
+                margin-bottom: 10px;
+            }
+    
+            body.dark-mode .project-date {
+                color: #aaa;
+            }
+    
+            .project-description {
+                font-size: 14px;
+                line-height: 1.5;
+                font-style: italic;
+                margin-bottom: 15px;
+            }
+    
+            .project-skills {
+                margin-top: auto;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+    
+            .skill-tag {
+                padding: 5px 12px;
+                border: 1px solid var(--accent-color);
+                border-radius: 15px;
+                font-size: 12px;
+                color: var(--accent-color);
+            }
+    
+            .sidenav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 60px;
+                border-right: 1px solid var(--line-color-light);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                background: var(--bg-color-light);
+                z-index: 2;
+            }
+
+            body.dark-mode .sidenav {
+                background-color: var(--bg-color-dark);
+                border-right-color: var(--line-color-dark);
+            }
+
+            .sidenav a {
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+                text-decoration: none;
+                color: var(--text-color-light);
+                font-size: 14px;
+                transition: transform 0.2s;
+            }
+
+            body.dark-mode .sidenav a {
+                color: var(--text-color-dark);
+            }
+
+            .sidenav a:hover {
+                text-decoration: underline;
+                transform: rotate(180deg) scale(1.1);
+            }
+
+    
+            .home-link {
+                position: absolute;
+                top: 20px;
+                writing-mode: horizontal-tb !important;
+                transform: none !important;
+            }
+    
+            .home-link:hover {
+                transform: scale(1.1) !important;
+            }
+    
+
+            .theme-toggle {
+                position: absolute;
+                bottom: 20px;
+                cursor: pointer;
+                background-color: var(--bg-color-light);
+                color: var(--text-color-light);
+                font-size: 16px;
+                border: 1px solid var(--line-color-light);
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            .theme-toggle.hover {
+                transform: rotate(10deg);
+                transition: transform 0.3s ease, background-color 0.3s ease;
+            }
+
+            .theme-toggle.clicked {
+                transform: scale(1.3);
+            }
+
+            .theme-toggle.dark-mode {
+                background-color: var(--bg-color-dark);
+                color: var(--text-color-dark);
+            }
+    
+            @media screen and (max-width: 768px) {
+                body {
+                    padding: 15px;
+                    padding-bottom: 80px;
+                }
+    
+                .back-button {
+                    left: 30px;
+                    position: fixed;
+                    margin-bottom: 20px;
+                }
+    
+                .project-header {
+                    padding-top: 60px;
+                }
+    
+                .projects-grid {
+                    grid-template-columns: 1fr;
+                    max-width: 502px;
+                }
+    
+                .sidenav {
+                    height: 60px;
+                    width: 100%;
+                    bottom: 0;
+                    top: auto;
+                    flex-direction: row;
+                    border-right: none;
+                    border-top: 1px solid var(--line-color-light);
+                }
+    
+                body.dark-mode .sidenav {
+                    border-top-color: var(--line-color-dark);
+                }
+    
+                .sidenav a {
+                    writing-mode: horizontal-tb;
+                    transform: none;
+                }
+    
+                .sidenav a:hover {
+                    transform: scale(1.1);
+                }
+    
+                .home-link {
+                    left: 20px;
+                    top: auto;
+                }
+    
+                .theme-toggle {
+                    right: 20px;
+                    vertical-align: middle;
+                    bottom: auto;
+                }
+            }
+        </style>
+    </head>
+<body>
+    <a href="/projects/" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Return to Projects
+    </a>
+
+    <nav class="sidenav">
+        <button class="theme-toggle" id="theme-toggle">🌞</button>
+        <a href="../" class="home-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <a href="/projects/">PROJECTS</a>
+        <a href="/notes/">NOTES</a>
+    </nav>
+
+    <main>
+        <header class="project-header">
+            <h1 class="project-title">Miscellaneous Projects</h1>
+            <p style="font-style: italic;">A collection of smaller-scale projects exploring various aspects of engineering and design.</p>
+        </header>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="/api/placeholder/400/320" alt="filler" class="project-image">
+                <div class="project-info">
+                    <div class="project-name-container">
+                        <h2 class="project-name">filler</h2>
+                        <a href="https://github.com/username/led-matrix" class="github-link" target="_blank">
+                            <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="project-date">December 2023</div>
+                    <p class="project-description">filler</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Arduino</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Electronics</span>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="project-card">
+                <img src="/api/placeholder/400/320" alt="filler" class="project-image">
+                <div class="project-info">
+                    <div class="project-name-container">
+                        <h2 class="project-name">filler</h2>
+                    </div>
+                    <div class="project-date">October 2023</div>
+                    <p class="project-description">filler</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">CAD</span>
+                        <span class="skill-tag">3D Printing</span>
+                        <span class="skill-tag">Mechanics</span>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="project-card">
+                <img src="/api/placeholder/400/320" alt="filler" class="project-image">
+                <div class="project-info">
+                    <div class="project-name-container">
+                        <h2 class="project-name">filler</h2>
+                    </div>
+                    <div class="project-date">September 2023</div>
+                    <p class="project-description">filler</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">IoT</span>
+                        <span class="skill-tag">ESP32</span>
+                        <span class="skill-tag">Sensors</span>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="project-card">
+                <img src="/api/placeholder/400/320" alt="filler" class="project-image">
+                <div class="project-info">
+                    <div class="project-name-container">
+                        <h2 class="project-name">filler</h2>
+                    </div>
+                    <div class="project-date">August 2023</div>
+                    <p class="project-description">filler</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">CNC</span>
+                        <span class="skill-tag">Arduino</span>
+                        <span class="skill-tag">G-code</span>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="project-card">
+                <img src="/api/placeholder/400/320" alt="filler" class="project-image">
+                <div class="project-info">
+                    <div class="project-name-container">
+                        <h2 class="project-name">filler</h2>
+                    </div>
+                    <div class="project-date">July 2023</div>
+                    <p class="project-description">filler</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">PCB Design</span>
+                        <span class="skill-tag">KiCad</span>
+                        <span class="skill-tag">3D Printing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+        let cantoggle = true;
+
+        toggleButton.addEventListener('click', () => {
+            toggleButton.classList.add('clicked');
+            setTimeout(() => {
+                toggleButton.classList.remove('clicked');
+            }, 100);
+            setTimeout(() => {
+                toggleButton.classList.remove('hover');
+            }, 160);
+
+            cantoggle = false;
+        });
+
+        toggleButton.addEventListener('mouseover', () => {
+            toggleButton.classList.add('hover');
+
+            if(cantoggle) {
+                body.classList.toggle('dark-mode');
+                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+            }
+        });
+
+        toggleButton.addEventListener('mouseout', () => {    
+            if(cantoggle) {
+                body.classList.toggle('dark-mode');
+                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+            }
+
+            setTimeout(() => {
+                toggleButton.classList.remove('hover');
+            }, 100);
+
+            cantoggle = true;
+        });
+
+    </script>
+</body>
+</html>
