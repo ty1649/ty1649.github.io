@@ -17,6 +17,9 @@
             --clubs-color: #e63946;
             --research-color: #2a9d8f;
             --personal-color: #6d597a;
+            --subtitle-color-light: #555555;
+            --subtitle-color-dark: #bbbbbb;
+            --star-color: #ffd700;
         }
 
         body {
@@ -165,8 +168,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 255, 255, 0.8);
             z-index: 1;
+            transition: background-color 0.2s ease;
         }
 
         body.dark-mode .project-card {
@@ -174,11 +178,17 @@
         }
 
         body.dark-mode .project-card::before {
-            background-color: rgba(18, 18, 18, 0.85);
+            background-color: rgba(18, 18, 18, 0.8);
         }
 
         .project-card:hover {
             transform: translateY(-4px);
+        }
+        .project-card:hover::before {
+            background-color: rgba(255, 255, 255, 0.34);
+        }
+        body.dark-mode .project-card:hover::before {
+            background-color: rgba(18, 18, 18, 0.34);
         }
         .project-card:active {
             transform: translateY(-16px);
@@ -191,6 +201,85 @@
             color: var(--text-color-light);
             z-index: 2;
             letter-spacing: 0.2px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--line-color-light);
+        }
+
+        .project-aff {
+            font-size: 13px;
+            margin-bottom: 12px;
+            color: var(--subtitle-color-light);
+            z-index: 2;
+            /* font-style: italic; */
+        }
+
+        body.dark-mode .project-aff {
+            color: var(--subtitle-color-dark);
+        }
+
+        .project-year {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 11px;
+            color: var(--subtitle-color-light);
+            z-index: 2;
+        }
+
+        body.dark-mode .project-year {
+            color: var(--subtitle-color-dark);
+        }
+
+        .resume-star {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 18px;
+            color: var(--star-color);
+            z-index: 2;
+            text-shadow: 
+                -1px -1px 0 var(--text-color-light),  
+                1px -1px 0 var(--text-color-light),
+                -1px  1px 0 var(--text-color-light),
+                1px  1px 0 var(--text-color-light);
+        }
+
+        body.dark-mode .resume-star {
+            text-shadow: 
+                -1px -1px 0 var(--text-color-dark),  
+                1px -1px 0 var(--text-color-dark),
+                -1px  1px 0 var(--text-color-dark),
+                1px  1px 0 var(--text-color-dark);
+        }
+
+        .resume-star::after {
+            content: "on resume!";
+            position: absolute;
+            text-shadow: none;
+            bottom: 100%;
+            right: -5px;
+            background: var(--bg-color-light);
+            color: var(--text-color-light);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            white-space: nowrap;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            border: 1px solid var(--line-color-light);
+            font-family: Georgia, Garamond;
+        }
+
+        body.dark-mode .resume-star::after {
+            background: var(--bg-color-dark);
+            color: var(--text-color-dark);
+            border-color: var(--line-color-dark);
+        }
+
+        .resume-star:hover::after {
+            visibility: visible;
+            opacity: 1;
         }
 
         .project-description {
@@ -205,6 +294,7 @@
 
         body.dark-mode .project-title {
             color: var(--text-color-dark);
+            border-bottom-color: var(--line-color-dark);
         }
 
         body.dark-mode .project-description {
@@ -331,7 +421,7 @@
             }
             
             .projects-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(2, 0.33fr));
             }
 
             .project-card {
@@ -400,24 +490,33 @@
         <div class="project-section" id="clubs-section">
             <h2>Extracurricular Clubs</h2>
             <div class="projects-grid">
-                <a href="clubs-proj3.html" class="project-link">
+                <a href="clubs-mk10s&c.html" class="project-link">
                     <div class="project-card" style="background-image: url('/images/projects.jpeg')">
-                        <h2 class="project-title">Mk 10 Sprocket and Chain -- FSAE</h2>
-                        <p class="project-description">Design and optimization of the suspension system for the clubs race car.</p>
+                        <span class="project-year">2024</span>
+                        <h2 class="project-title">Mk 10 Sprocket and Chain</h2>
+                        <p class="project-aff">Formula SAE</p>
+                        <p class="project-description">Designed and optimized sprocket and chain assembly.</p>
+                        <span class="resume-star">★</span>
                         <div class="tags-container"></div>
                     </div>
                 </a>
-                <a href="clubs-proj2.html" class="project-link">
-                    <div class="project-card" style="background-image: url('/images/projects.jpeg')">
-                        <h2 class="project-title">Hydrogen Fuel Cell -- Supermileage</h2>
-                        <p class="project-description">Design and optimization of the suspension system for the clubs race car.</p>
+                <a href="clubs-hfc.html" class="project-link">
+                    <div class="project-card" style="background-image: url('/projects/images/hfc/hfc-cover.png')">
+                        <span class="project-year">2024</span>
+                        <h2 class="project-title">Hydrogen Fuel Cell</h2>
+                        <p class="project-aff">Supermileage</p>
+                        <p class="project-description">Designed and implemented a 1kW hydrogen fuel cell system.</p>
+                        <span class="resume-star">★</span>
                         <div class="tags-container"></div>
                     </div>
                 </a>
-                <a href="clubs-proj1.html" class="project-link">
-                    <div class="project-card" style="background-image: url('/images/projects.jpeg')">
-                        <h2 class="project-title">Mk 9 CV Boot & Mold -- FSAE</h2>
-                        <p class="project-description">Design and optimization of the suspension system for the clubs race car.</p>
+                <a href="clubs-mk9cb.html" class="project-link">
+                    <div class="project-card" style="background-image: url('/projects/images/cb/cb-cover.png')">
+                        <span class="project-year">2023</span>
+                        <h2 class="project-title">Mk 9 CV Boot & Mold</h2>
+                        <p class="project-aff">Formula SAE</p>
+                        <p class="project-description">Created innovative CV boot molds for cost-effective joint protection.</p>
+                        <span class="resume-star">★</span>
                         <div class="tags-container"></div>
                     </div>
                 </a>
@@ -427,10 +526,13 @@
         <div class="project-section" id="research-section">
             <h2>Research</h2>
             <div class="projects-grid">
-                <a href="" class="project-link">
+                <a href="research-pdmsch.html" class="project-link">
                     <div class="project-card" style="background-image: url('/images/research-project.jpg')">
-                        <h2 class="project-title">Beel Research Group -- PDMS Chip/Housing</h2>
-                        <p class="project-description">Custom ECU development for optimal fuel efficiency.</p>
+                        <span class="project-year">2024</span>
+                        <h2 class="project-title">PDMS Chip/Housing</h2>
+                        <p class="project-aff">Beel Research Group</p>
+                        <p class="project-description">Engineered microfluidics chip with serpentine channel design for Xenopus embryo sorting applications.</p>
+                        <span class="resume-star">★</span>
                         <div class="tags-container"></div>
                     </div>
                 </a>
@@ -440,45 +542,54 @@
         <div class="project-section" id="personal-section">
             <h2>Personal Projects</h2>
             <div class="projects-grid">
-                <a href="" class="project-link">
+                <a href="personal-pp.html" class="project-link">
                     <div class="project-card" style="background-image: url('/images/personal-project.jpg')">
+                        <span class="project-year">2024</span>
                         <h2 class="project-title">Pen Plotter</h2>
-                        <p class="project-description">Custom-built home automation system with IoT integration.</p>
+                        <p class="project-description">Custom CoreXY pen plotter featuring 3D-printed recirculating ball linear rails with integrated GCode processing.</p>
+                        <span class="resume-star">★</span>
                         <div class="tags-container"></div>
                     </div>
                 </a>
-                <a href="" class="project-link">
+                <a href="personal-egk.html" class="project-link">
                     <div class="project-card" style="background-image: url('/images/personal-project.jpg')">
+                        <span class="project-year">2024</span>
                         <h2 class="project-title">Electric Go Kart</h2>
-                        <p class="project-description">Custom-built home automation system with IoT integration.</p>
+                        <p class="project-description">Budget-friendly electric go kart featuring single wheel steering.</p>
+                        <span class="resume-star">★</span>
                         <div class="tags-container"></div>
                     </div>
                 </a>
-                <a href="" class="project-link">
+                <a href="personal-fdu.html" class="project-link">
                     <div class="project-card" style="background-image: url('/images/personal-project.jpg')">
-                        <h2 class="project-title">Fingerprint Door Unlocker</h2>
-                        <p class="project-description">Custom-built home automation system with IoT integration.</p>
+                        <span class="project-year">2023</span>
+                        <h2 class="project-title">Fingerprint Dorm Unlocker</h2>
+                        <p class="project-description">Arduino-based fingerprint authentication system for automated door unlocking.</p>
+                        <span class="resume-star">★</span>
                         <div class="tags-container"></div>
                     </div>
                 </a>
-                <a href="" class="project-link">
+                <a href="personal-pw.html" class="project-link">
                     <div class="project-card" style="background-image: url('/images/personal-project.jpg')">
+                        <span class="project-year">2024</span>
                         <h2 class="project-title">Portfolio Website</h2>
-                        <p class="project-description">Custom-built home automation system with IoT integration.</p>
+                        <p class="project-description">Responsive portfolio website built with HTML, CSS, and JavaScript to showcase engineering projects.</p>
                         <div class="tags-container"></div>
                     </div>
                 </a>
-                <a href="" class="project-link">
+                <a href="personal-lr.html" class="project-link">
                     <div class="project-card" style="background-image: url('/images/personal-project.jpg')">
-                        <h2 class="project-title">Recirculating Ball Linear Rails</h2>
-                        <p class="project-description">Custom-built home automation system with IoT integration.</p>
+                        <span class="project-year">2024</span>
+                        <h2 class="project-title">Linear Rails</h2>
+                        <p class="project-description">3D printable recirculating ball linear rail system designed for high-precision applications.</p>
                         <div class="tags-container"></div>
                     </div>
                 </a>
-                <a href="" class="project-link">
+                <a href="personal-misc.html" class="project-link">
                     <div class="project-card" style="background-image: url('/images/personal-project.jpg')">
+                        <span class="project-year">20xx</span>
                         <h2 class="project-title">Misc</h2>
-                        <p class="project-description">Custom-built home automation system with IoT integration.</p>
+                        <p class="project-description">Various small-scale projects exploring mechanical design, electronics, and programming.</p>
                         <div class="tags-container"></div>
                     </div>
                 </a>
