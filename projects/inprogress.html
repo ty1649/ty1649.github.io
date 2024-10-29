@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Under Construction | Terry Yu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Project">
+    <style>
+        :root {
+            --bg-color-light: #ffffff;
+            --text-color-light: #333333;
+            --bg-color-dark: #121212;
+            --text-color-dark: #dddddd;
+            --line-color-light: #000000;
+            --line-color-dark: #ffffff;
+            --border-color: #e0e0e0;
+            --accent-color: #e63946;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Georgia, Garamond;
+        }
+
+        body {
+            background-color: var(--bg-color-light);
+            color: var(--text-color-light);
+            padding: 30px;
+            padding-left: 90px;
+            max-width: 1200px;
+            margin: 0 auto;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            font-family: Georgia, Garamond;
+            font-weight: 400;
+        }
+
+        body.dark-mode {
+            background-color: var(--bg-color-dark);
+            color: var(--text-color-dark);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 90px;
+            padding: 5px 10px;
+            background-color: var(--bg-color-light);
+            border: 1px solid var(--text-color-light);
+            color: var(--text-color-light);
+            text-decoration: none;
+            font-size: 12px;
+            transition: all 0.2s ease;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 15px;
+        }
+
+        body.dark-mode .back-button {
+            border-color: var(--text-color-dark);
+            color: var(--text-color-dark);
+            background-color: var(--bg-color-dark);
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+        }
+
+        .back-button svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .project-header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--line-color-light);
+            padding-top: 70px;
+            padding-bottom: 20px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .construction-container {
+            text-align: center;
+            padding: 100px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .construction-symbol {
+            font-size: 14px;
+            margin-bottom: 30px;
+            letter-spacing: 5px;
+            font-family: monospace;
+        }
+
+        .construction-title {
+            font-size: 16px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+
+        .construction-message {
+            font-size: 14px;
+            line-height: 2;
+            opacity: 0.8;
+        }
+
+        .table-of-contents {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 160px;
+            padding: 16px;
+            background-color: var(--bg-color-light);
+            border: 1px solid var(--line-color-light);
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .table-of-contents {
+            background-color: var(--bg-color-dark);
+            border-color: var(--line-color-dark);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-list li {
+            margin-bottom: 7px;
+        }
+
+        .toc-list a {
+            color: var(--text-color-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        body.dark-mode .toc-list a {
+            color: var(--text-color-dark);
+        }
+
+        .toc-list a:hover {
+            text-decoration: underline;
+        }
+
+        .sidenav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 60px;
+            border-right: 1px solid var(--line-color-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            background: var(--bg-color-light);
+            z-index: 2;
+        }
+
+        body.dark-mode .sidenav {
+            background-color: var(--bg-color-dark);
+            border-right-color: var(--line-color-dark);
+        }
+
+        .sidenav a {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-decoration: none;
+            color: var(--text-color-light);
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        body.dark-mode .sidenav a {
+            color: var(--text-color-dark);
+        }
+
+        .sidenav a:hover {
+            text-decoration: underline;
+            transform: rotate(180deg) scale(1.1);
+        }
+
+        .home-link {
+            position: absolute;
+            top: 20px;
+            writing-mode: horizontal-tb !important;
+            transform: none !important;
+        }
+
+        .home-link:hover {
+            transform: scale(1.1) !important;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            bottom: 20px;
+            cursor: pointer;
+            background-color: var(--bg-color-light);
+            color: var(--text-color-light);
+            font-size: 16px;
+            border: 1px solid var(--line-color-light);
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .theme-toggle.hover {
+            transform: rotate(10deg);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .theme-toggle.clicked {
+            transform: scale(1.3);
+        }
+
+        .theme-toggle.dark-mode {
+            background-color: var(--bg-color-dark);
+            color: var(--text-color-dark);
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 15px;
+                padding-left: 15px;
+                padding-bottom: 80px;
+            }
+
+            .back-button {
+                left: 30px;
+                position: fixed;
+                margin-bottom: 20px;
+            }
+            
+            .project-header {
+                padding-top: 10px;
+            }
+
+            .table-of-contents {
+                position: static;
+                width: 100%;
+                margin-top: 70px;
+                margin-bottom: 30px;
+                border-radius: 0;
+                box-shadow: none;
+                border-left: none;
+                border-right: none;
+            }
+
+            .sidenav {
+                height: 60px;
+                width: 100%;
+                bottom: 0;
+                top: auto;
+                flex-direction: row;
+                border-right: none;
+                border-top: 1px solid var(--line-color-light);
+            }
+
+            .sidenav a {
+                writing-mode: horizontal-tb;
+                transform: none;
+            }
+
+            .home-link {
+                left: 20px;
+                top: auto;
+            }
+
+            .theme-toggle {
+                right: 20px;
+                vertical-align: middle;
+                bottom: auto;
+            }
+
+            .construction-container {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/projects/" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Return to Projects
+    </a>
+
+    <nav class="sidenav">
+        <button class="theme-toggle" id="theme-toggle">🌞</button>
+        <a href="../" class="home-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <a href="/projects/">PROJECTS</a>
+        <a href="/notes/">NOTES</a>
+    </nav>
+
+    <nav class="table-of-contents">
+        <ul class="toc-list">
+            <li><a href="#construction">Under Construction</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header class="project-header">
+            <h1 class="project-title">Under Construction</h1>
+        </header>
+
+        <section id="construction" class="construction-container">
+            <div class="construction-symbol">/ / / / /</div>
+            <h2 class="construction-title">In Development</h2>
+            <p class="construction-message">
+                This page is currently being worked on.<br>
+                Will be done soon!
+            </p>
+        </section>
+    </main>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+        let cantoggle = true;
+
+        toggleButton.addEventListener('click', () => {
+            toggleButton.classList.add('clicked');
+            setTimeout(() => {
+                toggleButton.classList.remove('clicked');
+            }, 100);
+            setTimeout(() => {
+                toggleButton.classList.remove('hover');
+            }, 160);
+
+            cantoggle = false;
+        });
+
+        toggleButton.addEventListener('mouseover', () => {
+            toggleButton.classList.add('hover');
+
+            if(cantoggle) {
+                body.classList.toggle('dark-mode');
+                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+            }
+        });
+
+        toggleButton.addEventListener('mouseout', () => {    
+            if(cantoggle) {
+                body.classList.toggle('dark-mode');
+                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+            }
+
+            setTimeout(() => {
+                toggleButton.classList.remove('hover');
+            }, 100);
+
+            cantoggle = true;
+        });
+    </script>
+</body>
+</html>
