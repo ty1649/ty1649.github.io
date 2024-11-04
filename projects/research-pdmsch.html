@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PDMS Chip/Housing | Terry Yu</title>
+    <title>Beel Research Group | Terry Yu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Project">
     <style>
@@ -140,7 +140,7 @@
             border-bottom: 1px solid var(--line-color-light);
             font-weight: normal;
         }
-/* i love my pigoo*/
+
         body.dark-mode .toc-title {
             border-bottom-color: var(--line-color-dark);
         }
@@ -190,12 +190,39 @@
             line-height: 1.6;
         }
 
-        .section-content ul {
-            padding-left: 20px;
+        .image-grid {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: space-between;
         }
 
-        .section-content li {
-            margin-bottom: 8px;
+        .image-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .image-container {
+            width: 100%;
+            border: 1px solid var(--text-color-light);
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        body.dark-mode .image-container {
+            border-color: var(--text-color-dark);
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .sidenav {
@@ -275,6 +302,10 @@
             color: var(--text-color-dark);
         }
 
+        ul {
+            padding-left: 20px;
+        }
+
         @media screen and (max-width: 768px) {
             body {
                 padding: 15px;
@@ -282,12 +313,20 @@
                 padding-bottom: 80px;
             }
 
+            .image-grid {
+                flex-direction: column;
+            }
+
+            .image-column {
+                width: 100%;
+            }
+
             .back-button {
                 left: 30px;
                 position: fixed;
-                /* display: inline-flex; */
                 margin-bottom: 20px;
             }
+
             .project-header {
                 padding-top: 10px;
             }
@@ -330,6 +369,7 @@
             }
         }
     </style>
+    <base href="images/pdmsch/" />
 </head>
 <body>
     <a href="/projects/" class="back-button">
@@ -352,122 +392,143 @@
         <a href="/notes/">NOTES</a>
     </nav>
 
-    <nav class="table-of-contents">
-        <!-- <h2 class="toc-title">Jump To</h2> -->
-        <ul class="toc-list">
-            <li><a href="#problem">Description</a></li>
-            <li><a href="#work">My Work</a></li>
-            <li><a href="#results">Results</a></li>
-            <li><a href="#lessons">Lessons Learned</a></li>
-        </ul>
-    </nav>
-
     <main>
         <header class="project-header">
             <h1 class="project-title">Xenopus Embryo Sorter Design</h1>
             <div class="skills-section">
                 <h2 class="skills-title">Skills Gained</h2>
                 <div class="skills-list">
+                    <span class="skill-tag">Mechatronics</span>
                     <span class="skill-tag">Microfluidics</span>
                     <span class="skill-tag">SLA Printing</span>
                     <span class="skill-tag">FDM Printing</span>
-                    <span class="skill-tag">PDMS Casting</span>
+                    <span class="skill-tag">PDMS Mold Design</span>
                     <span class="skill-tag">Hardware Integration</span>
                 </div>
             </div>
         </header>
 
         <section id="problem" class="content-section">
-            <h2 class="section-title">Problem Statement</h2>
+            <h2 class="section-title">Description</h2>
             <div class="section-content">
-                <p>As a Research Intern at Stanford University's Beel Research Group, I needed to design and manufacture hardware components for a computer vision-based Xenopus embryo sorter. The system needed to efficiently sort 50 eggs per second with 99% accuracy, requiring precise microfluidics design and careful integration of imaging components.</p>
-            </div>
+                <p>These Xenopus eggs often come in hundreds/thousands of them, and there's often some that 
+                    are useless and need to be filtered out, so previously researchers have done this by hand. 
+                    As the sole mechanical engineer, I designed the hardware components for this mechatronics project,
+                    which automates this sorting process, saving many hours of work.
+                </p>
+            </div>            
         </section>
 
-        <section id="work" class="content-section">
-            <h2 class="section-title">My Work</h2>
+        <section id="summary" class="content-section">
+            <h2 class="section-title">Summary</h2>
             <div class="section-content">
-                <p>Led the development of the microfluidics and hardware systems:</p>
-                <ul>
-                    <li>Designed an innovative PDMS-based microfluidics chip featuring a serpentine flow channel for controlled embryo movement</li>
-                    <li>Integrated a quake valve sorter mechanism to enable precise and rapid embryo sorting</li>
-                    <li>Created and optimized molds using SLA printing technology for precise PDMS chip casting</li>
-                    <li>Developed multiple iterations of FDM-printed housings to protect and align chip and electrical components</li>
-                    <li>Engineered the system to handle millimeter-wide Xenopus embryos while maintaining quick and accurate imaging capabilities</li>
-                </ul>
-                
-                <!-- Image placeholder could go here -->
-                <!-- <img src="path_to_image.jpg" alt="PDMS Microfluidics Chip" class="project-image"> -->
-            </div>
+                <p>
+                    The eggs that are being sorted are these ~1mm wide eggs, that will flow through a chip,
+                    and through a combination of sensors and pressure regulators, will be stopped, photographed on both sides,
+                    sorted with a machine learning model, and then when they're flowing out, sensors will keep track
+                    of which egg goes where, and they'll be seperated from each other with a quake valve sorter mechanism 
+                    (which was selected from iterating through other sorting mechanisms).
+                </p>
+                <p>
+                    There will be a transparent chip made of PDMS, which is casted from an SLA printed mold, and a housing
+                    that positions this chip in betweeen two mirrors, so when a camera is pointed it can take a picture of both
+                    the top and the bottom of the chip for the machine learning model to categorize the eggs.
+                </p>
+                <!-- <br>
+                <b>Takeaways</b>
+                <p>This project provided valuable insights into:</p>-->
+            </div> 
         </section>
 
-        <section id="results" class="content-section">
-            <h2 class="section-title">Results</h2>
-            <div class="section-content">
-                <p>The embryo sorter project achieved several key milestones:</p>
-                <ul>
-                    <li>Successfully designed a microfluidics system capable of handling delicate Xenopus embryos</li>
-                    <li>Achieved target throughput of 50 eggs per second</li>
-                    <li>Maintained 99% sorting accuracy through precise flow control and imaging alignment</li>
-                    <li>Created reliable and reproducible PDMS chip casting process</li>
-                    <li>Developed modular housing design allowing for easy maintenance and component replacement</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="lessons" class="content-section">
-            <h2 class="section-title">Lessons Learned</h2>
-            <div class="section-content">
-                <p>This project provided valuable insights into:</p>
-                <ul>
-                    <li>Design considerations for microfluidics systems handling biological specimens</li>
-                    <li>Integration of multiple manufacturing processes (SLA, FDM, PDMS casting)</li>
-                    <li>Optimization of flow channels for precise specimen handling</li>
-                    <li>Balance between speed and accuracy in automated sorting systems</li>
-                    <li>Importance of modular design in research equipment</li>
-                </ul>
+        <section id="images" class="content-section">
+            <h2 class="section-title">Images</h2>
+            <div class="image-grid">
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="pdmsch-cover.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im1.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im9.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im3.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im4.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im5.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im2.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im7.png" alt="Image 5">
+                    </div>
+                    <div class="image-container">
+                        <img src="im8.png" alt="Image 5">
+                    </div>
+                </div>
+                <!-- <div class="image-column">
+                    <div class="image-container">
+                        <img src="/api/placeholder/300/250" alt="Image 10">
+                    </div>
+                    <div class="image-container">
+                        <img src="/api/placeholder/300/300" alt="Image 11">
+                    </div>
+                </div> -->
             </div>
         </section>
     </main>
 
+    
     <script>
         const toggleButton = document.getElementById('theme-toggle');
-        const body = document.body;
-        let cantoggle = true;
-
-        toggleButton.addEventListener('click', () => {
-            toggleButton.classList.add('clicked');
-            setTimeout(() => {
-                toggleButton.classList.remove('clicked');
-            }, 100);
-            setTimeout(() => {
-                toggleButton.classList.remove('hover');
-            }, 160);
-
-            cantoggle = false;
-        });
-
-        toggleButton.addEventListener('mouseover', () => {
-            toggleButton.classList.add('hover');
-
-            if(cantoggle) {
-                body.classList.toggle('dark-mode');
-                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
-            }
-        });
-
-        toggleButton.addEventListener('mouseout', () => {    
-            if(cantoggle) {
-                body.classList.toggle('dark-mode');
-                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
-            }
-
-            setTimeout(() => {
-                toggleButton.classList.remove('hover');
-            }, 100);
-
-            cantoggle = true;
-        });
+          const body = document.body;
+          let cantoggle = true;
+  
+          toggleButton.addEventListener('click', () => {
+              toggleButton.classList.add('clicked');
+              setTimeout(() => {
+                  toggleButton.classList.remove('clicked');
+              }, 100);
+              setTimeout(() => {
+                  toggleButton.classList.remove('hover');
+              }, 160);
+  
+              cantoggle = false;
+          });
+  
+          toggleButton.addEventListener('mouseover', () => {
+              toggleButton.classList.add('hover');
+  
+              if(cantoggle) {
+                  body.classList.toggle('dark-mode');
+                  toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+              }
+          });
+  
+          toggleButton.addEventListener('mouseout', () => {    
+              if(cantoggle) {
+                  body.classList.toggle('dark-mode');
+                  toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+              }
+  
+              setTimeout(() => {
+                  toggleButton.classList.remove('hover');
+              }, 100);
+  
+              cantoggle = true;
+          });
     </script>
 </body>
 </html>

@@ -140,7 +140,7 @@
             border-bottom: 1px solid var(--line-color-light);
             font-weight: normal;
         }
-/* i love my pigoo*/
+
         body.dark-mode .toc-title {
             border-bottom-color: var(--line-color-dark);
         }
@@ -190,12 +190,39 @@
             line-height: 1.6;
         }
 
-        .section-content ul {
-            padding-left: 20px;
+        .image-grid {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: space-between;
         }
 
-        .section-content li {
-            margin-bottom: 8px;
+        .image-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .image-container {
+            width: 100%;
+            border: 1px solid var(--text-color-light);
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        body.dark-mode .image-container {
+            border-color: var(--text-color-dark);
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .sidenav {
@@ -275,6 +302,10 @@
             color: var(--text-color-dark);
         }
 
+        ul {
+            padding-left: 20px;
+        }
+
         @media screen and (max-width: 768px) {
             body {
                 padding: 15px;
@@ -282,12 +313,20 @@
                 padding-bottom: 80px;
             }
 
+            .image-grid {
+                flex-direction: column;
+            }
+
+            .image-column {
+                width: 100%;
+            }
+
             .back-button {
                 left: 30px;
                 position: fixed;
-                /* display: inline-flex; */
                 margin-bottom: 20px;
             }
+
             .project-header {
                 padding-top: 10px;
             }
@@ -330,6 +369,7 @@
             }
         }
     </style>
+    <base href="images/pp/" />
 </head>
 <body>
     <a href="/projects/" class="back-button">
@@ -352,122 +392,186 @@
         <a href="/notes/">NOTES</a>
     </nav>
 
-    <nav class="table-of-contents">
-        <!-- <h2 class="toc-title">Jump To</h2> -->
-        <ul class="toc-list">
-            <li><a href="#problem">Description</a></li>
-            <li><a href="#work">My Work</a></li>
-            <li><a href="#results">Results</a></li>
-            <li><a href="#lessons">Lessons Learned</a></li>
-        </ul>
-    </nav>
-
     <main>
         <header class="project-header">
-            <h1 class="project-title">CoreXY Pen Plotter Design</h1>
+            <h1 class="project-title">CoreXY Pen Plotter</h1>
             <div class="skills-section">
                 <h2 class="skills-title">Skills Gained</h2>
                 <div class="skills-list">
-                    <span class="skill-tag">3D Printing</span>
-                    <span class="skill-tag">Software Development</span>
-                    <span class="skill-tag">Mechanical Design</span>
+                    <span class="skill-tag">FDM 3D Printing</span>
+                    <span class="skill-tag">DFM/DFA</span>
+                    <span class="skill-tag">CAM</span>
+                    <span class="skill-tag">Rapid Prototyping</span>
                     <span class="skill-tag">Image Processing</span>
-                    <span class="skill-tag">Arduino Programming</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Arduino</span>
                 </div>
             </div>
         </header>
 
         <section id="problem" class="content-section">
-            <h2 class="section-title">Problem Statement</h2>
+            <h2 class="section-title">Description</h2>
             <div class="section-content">
-                <p>I set out to design and build a custom pen plotter using the CoreXY belt configuration, which needed to achieve precise, low-friction movement for accurate drawing. The project required integrating mechanical design, software development, and electronics into a cohesive system capable of converting digital images into physical artwork.</p>
-            </div>
+                <p>In order to be able to create handwritten letters/homework and draw better pictures, I decided to make a 
+                    pen plotter. 
+                </p>
+                <p>I wanted to make every part of this pen plotter, from the mechanical components, to wiring the electrical components,
+                    and fully coding from scratch the control theory behind how to find which motor has to do what.
+                </p>
+                <p><b>NOTE: </b>This is still unfinished; the final thing left to do is to 3d print the pen holding mechanism -- the electrical
+                    and software has all been completed.
+                </p>
+            </div>            
         </section>
 
-        <section id="work" class="content-section">
-            <h2 class="section-title">My Work</h2>
+        <section id="summary" class="content-section">
+            <h2 class="section-title">Summary</h2>
             <div class="section-content">
-                <p>Developed the complete system from concept to working prototype:</p>
-                <ul>
-                    <li>Designed and 3D printed a custom CoreXY belt configuration system featuring innovative fully 3D-printable recirculating ball bearing linear rails</li>
-                    <li>Created a custom bitmap image processing system in Java that converts images into optimized G-Code specifically for CoreXY movement patterns</li>
-                    <li>Implemented real-time G-Code communication and interpretation system using Python and C++ on Arduino</li>
-                    <li>Engineered a low-friction movement system that maintains high precision while using 3D printed components</li>
-                    <li>Integrated electronics and mechanical systems to ensure smooth, uninterrupted operation during plotting</li>
-                </ul>
-                
-                <!-- Image placeholder could go here -->
-                <!-- <img src="path_to_image.jpg" alt="CoreXY Pen Plotter" class="project-image"> -->
-            </div>
+                <p>
+                    This was a daunting task to me, so I split it up into different sections, and tackled each one one at a time.
+                </p>
+                <p>Video of a mid-way checkpoint of this working, slowly -- there's been improvements since then.</p>
+                <iframe width="445" height="250" src="https://www.youtube.com/embed/Ts7QY2lUJlk?si=lprFeApaEcbYLpIj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <br>
+                <b>Mechanical</b>
+                <p>
+                    I first designed the mechanical components -- since the core mission behind this project was for as much of this to be made by 
+                    myself as possible, I didn't want to buy linear rails, and set about to only buy as little as possible. However, after looking through options
+                     for precise linear motion, I decided the cheapest option would be to buy bearing balls, and 3d print my own recirculating ball bearings, which took 
+                     a couple iterations and are documented here: 
+                </p>
+                <p>
+                    Another major design choice I made was to use a CoreXY Belt configuration, which was decided on after considering other cartesian xy gantry movement designs.
+                    After some calculations and eyeballing, I didn't want my huge stepper motor to be moving, and CoreXY was the best option to have this. Designing this was a tiny bit 
+                    of a headache, to make sure all the belts were lined up and able to be assembled/work as it was intended to, and that all the pulleys were able to be placed 
+                    where they had to be. Since I used heat set inserts and fasteners to secure the pulleys/belt, I had to design around parts assembling too, which meant redesigning
+                    some parts if needed.
+                </p>
+                <p>
+                    Finally, with CoreXY, the belt tensioning is crucial for the gantry to move as required. I created a secure belt tensioning system, along with a stable frame to support this.
+                </p>
+                <b>Software</b>
+                <p>
+                    I wanted the software to handle the GCode generation, which is a coded way of telling the motors when to lift/drop the pen, and where to move
+                    the pen based off an input. My idea was to be able to submit a screenshot/image, and the pen plotter to be able to trace and draw the image out,
+                    and in the future, if the pen plotter will be able to swap between colors, it'll be able to trace out the different colors too.
+                </p>
+                <p>
+                    To create this, I first tried applying a blur kernel, and then a edge detection kernel -- however, the output wasn't that great, and was hard to analyze for motor movement. However, 
+                    a better idea I came up with was to cluster the image into n clusters (look up k means clustering), a cluster for each color the pen plotter is able to draw. Then, I can parse through the bitmap image 
+                    and run logic that detects edges, and traces them into a SVG image (almost), and then connects these points using a list, into chains. The algorithm then has the motor follow these chains of pixels, and then 
+                    lifts the pen at the end of each chain and moves the pen to the start of the next chain, until its through with all the chains.
+                </p>
+                <p>
+                    This approach worked wonderfully -- some nuances were that the image had to be rotated with a matrix 45 degrees, and also scaled to a specific size, due to the different controls 
+                    that the CoreXY belt configuration induces. This often outputted some 20k lines of GCode, however, and the Arduino wasn't able to store and process all of these at once, which was a major problem.
+                </p>
+                <p>
+                    To solve this problem, I came up with a couple solutions: one was using a microusb, and having a txt file that the arduino can just read from; this was however hard, as there needed to be a lot of circuit modification, especially since 
+                    on the elctrical side, I was already using a cnc shield, that would take up all the pins on the arduino. another solution was to use somethign that had dual thread processing capabilities, such as an esp32; however
+                    , this was out of my cost range, especially since I already had an Arduino on hand. A third option I thought of was using Python to interface with Arduino, only sending a batch of gcodes each time the Arduino requests it, 
+                    and being better with coding than I am with circuits, I opted for this solution. I coded up a Python script that sends 50 gCodes over each time (this needed a lot of tuning, especially with data sending/receviing and baud rates). Every time hte Arduino 
+                    processes up to a certain point, it requests more to the Python script, which then sends the next batch, and this repeats thousands of times. 
+                </p>
+                <p>
+                   After a lot of debugging, this worked. A key thing to note is that the Arduino is doing two things simultaneously: processing the GCode, and sending timed pulses to the stepper motor based off the buffer of GCodes it has stored up, and these two things happen at different speeds.
+                </p>
+                <b>Electrical</b>
+                <p>
+                    Being one of the most complex projects I've done with electronics at this point in time, I was very confused on a lot of circuit elements -- however, through a lot of manual scrolling, and digging, I decided to just go with 
+                    off the shelf components I found on amazon and aliexpress. I initially went with A4988 stepper motor drivers, integrated with an Arduino CNC Shield, however, after overheating and shorting quite a few of these, I realized that they 
+                    don't operate good enough to power the stepper motors under the tensioning teh CoreXY system had the pulleys under, so i switched to knockoff TMC2208 drivers instead, which worked much better.
+                 </p>
+                 <p>
+                    I also bought a AC to DC 12V 60W power supply from aliexpress, and saved like 30 dollars -- but there was a huge spark and charred the first time i connected it, so I had to buy a replacement -- aliexpress sucks at quality.
+                    </p>
+                <!-- <br>
+                <b>Takeaways</b>
+                <p>This project provided valuable insights into:</p>-->
+            </div> 
         </section>
 
-        <section id="results" class="content-section">
-            <h2 class="section-title">Results</h2>
+        <section id="images" class="content-section">
+            <h2 class="section-title">Images</h2>
             <div class="section-content">
-                <p>The pen plotter project achieved several key technical milestones:</p>
-                <ul>
-                    <li>Successfully created fully 3D-printable recirculating ball bearing linear rails</li>
-                    <li>Developed efficient image-to-G-Code conversion pipeline optimized for CoreXY kinematics</li>
-                    <li>Achieved precise, low-friction movement for accurate drawing reproduction</li>
-                    <li>Implemented uninterrupted real-time communication between computer and plotter</li>
-                    <li>Created a modular design allowing for easy maintenance and future upgrades</li>
-                </ul>
+                <p>More pictures coming soon!</p>
             </div>
-        </section>
-
-        <section id="lessons" class="content-section">
-            <h2 class="section-title">Lessons Learned</h2>
-            <div class="section-content">
-                <p>This project provided valuable insights into:</p>
-                <ul>
-                    <li>Integration of mechanical, electrical, and software systems</li>
-                    <li>Optimization of 3D printed mechanical components for precision movement</li>
-                    <li>Image processing and G-Code generation algorithms</li>
-                    <li>Real-time communication protocols between computer and microcontroller</li>
-                    <li>Design considerations for printability and assembly of complex mechanisms</li>
-                </ul>
+            <div class="image-grid">
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="pp-cover.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im1.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im4.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im2.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im3.png" alt="Image 5">
+                    </div>
+                </div>
+                <!-- <div class="image-column">
+                    <div class="image-container">
+                        <img src="/api/placeholder/300/250" alt="Image 10">
+                    </div>
+                    <div class="image-container">
+                        <img src="/api/placeholder/300/300" alt="Image 11">
+                    </div>
+                </div> -->
             </div>
         </section>
     </main>
 
+    
     <script>
-      const toggleButton = document.getElementById('theme-toggle');
-        const body = document.body;
-        let cantoggle = true;
-
-        toggleButton.addEventListener('click', () => {
-            toggleButton.classList.add('clicked');
-            setTimeout(() => {
-                toggleButton.classList.remove('clicked');
-            }, 100);
-            setTimeout(() => {
-                toggleButton.classList.remove('hover');
-            }, 160);
-
-            cantoggle = false;
-        });
-
-        toggleButton.addEventListener('mouseover', () => {
-            toggleButton.classList.add('hover');
-
-            if(cantoggle) {
-                body.classList.toggle('dark-mode');
-                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
-            }
-        });
-
-        toggleButton.addEventListener('mouseout', () => {    
-            if(cantoggle) {
-                body.classList.toggle('dark-mode');
-                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
-            }
-
-            setTimeout(() => {
-                toggleButton.classList.remove('hover');
-            }, 100);
-
-            cantoggle = true;
-        });
+        const toggleButton = document.getElementById('theme-toggle');
+          const body = document.body;
+          let cantoggle = true;
+  
+          toggleButton.addEventListener('click', () => {
+              toggleButton.classList.add('clicked');
+              setTimeout(() => {
+                  toggleButton.classList.remove('clicked');
+              }, 100);
+              setTimeout(() => {
+                  toggleButton.classList.remove('hover');
+              }, 160);
+  
+              cantoggle = false;
+          });
+  
+          toggleButton.addEventListener('mouseover', () => {
+              toggleButton.classList.add('hover');
+  
+              if(cantoggle) {
+                  body.classList.toggle('dark-mode');
+                  toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+              }
+          });
+  
+          toggleButton.addEventListener('mouseout', () => {    
+              if(cantoggle) {
+                  body.classList.toggle('dark-mode');
+                  toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+              }
+  
+              setTimeout(() => {
+                  toggleButton.classList.remove('hover');
+              }, 100);
+  
+              cantoggle = true;
+          });
     </script>
 </body>
 </html>

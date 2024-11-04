@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mk 9 CV Boot | Terry Yu</title>
+    <title>MK9 CV Boots | Terry Yu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Project">
     <style>
@@ -140,7 +140,7 @@
             border-bottom: 1px solid var(--line-color-light);
             font-weight: normal;
         }
-/* i love my pigoo*/
+
         body.dark-mode .toc-title {
             border-bottom-color: var(--line-color-dark);
         }
@@ -190,12 +190,38 @@
             line-height: 1.6;
         }
 
-        .section-content ul {
-            padding-left: 20px;
+        .image-grid {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: space-between;
         }
 
-        .section-content li {
-            margin-bottom: 8px;
+        .image-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .image-container {
+            width: 100%;
+            border: 1px solid var(--text-color-light);
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        body.dark-mode .image-container {
+            border-color: var(--text-color-dark);
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .sidenav {
@@ -275,6 +301,10 @@
             color: var(--text-color-dark);
         }
 
+        ul {
+            padding-left: 20px;
+        }
+
         @media screen and (max-width: 768px) {
             body {
                 padding: 15px;
@@ -282,12 +312,20 @@
                 padding-bottom: 80px;
             }
 
+            .image-grid {
+                flex-direction: column;
+            }
+
+            .image-column {
+                width: 100%;
+            }
+
             .back-button {
                 left: 30px;
                 position: fixed;
-                /* display: inline-flex; */
                 margin-bottom: 20px;
             }
+
             .project-header {
                 padding-top: 10px;
             }
@@ -330,6 +368,7 @@
             }
         }
     </style>
+    <base href="images/cb/" />
 </head>
 <body>
     <a href="/projects/" class="back-button">
@@ -352,122 +391,176 @@
         <a href="/notes/">NOTES</a>
     </nav>
 
-    <nav class="table-of-contents">
-        <!-- <h2 class="toc-title">Jump To</h2> -->
-        <ul class="toc-list">
-            <li><a href="#problem">Description</a></li>
-            <li><a href="#work">My Work</a></li>
-            <li><a href="#results">Results</a></li>
-            <li><a href="#lessons">Lessons Learned</a></li>
-        </ul>
-    </nav>
-
     <main>
         <header class="project-header">
-            <h1 class="project-title">CV Boot Mold Design & Manufacturing</h1>
+            <h1 class="project-title">CV Boots and Mold</h1>
             <div class="skills-section">
                 <h2 class="skills-title">Skills Gained</h2>
                 <div class="skills-list">
-                    <span class="skill-tag">Mold Design</span>
-                    <span class="skill-tag">Design Iteration</span>
-                    <span class="skill-tag">Cost Reduction</span>
-                    <span class="skill-tag">Manufacturing</span>
-                    <span class="skill-tag">Material Science</span>
+                    <span class="skill-tag">CAD Modeling</span>
+                    <span class="skill-tag">DFM/DFA</span>
+                    <span class="skill-tag">FDM 3d Printing</span>
+                    <span class="skill-tag">Mold Design/Pouring</span>
                 </div>
             </div>
         </header>
 
         <section id="problem" class="content-section">
-            <h2 class="section-title">Problem Statement</h2>
+            <h2 class="section-title">Description</h2>
             <div class="section-content">
-                <p>As part of Bruin Formula Racing, I needed to design and manufacture custom CV boots to protect the constant velocity joints on our Formula SAE vehicle. The existing boots were dysfunctional, and commercial replacements were costly. The solution needed to be reliable, cost-effective, and manufacturable using our available resources.</p>
-            </div>
+                <p>Our Formula SAE car had a huge problem -- the suspension joints ran too close to the tripod
+                    housings and the half shafts. No off the shelf CV Boots would be able to fit without rubbing,
+                    which is a huge problem, as not only would the car not be rules legal, but the half shaft 
+                    joints also wouldn't be protected, leading to catastrophic failure.
+                </p>
+            </div>            
         </section>
 
-        <section id="work" class="content-section">
-            <h2 class="section-title">My Work</h2>
+        <section id="summary" class="content-section">
+            <h2 class="section-title">Summary</h2>
             <div class="section-content">
-                <p>Led the development through multiple design iterations:</p>
-                <ul>
-                    <li>Designed an innovative mold featuring a novel dovetail slider mechanism for efficient boot production</li>
-                    <li>Iterated through 5 versions of the mold design, continuously improving functionality and ease of use</li>
-                    <li>Created custom pouring processes and procedures for consistent boot production</li>
-                    <li>Engineered the mold for easy release and minimal post-processing of finished boots</li>
-                    <li>Developed quality control measures to ensure boots met performance requirements</li>
-                </ul>
-                
-                <!-- Image placeholder could go here -->
-                <!-- <img src="path_to_image.jpg" alt="CV Boot Mold Design" class="project-image"> -->
-            </div>
-        </section>
-
-        <section id="results" class="content-section">
-            <h2 class="section-title">Results</h2>
-            <div class="section-content">
-                <p>The CV boot project achieved several key improvements:</p>
-                <ul>
-                    <li>Successfully replaced dysfunctional CV boots with reliable custom-made alternatives</li>
-                    <li>Reduced CV boot costs by 50% compared to commercial options</li>
-                    <li>Created a repeatable manufacturing process through dovetail slider mechanism</li>
-                    <li>Achieved consistent quality across multiple boot productions</li>
-                    <li>Developed a solution that could be easily replicated by future team members</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="lessons" class="content-section">
-            <h2 class="section-title">Lessons Learned</h2>
-            <div class="section-content">
+                <p>The solution was to design our own CV Boots, with custom geometry. After looking
+                    through 4 different options, we settled on using PMC 770, which has a 30 minute
+                    pouring time and a durometer of 70A.
+                </p>
+                <p>Another problem came in the mold; since the boots were ribbed and hollow, there had to be 
+                    two parts to the mold minimum: an inner and an outer mold. However, the ribs made it 
+                    impossible to remove the inner mold, unless it was destroyed and reprinted each time.
+                </p>
+                <p>We solved this by dividing the inner mold into different sections, that would slide out 
+                    and collapse to barely be able to fit and remove. After iterating over tens of versions,
+                    we finally settled on a CV Boot geometry and mold design that had 6 pieces, which all fit
+                    together and made our CV Boot.
+                </p>
+                <p>Pouring was also a big difficulty: with the time constriant of a 10 minute working time,
+                    we had to work fast, and after many many attempts, we settled on a formula of around 5-6 minutes
+                    of degassing in a vaccuum chamber, and then tilting the mold while pouring, which we found
+                    resulted in the most success and the least amount of bubbles. There's a lot more that we learned
+                    through trial and error; however, in the end, our innovative solution successfully sealed 
+                    our CV joint and scored us a bonus point at the FSAE competition.
+                </p>
+                <!-- <br>
+                <b>Takeaways</b>
                 <p>This project provided valuable insights into:</p>
                 <ul>
-                    <li>Importance of iterative design in complex mold development</li>
-                    <li>Balance between material properties and manufacturing constraints</li>
-                    <li>Cost optimization through in-house manufacturing</li>
-                    <li>Value of innovative mechanical solutions like the dovetail slider</li>
-                    <li>Documentation of manufacturing processes for knowledge transfer</li>
-                </ul>
+                    <li>Leading teams and </li>
+                    <li>FEA/Topology Optimization</li>
+                    <li>Designing things to fit specifications, with a factor of safety</li>
+                    <li>Designing components while working with other teams to make sure everything is integrated properly</li>
+                </ul> -->
+            </div>
+        </section>
+
+        <section id="images" class="content-section">
+            <h2 class="section-title">Images</h2>
+            <div class="image-grid">
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="cb-cover.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im2.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im12.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im1.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im9.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im3.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im4.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im15.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im5.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im6.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im10.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im16.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im7.png" alt="Image 5">
+                    </div>
+                    <div class="image-container">
+                        <img src="im8.png" alt="Image 5">
+                    </div>
+                    <div class="image-container">
+                        <img src="im11.png" alt="Image 5">
+                    </div>
+                    <div class="image-container">
+                        <img src="im13.png" alt="Image">
+                    </div>
+                </div>
+                <!-- <div class="image-column">
+                    <div class="image-container">
+                        <img src="/api/placeholder/300/250" alt="Image 10">
+                    </div>
+                    <div class="image-container">
+                        <img src="/api/placeholder/300/300" alt="Image 11">
+                    </div>
+                </div> -->
             </div>
         </section>
     </main>
 
+    
     <script>
-      const toggleButton = document.getElementById('theme-toggle');
-        const body = document.body;
-        let cantoggle = true;
-
-        toggleButton.addEventListener('click', () => {
-            toggleButton.classList.add('clicked');
-            setTimeout(() => {
-                toggleButton.classList.remove('clicked');
-            }, 100);
-            setTimeout(() => {
-                toggleButton.classList.remove('hover');
-            }, 160);
-
-            cantoggle = false;
-        });
-
-        toggleButton.addEventListener('mouseover', () => {
-            toggleButton.classList.add('hover');
-
-            if(cantoggle) {
-                body.classList.toggle('dark-mode');
-                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
-            }
-        });
-
-        toggleButton.addEventListener('mouseout', () => {    
-            if(cantoggle) {
-                body.classList.toggle('dark-mode');
-                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
-            }
-
-            setTimeout(() => {
-                toggleButton.classList.remove('hover');
-            }, 100);
-
-            cantoggle = true;
-        });
+        const toggleButton = document.getElementById('theme-toggle');
+          const body = document.body;
+          let cantoggle = true;
+  
+          toggleButton.addEventListener('click', () => {
+              toggleButton.classList.add('clicked');
+              setTimeout(() => {
+                  toggleButton.classList.remove('clicked');
+              }, 100);
+              setTimeout(() => {
+                  toggleButton.classList.remove('hover');
+              }, 160);
+  
+              cantoggle = false;
+          });
+  
+          toggleButton.addEventListener('mouseover', () => {
+              toggleButton.classList.add('hover');
+  
+              if(cantoggle) {
+                  body.classList.toggle('dark-mode');
+                  toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+              }
+          });
+  
+          toggleButton.addEventListener('mouseout', () => {    
+              if(cantoggle) {
+                  body.classList.toggle('dark-mode');
+                  toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+              }
+  
+              setTimeout(() => {
+                  toggleButton.classList.remove('hover');
+              }, 100);
+  
+              cantoggle = true;
+          });
     </script>
 </body>
 </html>

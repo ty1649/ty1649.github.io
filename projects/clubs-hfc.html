@@ -140,7 +140,7 @@
             border-bottom: 1px solid var(--line-color-light);
             font-weight: normal;
         }
-/* i love my pigoo*/
+
         body.dark-mode .toc-title {
             border-bottom-color: var(--line-color-dark);
         }
@@ -190,12 +190,39 @@
             line-height: 1.6;
         }
 
-        .section-content ul {
-            padding-left: 20px;
+        .image-grid {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: space-between;
         }
 
-        .section-content li {
-            margin-bottom: 8px;
+        .image-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .image-container {
+            width: 100%;
+            border: 1px solid var(--text-color-light);
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        body.dark-mode .image-container {
+            border-color: var(--text-color-dark);
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .sidenav {
@@ -275,6 +302,10 @@
             color: var(--text-color-dark);
         }
 
+        ul {
+            padding-left: 20px;
+        }
+
         @media screen and (max-width: 768px) {
             body {
                 padding: 15px;
@@ -282,12 +313,20 @@
                 padding-bottom: 80px;
             }
 
+            .image-grid {
+                flex-direction: column;
+            }
+
+            .image-column {
+                width: 100%;
+            }
+
             .back-button {
                 left: 30px;
                 position: fixed;
-                /* display: inline-flex; */
                 margin-bottom: 20px;
             }
+
             .project-header {
                 padding-top: 10px;
             }
@@ -330,6 +369,7 @@
             }
         }
     </style>
+    <base href="images/hfc/" />
 </head>
 <body>
     <a href="/projects/" class="back-button">
@@ -352,25 +392,18 @@
         <a href="/notes/">NOTES</a>
     </nav>
 
-    <nav class="table-of-contents">
-        <!-- <h2 class="toc-title">Jump To</h2> -->
-        <ul class="toc-list">
-            <li><a href="#problem">Description</a></li>
-            <li><a href="#work">My Work</a></li>
-            <li><a href="#results">Results</a></li>
-            <li><a href="#lessons">Lessons Learned</a></li>
-        </ul>
-    </nav>
-
     <main>
         <header class="project-header">
-            <h1 class="project-title">Hydrogen Fuel Cell System Design</h1>
+            <h1 class="project-title">Hydrogen Fuel Cell</h1>
             <div class="skills-section">
                 <h2 class="skills-title">Skills Gained</h2>
                 <div class="skills-list">
+                    <span class="skill-tag">CAD Modeling</span>
                     <span class="skill-tag">CFD Analysis</span>
-                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Thermal Analysis</span>
                     <span class="skill-tag">CAM Programming</span>
+                    <span class="skill-tag">DFM/DFA</span>
+                    <span class="skill-tag">Project Management</span>
                     <span class="skill-tag">Technical Documentation</span>
                     <span class="skill-tag">Team Leadership</span>
                 </div>
@@ -378,96 +411,161 @@
         </header>
 
         <section id="problem" class="content-section">
-            <h2 class="section-title">Problem Statement</h2>
+            <h2 class="section-title">Description</h2>
             <div class="section-content">
-                <p>As the Hydrogen Lead for the UCLA Supermileage Vehicle team, I needed to design and implement a hydrogen fuel cell system that could meet our 1 kW power requirement for the competition vehicle. The system needed to be efficient, safe, and properly integrated with the rest of the vehicle while passing strict technical inspections.</p>
-            </div>
+                <p>As the Hydrogen Lead for the UCLA Supermileage Vehicle team, 
+                    I have to integrate a hydrogen fuel cell to work along with the 
+                    rest of car and the systems and supply continuous power to the wheels. I'm 
+                    also leading the initiative to design, analyze, and manufacture our own 
+                    PEM open cathode fuel cell.
+                </p>
+            </div>            
         </section>
 
-        <section id="work" class="content-section">
-            <h2 class="section-title">My Work</h2>
+        <section id="summary" class="content-section">
+            <h2 class="section-title">Summary</h2>
             <div class="section-content">
-                <p>Led multiple project teams through the complete development cycle:</p>
-                <ul>
-                    <li>Managed and coordinated 3 project teams consisting of over 30 members, strategically dividing work based on individual strengths</li>
-                    <li>Conducted detailed CFD simulations using Ansys Fluent to optimize the flowfield design for effective water removal and mass transfer</li>
-                    <li>Created CAM programs with HSMWorks for in-house manufacturing on our 3-axis CNC machine</li>
-                    <li>Oversaw the successful integration of the Horizon Fuel Cell with the competition vehicle</li>
-                    <li>Developed comprehensive documentation using Notion workspace and presentation slides for knowledge transfer</li>
-                </ul>
-                
-                <!-- Image placeholder could go here -->
-                <!-- <img src="path_to_image.jpg" alt="Hydrogen Fuel Cell System" class="project-image"> -->
-            </div>
-        </section>
-
-        <section id="results" class="content-section">
-            <h2 class="section-title">Results</h2>
-            <div class="section-content">
-                <p>The hydrogen fuel cell system achieved several key milestones:</p>
-                <ul>
-                    <li>Successfully met the 1 kW power requirement for the competition vehicle</li>
-                    <li>Passed all hydrogen technical inspections for competition compliance</li>
-                    <li>Reduced manufacturing costs by over $200 through in-house CNC production</li>
-                    <li>Optimized flowfield design for efficient water removal and mass transfer</li>
-                    <li>Established robust documentation system for future team reference</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="lessons" class="content-section">
-            <h2 class="section-title">Lessons Learned</h2>
-            <div class="section-content">
+                <p>Since creating a Hydrogen Fuel Cell requires both chemistry/materials science
+                     and mechanical engineering knowledge, we've split up this subteam into two seperate
+                     teams: MEA (which handles the chemistry/matsci) and Hardware (which handles the Hardware
+                     components and analysis). 
+                </p>
+                <p>
+                    The MEA team is currently using blade coating techniques and reading literature to coat
+                    catalyst onto the membranes in conjuction with the Huang Lab, which we've been working with.
+                    Through trying various recipes out, we're trying to save cost and manufacture our own 
+                    membranes with catalyst in house.
+                </p>
+                <p>
+                    The Hardware team is designing and analyzing the various components in the fuel cell, with
+                    various factors to keep in mind, including uniform mass transfer throughout the flowfields,
+                    cooling and heat management, humidity, and clamping force within the stack.
+                </p>
+                <p>
+                    As the lead of both these teams, I provide guidance on any troubles these teams are running into 
+                    with analysis -- along with determining the overall trajectory of our subteam, and the 
+                    general specs of the fuel cell we're trying to develop, including parameters like operating temperature,
+                     pressure, expected power, current, active area, etc. I also handle the communication and integration
+                     with sponsors and other teams.
+                </p>
+                <p>
+                    A lot of the research of how the parameters of the fuel cell and design should be approached has been
+                    documented in a slideshow, shown below, and we also created a Notion to organize past designs and timelines:
+                </p>
+                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTqltUJiq1I5idG_nmTueSPQR5gPls3XRgPWxFrb9QRVNXlebZqK06fI2VyJG37kGO_09fUhC5wGxWC/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                <!-- <br>
+                <b>Takeaways</b>
                 <p>This project provided valuable insights into:</p>
                 <ul>
-                    <li>Managing large teams and coordinating multiple concurrent projects</li>
-                    <li>Importance of simulation-driven design in fluid systems</li>
-                    <li>Balance between cost reduction and system performance</li>
-                    <li>Value of comprehensive documentation for knowledge transfer</li>
-                    <li>Technical considerations for hydrogen system safety and compliance</li>
-                </ul>
+                    <li>Leading teams and </li>
+                    <li>FEA/Topology Optimization</li>
+                    <li>Designing things to fit specifications, with a factor of safety</li>
+                    <li>Designing components while working with other teams to make sure everything is integrated properly</li>
+                </ul> -->
+            </div>
+        </section>
+
+        <section id="images" class="content-section">
+            <h2 class="section-title">Images</h2>
+            <div class="image-grid">
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="hfc-cover.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im2.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im12.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im8.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im3.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im11.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im6.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im5.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im10.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im7.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im9.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im4.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im1.png" alt="Image">
+                    </div>
+                </div>
+                <!-- <div class="image-column">
+                    <div class="image-container">
+                        <img src="/api/placeholder/300/250" alt="Image 10">
+                    </div>
+                    <div class="image-container">
+                        <img src="/api/placeholder/300/300" alt="Image 11">
+                    </div>
+                </div> -->
             </div>
         </section>
     </main>
 
+    
     <script>
-      const toggleButton = document.getElementById('theme-toggle');
-        const body = document.body;
-        let cantoggle = true;
-
-        toggleButton.addEventListener('click', () => {
-            toggleButton.classList.add('clicked');
-            setTimeout(() => {
-                toggleButton.classList.remove('clicked');
-            }, 100);
-            setTimeout(() => {
-                toggleButton.classList.remove('hover');
-            }, 160);
-
-            cantoggle = false;
-        });
-
-        toggleButton.addEventListener('mouseover', () => {
-            toggleButton.classList.add('hover');
-
-            if(cantoggle) {
-                body.classList.toggle('dark-mode');
-                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
-            }
-        });
-
-        toggleButton.addEventListener('mouseout', () => {    
-            if(cantoggle) {
-                body.classList.toggle('dark-mode');
-                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
-            }
-
-            setTimeout(() => {
-                toggleButton.classList.remove('hover');
-            }, 100);
-
-            cantoggle = true;
-        });
+        const toggleButton = document.getElementById('theme-toggle');
+          const body = document.body;
+          let cantoggle = true;
+  
+          toggleButton.addEventListener('click', () => {
+              toggleButton.classList.add('clicked');
+              setTimeout(() => {
+                  toggleButton.classList.remove('clicked');
+              }, 100);
+              setTimeout(() => {
+                  toggleButton.classList.remove('hover');
+              }, 160);
+  
+              cantoggle = false;
+          });
+  
+          toggleButton.addEventListener('mouseover', () => {
+              toggleButton.classList.add('hover');
+  
+              if(cantoggle) {
+                  body.classList.toggle('dark-mode');
+                  toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+              }
+          });
+  
+          toggleButton.addEventListener('mouseout', () => {    
+              if(cantoggle) {
+                  body.classList.toggle('dark-mode');
+                  toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+              }
+  
+              setTimeout(() => {
+                  toggleButton.classList.remove('hover');
+              }, 100);
+  
+              cantoggle = true;
+          });
     </script>
 </body>
 </html>

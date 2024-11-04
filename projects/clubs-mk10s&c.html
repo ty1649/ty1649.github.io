@@ -140,7 +140,7 @@
             border-bottom: 1px solid var(--line-color-light);
             font-weight: normal;
         }
-/* i love my pigoo*/
+
         body.dark-mode .toc-title {
             border-bottom-color: var(--line-color-dark);
         }
@@ -190,12 +190,39 @@
             line-height: 1.6;
         }
 
-        .section-content ul {
-            padding-left: 20px;
+        .image-grid {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: space-between;
         }
 
-        .section-content li {
-            margin-bottom: 8px;
+        .image-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .image-container {
+            width: 100%;
+            border: 1px solid var(--text-color-light);
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        body.dark-mode .image-container {
+            border-color: var(--text-color-dark);
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .sidenav {
@@ -275,19 +302,50 @@
             color: var(--text-color-dark);
         }
 
+        ul {
+            padding-left: 20px;
+        }
+        .iframe-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center; 
+        }
+        
+        .iframe-container iframe {
+            width: 30%;
+            height: 232px;
+            border: none;
+        }
+
         @media screen and (max-width: 768px) {
             body {
                 padding: 15px;
                 padding-left: 15px;
                 padding-bottom: 80px;
             }
+            .iframe-container {
+                flex-direction: column;
+            }
+            .iframe-container iframe {
+                width: 100%;
+                height: 299px; 
+                border: none;
+            }
+
+            .image-grid {
+                flex-direction: column;
+            }
+
+            .image-column {
+                width: 100%;
+            }
 
             .back-button {
                 left: 30px;
                 position: fixed;
-                /* display: inline-flex; */
                 margin-bottom: 20px;
             }
+
             .project-header {
                 padding-top: 10px;
             }
@@ -330,6 +388,7 @@
             }
         }
     </style>
+    <base href="images/mk10s&c/" />
 </head>
 <body>
     <a href="/projects/" class="back-button">
@@ -352,122 +411,168 @@
         <a href="/notes/">NOTES</a>
     </nav>
 
-    <nav class="table-of-contents">
-        <!-- <h2 class="toc-title">Jump To</h2> -->
-        <ul class="toc-list">
-            <li><a href="#problem">Description</a></li>
-            <li><a href="#work">My Work</a></li>
-            <li><a href="#results">Results</a></li>
-            <li><a href="#lessons">Lessons Learned</a></li>
-        </ul>
-    </nav>
-
     <main>
         <header class="project-header">
-            <h1 class="project-title">Mk10 Sprocket and Chain Design</h1>
+            <h1 class="project-title">MK10 Sprocket and Chain Assembly</h1>
             <div class="skills-section">
                 <h2 class="skills-title">Skills Gained</h2>
                 <div class="skills-list">
                     <span class="skill-tag">CAD Modeling</span>
                     <span class="skill-tag">FEA Analysis</span>
+                    <span class="skill-tag">Topology Optimization</span>
+                    <span class="skill-tag">DFM/DFA</span>
                     <span class="skill-tag">GD&T</span>
                     <span class="skill-tag">Manufacturing</span>
-                    <span class="skill-tag">Topology Optimization</span>
                 </div>
             </div>
         </header>
 
         <section id="problem" class="content-section">
-            <h2 class="section-title">Problem Statement</h2>
+            <h2 class="section-title">Description</h2>
             <div class="section-content">
-                <p>As the Sprocket Responsible Engineer for Bruin Formula Racing, I needed to optimize the sprocket and chain assembly for our Formula SAE competition vehicle. The assembly, which included front/rear sprockets, chain, and motor shaft, required significant weight reduction while maintaining structural integrity and meeting competition regulations.</p>
+                <p>As the Sprocket Responsible Engineer for Bruin Formula Racing, I was tasked with designing the sprocket and chain assembly, which included the</p>
+                <ul>
+                    <li>Front/Rear Sprocket</li>
+                    <li>Transmission Shaft</li>
+                    <li>Chain</li>
+                </ul>
             </div>            
         </section>
 
-        <section id="work" class="content-section">
-            <h2 class="section-title">My Work</h2>
+        <section id="summary" class="content-section">
+            <h2 class="section-title">Summary</h2>
             <div class="section-content">
-                <p>Led the complete development cycle of the drivetrain components:</p>
-                <ul>
-                    <li>Performed topology optimization using Altair software to identify areas for weight reduction while maintaining structural integrity</li>
-                    <li>Conducted comprehensive FEA simulations in Ansys to validate design changes and ensure safety factors</li>
-                    <li>Created detailed engineering drawings following GD&T standards to ensure precise manufacturing specifications</li>
-                    <li>Integrated the sprocket assembly with other drivetrain components, including custom-designed CV boots</li>
-                    <li>Manually machined spacers and tabs to properly connect drivetrain components to the chassis</li>
-                </ul>
-                
-                <!-- Image placeholder could go here -->
-                <!-- <img src="path_to_image.jpg" alt="Sprocket Assembly Design" class="project-image"> -->
-            </div>
-        </section>
-
-        <section id="results" class="content-section">
-            <h2 class="section-title">Results</h2>
-            <div class="section-content">
-                <p>The optimized sprocket and chain assembly achieved several key improvements:</p>
-                <ul>
-                    <li>Achieved a 42% weight reduction in sprockets through topology optimization</li>
-                    <li>Successfully integrated all drivetrain components with the chassis</li>
-                    <li>Maintained structural integrity while significantly reducing material usage</li>
-                    <li>Created manufacturing-friendly designs that could be produced cost-effectively</li>
-                    <li>Developed comprehensive documentation for future team reference</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="lessons" class="content-section">
-            <h2 class="section-title">Lessons Learned</h2>
-            <div class="section-content">
+                <p>Slides for Preliminary Design Review (PDR), Critical Design Review (CDR), and Final Design Review (FDR), 
+                    showing the evolution of the front sprocket, rear sprocket, and motor shaft over the course of the past couple of months:
+                </p>
+                <div class="iframe-container">
+                    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSM6wnIC_zg6J8Qs0Yniho2uDx5YHh8NUocebrAWclwRumGbXmJbtw4prQs2z-ZaVWCucaBv68s6yu4/embed?start=false&loop=false&delayms=3000" frameborder="0" width="350" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRy276XktaVas20VI3wodfvbKanV4gtUr1bU77tfe0ocgH8X245VdwutIPwU0sEE1tFNaygvAHXfOZ0/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTTvdVYzH8OS0QTIDmmM-T3AdHPVoeVdmYMWytPJYBtsflCTJE62HCHoEhG6Cgq-Mri-u3KC1alPRkB/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                </div>
+                <p>I used SolidWorks to model the sprocket teeth geometry for a 59 tooth rear sprocket, 
+                and a 12 tooth front sprocket (based of final drive ratio values simulated on OptimumLap). 
+                I also modeled the involute splines that are at the center of the sprockets, 
+                and on the motor shaft. The sprockets were designed to sit parallel in the top assembly,
+                which is optimal for chain tension.
+            </p>
+                <p>I then used Altair Inspire to run a Topology Optimization on the rear sprocket, and 
+                    iterated over cutouts on this piece to reduce weight. I verified that both the 
+                    front and rear sprockets passed with a 2x factor of safety with static simulations 
+                    on Ansys Mechanical, based off equations to calculate chain tension.
+                </p>
+                <p>To optimize the motor shaft, I iterated over and selected a 17 teeth 17 DP 45 degree pressure angle
+                    spline, and maximized the bore hole cutout. I analyzed this part to make sure it didn't fail,
+                    mainly using hand calcs derived from maximum shear stress theory and maximum normal stress theory.
+                </p>
+                <p>A smaller chain (after analysis was done) was also selected this year, the 428VX isntead of the 520 chain from last year, 
+                    which allowed for closer sprockets and a larger FDR, which according to simulations should maximize 
+                    our points.
+                </p>
+                <!-- <br>
+                <b>Takeaways</b>
                 <p>This project provided valuable insights into:</p>
                 <ul>
-                    <li>Balancing weight reduction with structural requirements</li>
-                    <li>Importance of proper GD&T in manufacturing documentation</li>
-                    <li>Integration challenges between multiple drivetrain components</li>
-                    <li>Value of simulation tools in optimization processes</li>
-                    <li>Manufacturing considerations in design decisions</li>
-                </ul>
+                    <li>Weight Reduction</li>
+                    <li>FEA/Topology Optimization</li>
+                    <li>Designing things to fit specifications, with a factor of safety</li>
+                    <li>Designing components while working with other teams to make sure everything is integrated properly</li>
+                </ul> -->
+            </div>
+        </section>
+
+        <section id="images" class="content-section">
+            <h2 class="section-title">Images</h2>
+            <div class="image-grid">
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="mk10s&c-cover.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im1.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im3.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im4.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im5.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im6.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im2.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im7.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im8.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im9.png" alt="Image">
+                    </div>
+                </div>
+                <!-- <div class="image-column">
+                    <div class="image-container">
+                        <img src="/api/placeholder/300/250" alt="Image 10">
+                    </div>
+                    <div class="image-container">
+                        <img src="/api/placeholder/300/300" alt="Image 11">
+                    </div>
+                </div> -->
             </div>
         </section>
     </main>
 
+    
     <script>
-      const toggleButton = document.getElementById('theme-toggle');
-        const body = document.body;
-        let cantoggle = true;
-
-        toggleButton.addEventListener('click', () => {
-            toggleButton.classList.add('clicked');
-            setTimeout(() => {
-                toggleButton.classList.remove('clicked');
-            }, 100);
-            setTimeout(() => {
-                toggleButton.classList.remove('hover');
-            }, 160);
-
-            cantoggle = false;
-        });
-
-        toggleButton.addEventListener('mouseover', () => {
-            toggleButton.classList.add('hover');
-
-            if(cantoggle) {
-                body.classList.toggle('dark-mode');
-                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
-            }
-        });
-
-        toggleButton.addEventListener('mouseout', () => {    
-            if(cantoggle) {
-                body.classList.toggle('dark-mode');
-                toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
-            }
-
-            setTimeout(() => {
-                toggleButton.classList.remove('hover');
-            }, 100);
-
-            cantoggle = true;
-        });
+        const toggleButton = document.getElementById('theme-toggle');
+          const body = document.body;
+          let cantoggle = true;
+  
+          toggleButton.addEventListener('click', () => {
+              toggleButton.classList.add('clicked');
+              setTimeout(() => {
+                  toggleButton.classList.remove('clicked');
+              }, 100);
+              setTimeout(() => {
+                  toggleButton.classList.remove('hover');
+              }, 160);
+  
+              cantoggle = false;
+          });
+  
+          toggleButton.addEventListener('mouseover', () => {
+              toggleButton.classList.add('hover');
+  
+              if(cantoggle) {
+                  body.classList.toggle('dark-mode');
+                  toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+              }
+          });
+  
+          toggleButton.addEventListener('mouseout', () => {    
+              if(cantoggle) {
+                  body.classList.toggle('dark-mode');
+                  toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+              }
+  
+              setTimeout(() => {
+                  toggleButton.classList.remove('hover');
+              }, 100);
+  
+              cantoggle = true;
+          });
     </script>
 </body>
 </html>
