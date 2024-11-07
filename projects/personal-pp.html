@@ -225,6 +225,18 @@
             display: block;
         }
 
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line-color-light);
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        body.dark-mode .footer {
+            border-top-color: var(--line-color-dark);
+        }
+
         .sidenav {
             position: fixed;
             top: 0;
@@ -533,6 +545,16 @@
         </section>
     </main>
 
+    <footer class="footer">
+        <p style="text-align:left;">
+            Made by Terry Yu
+            <span style="float:right;">
+                <i>
+                    last updated Nov 2024
+                </i>
+            </span>
+        </p>
+    </footer>
     
     <script>
         const toggleButton = document.getElementById('theme-toggle');

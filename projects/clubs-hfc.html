@@ -264,6 +264,18 @@
             transform: rotate(180deg) scale(1.1);
         }
 
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line-color-light);
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        body.dark-mode .footer {
+            border-top-color: var(--line-color-dark);
+        }
+
         .home-link {
             position: absolute;
             top: 20px;
@@ -478,6 +490,9 @@
                     <div class="image-container">
                         <img src="im12.png" alt="Image">
                     </div>
+                    <div class="image-container">
+                        <img src="im14.png" alt="Image">
+                    </div>
                 </div>
                 <div class="image-column">
                     <div class="image-container">
@@ -488,6 +503,9 @@
                     </div>
                     <div class="image-container">
                         <img src="im11.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im13.png" alt="Image">
                     </div>
                 </div>
                 <div class="image-column">
@@ -527,6 +545,16 @@
         </section>
     </main>
 
+    <footer class="footer">
+        <p style="text-align:left;">
+            Made by Terry Yu
+            <span style="float:right;">
+                <i>
+                    last updated Nov 2024
+                </i>
+            </span>
+        </p>
+    </footer>
     
     <script>
         const toggleButton = document.getElementById('theme-toggle');
