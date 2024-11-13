@@ -314,8 +314,61 @@
             color: var(--text-color-dark);
         }
 
+        .gallery-container {
+            width: 80%;
+            margin: 0 auto; 
+            position: relative;
+        }
+
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+            width: 100%; 
+        }
+
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--text-color-light);
+            transition: transform 0.2s ease;
+            display: block;
+        }
+
+        body.dark-mode .gallery-image {
+            border-color: var(--text-color-dark);
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-caption {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-color-light);
+        }
+
+        body.dark-mode .gallery-caption {
+            color: var(--text-color-dark);
+        }
+
         ul {
             padding-left: 20px;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .gallery-container {
+                width: 90%;
+            }
         }
 
         @media screen and (max-width: 768px) {
@@ -323,6 +376,14 @@
                 padding: 15px;
                 padding-left: 15px;
                 padding-bottom: 80px;
+            }
+
+            .gallery-container {
+                width: 100%;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .image-grid {
@@ -464,6 +525,26 @@
                     Finally, with CoreXY, the belt tensioning is crucial for the gantry to move as required. I created a secure belt tensioning system, along with a stable frame to support this.
                 </p>
                 <b>Software</b>
+                <div class="gallery-container">
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="step1.png" alt="Image" class="gallery-image">
+                            <p class="gallery-caption">Input Image for Pen Plotter</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="step2.png" alt="Image" class="gallery-image">
+                            <p class="gallery-caption">Color Classification/Clustering (rotated to account for CoreXY motion)</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="step3.png" alt="Image" class="gallery-image">
+                            <p class="gallery-caption">Edge Detection/Pen Plotter Movement Slicer</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="step4.png" alt="Image" class="gallery-image">
+                            <p class="gallery-caption">Generated GCode, sent via Python to Arduino in batches of 50</p>
+                        </div>
+                    </div>
+                </div>
                 <p>
                     I wanted the software to handle the GCode generation, which is a coded way of telling the motors when to lift/drop the pen, and where to move
                     the pen based off an input. My idea was to be able to submit a screenshot/image, and the pen plotter to be able to trace and draw the image out,
@@ -521,6 +602,9 @@
                 <div class="image-column">
                     <div class="image-container">
                         <img src="im4.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im5.png" alt="Image 5">
                     </div>
                 </div>
                 <div class="image-column">
