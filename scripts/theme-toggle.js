@@ -2,6 +2,15 @@ const toggleButton = document.getElementById('theme-toggle');
 const body = document.body;
 let cantoggle = true;
 
+// Initialize theme from localStorage on page load
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    toggleButton.textContent = '🌚';
+} else {
+    toggleButton.textContent = '🌞';
+}
+
 toggleButton.addEventListener('click', () => {
     toggleButton.classList.add('clicked');
     setTimeout(() => {
@@ -20,6 +29,8 @@ toggleButton.addEventListener('mouseover', () => {
     if(cantoggle) {
         body.classList.toggle('dark-mode');
         toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+        // Save theme preference
+        localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
     }
 });
 
@@ -27,6 +38,8 @@ toggleButton.addEventListener('mouseout', () => {
     if(cantoggle) {
         body.classList.toggle('dark-mode');
         toggleButton.textContent = body.classList.contains('dark-mode') ? '🌚' : '🌞';
+        // Save theme preference
+        localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
     }
 
     setTimeout(() => {

@@ -74,6 +74,9 @@ body.dark-mode .back-button {
     padding-top: 70px;
     padding-bottom: 20px;
 }
+body.dark-mode .project-header {
+    border-color: var(--line-color-dark);
+}
 
 .project-title {
     font-size: 20px;
