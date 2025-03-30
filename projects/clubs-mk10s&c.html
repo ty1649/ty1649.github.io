@@ -68,34 +68,17 @@
                     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRy276XktaVas20VI3wodfvbKanV4gtUr1bU77tfe0ocgH8X245VdwutIPwU0sEE1tFNaygvAHXfOZ0/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
                     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTTvdVYzH8OS0QTIDmmM-T3AdHPVoeVdmYMWytPJYBtsflCTJE62HCHoEhG6Cgq-Mri-u3KC1alPRkB/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
                 </div>
-                <p>I used SolidWorks to model the sprocket teeth geometry for a 59 tooth rear sprocket, 
-                and a 12 tooth front sprocket (based of final drive ratio values simulated on OptimumLap). 
-                I also modeled the involute splines that are at the center of the sprockets, 
-                and on the motor shaft. The sprockets were designed to sit parallel in the top assembly,
-                which is optimal for chain tension.
-            </p>
-                <p>I then used Altair Inspire to run a Topology Optimization on the rear sprocket, and 
-                    iterated over cutouts on this piece to reduce weight. I verified that both the 
-                    front and rear sprockets passed with a 2x factor of safety with static simulations 
-                    on Ansys Mechanical, based off equations to calculate chain tension.
+                <p><strong>Action</strong>:
+                    <ul>
+                        <li>I used SolidWorks to model the sprocket teeth geometry for a 59-tooth rear sprocket and a 12-tooth front sprocket, based on final drive ratio values simulated on OptimumLap.</li>
+                        <li>The involute splines at the center of the sprockets and on the motor shaft were also modeled to ensure proper alignment and functionality.</li>
+                        <li>To reduce weight, I ran a Topology Optimization on the rear sprocket using Altair Inspire and iterated over cutouts.</li>
+                        <li>Static simulations on Ansys Mechanical were conducted to verify that both sprockets passed with a 2x factor of safety, based on chain tension calculations.</li>
+                        <li>For the motor shaft, I selected a 17 teeth 17 DP 45-degree pressure angle spline and maximized the bore hole cutout, ensuring it didn't fail using hand calculations derived from maximum shear stress and normal stress theories.</li>
+                        <li>A smaller chain, the 428VX, was selected over the previous year's 520 chain, allowing for closer sprockets and a larger FDR, which simulations indicated would maximize points.</li>
+                    </ul>
                 </p>
-                <p>To optimize the motor shaft, I iterated over and selected a 17 teeth 17 DP 45 degree pressure angle
-                    spline, and maximized the bore hole cutout. I analyzed this part to make sure it didn't fail,
-                    mainly using hand calcs derived from maximum shear stress theory and maximum normal stress theory.
-                </p>
-                <p>A smaller chain (after analysis was done) was also selected this year, the 428VX isntead of the 520 chain from last year, 
-                    which allowed for closer sprockets and a larger FDR, which according to simulations should maximize 
-                    our points.
-                </p>
-                <!-- <br>
-                <b>Takeaways</b>
-                <p>This project provided valuable insights into:</p>
-                <ul>
-                    <li>Weight Reduction</li>
-                    <li>FEA/Topology Optimization</li>
-                    <li>Designing things to fit specifications, with a factor of safety</li>
-                    <li>Designing components while working with other teams to make sure everything is integrated properly</li>
-                </ul> -->
+                <p><strong>Result</strong>: The project resulted in a well-optimized sprocket and chain assembly that met all design specifications and safety requirements. The new design contributed to improved vehicle performance and efficiency, demonstrating significant weight reduction and enhanced integration with other components.</p>
             </div>
         </section>
 

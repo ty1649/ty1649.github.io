@@ -50,45 +50,21 @@
         <section id="problem" class="content-section">
             <h2 class="section-title">Description</h2>
             <div class="section-content">
-                <p>In order to be able to create handwritten letters/homework and draw better pictures, I decided to make a 
-                    pen plotter. 
-                </p>
-                <p>I wanted to make every part of this pen plotter, from the mechanical components, to wiring the electrical components,
-                    and fully coding from scratch the control theory behind how to find which motor has to do what.
-                </p>
-                <p><b>NOTE: </b>This is still unfinished; the final thing left to do is to 3d print the pen holding mechanism -- the electrical
-                    and software has all been completed.
-                </p>
+                <p><b>Situation:</b> To enhance my ability to create handwritten letters and draw better pictures, I embarked on a project to build a pen plotter. The goal was to design and construct every component of the plotter, from the mechanical parts to the electrical wiring, and to develop the control theory from scratch to determine motor actions.</p>
+                <p><b>Task:</b> The project is still a work in progress, with the final task being the 3D printing of the pen holding mechanism. The electrical and software components have been completed, but the mechanical aspect requires further development.</p>
             </div>            
         </section>
 
         <section id="summary" class="content-section">
             <h2 class="section-title">Summary</h2>
             <div class="section-content">
-                <p>
-                    This was a daunting task to me, so I split it up into different sections, and tackled each one one at a time.
-                </p>
                 <p>Video of a mid-way checkpoint of this working, slowly -- there's been improvements since then.</p>
                 <iframe width="445" height="250" src="https://www.youtube.com/embed/Ts7QY2lUJlk?si=lprFeApaEcbYLpIj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 <br>
-                <b>Mechanical</b>
-                <p>
-                    I first designed the mechanical components -- since the core mission behind this project was for as much of this to be made by 
-                    myself as possible, I didn't want to buy linear rails, and set about to only buy as little as possible. However, after looking through options
-                     for precise linear motion, I decided the cheapest option would be to buy bearing balls, and 3d print my own recirculating ball bearings, which took 
-                     a couple iterations and are documented here: 
-                </p>
-                <p>
-                    Another major design choice I made was to use a CoreXY Belt configuration, which was decided on after considering other cartesian xy gantry movement designs.
-                    After some calculations and eyeballing, I didn't want my huge stepper motor to be moving, and CoreXY was the best option to have this. Designing this was a tiny bit 
-                    of a headache, to make sure all the belts were lined up and able to be assembled/work as it was intended to, and that all the pulleys were able to be placed 
-                    where they had to be. Since I used heat set inserts and fasteners to secure the pulleys/belt, I had to design around parts assembling too, which meant redesigning
-                    some parts if needed.
-                </p>
-                <p>
-                    Finally, with CoreXY, the belt tensioning is crucial for the gantry to move as required. I created a secure belt tensioning system, along with a stable frame to support this.
-                </p>
-                <b>Software</b>
+                <p><b>Action:</b></p>
+                <b>Mechanical:</b>
+                <p>I began by designing the mechanical components, aiming to fabricate as much as possible myself. Initially, I avoided purchasing linear rails, opting instead to buy bearing balls and 3D print recirculating ball bearings. This decision required several iterations, which are documented here. I chose a CoreXY belt configuration after evaluating other Cartesian XY gantry designs, as it allowed the large stepper motor to remain stationary. Designing this system was challenging, ensuring belt alignment and pulley placement were correct. I used heat set inserts and fasteners to secure the pulleys and belts, necessitating some redesigns. Additionally, I developed a secure belt tensioning system and a stable frame to support the gantry's movement.</p>
+                <b>Software:</b>
                 <div class="gallery-container">
                     <div class="gallery-grid">
                         <div class="gallery-item">
@@ -109,43 +85,10 @@
                         </div>
                     </div>
                 </div>
-                <p>
-                    I wanted the software to handle the GCode generation, which is a coded way of telling the motors when to lift/drop the pen, and where to move
-                    the pen based off an input. My idea was to be able to submit a screenshot/image, and the pen plotter to be able to trace and draw the image out,
-                    and in the future, if the pen plotter will be able to swap between colors, it'll be able to trace out the different colors too.
-                </p>
-                <p>
-                    To create this, I first tried applying a blur kernel, and then a edge detection kernel -- however, the output wasn't that great, and was hard to analyze for motor movement. However, 
-                    a better idea I came up with was to cluster the image into n clusters (look up k means clustering), a cluster for each color the pen plotter is able to draw. Then, I can parse through the bitmap image 
-                    and run logic that detects edges, and traces them into a SVG image (almost), and then connects these points using a list, into chains. The algorithm then has the motor follow these chains of pixels, and then 
-                    lifts the pen at the end of each chain and moves the pen to the start of the next chain, until its through with all the chains.
-                </p>
-                <p>
-                    This approach worked wonderfully -- some nuances were that the image had to be rotated with a matrix 45 degrees, and also scaled to a specific size, due to the different controls 
-                    that the CoreXY belt configuration induces. This often outputted some 20k lines of GCode, however, and the Arduino wasn't able to store and process all of these at once, which was a major problem.
-                </p>
-                <p>
-                    To solve this problem, I came up with a couple solutions: one was using a microusb, and having a txt file that the arduino can just read from; this was however hard, as there needed to be a lot of circuit modification, especially since 
-                    on the elctrical side, I was already using a cnc shield, that would take up all the pins on the arduino. another solution was to use somethign that had dual thread processing capabilities, such as an esp32; however
-                    , this was out of my cost range, especially since I already had an Arduino on hand. A third option I thought of was using Python to interface with Arduino, only sending a batch of gcodes each time the Arduino requests it, 
-                    and being better with coding than I am with circuits, I opted for this solution. I coded up a Python script that sends 50 gCodes over each time (this needed a lot of tuning, especially with data sending/receviing and baud rates). Every time hte Arduino 
-                    processes up to a certain point, it requests more to the Python script, which then sends the next batch, and this repeats thousands of times. 
-                </p>
-                <p>
-                   After a lot of debugging, this worked. A key thing to note is that the Arduino is doing two things simultaneously: processing the GCode, and sending timed pulses to the stepper motor based off the buffer of GCodes it has stored up, and these two things happen at different speeds.
-                </p>
-                <b>Electrical</b>
-                <p>
-                    Being one of the most complex projects I've done with electronics at this point in time, I was very confused on a lot of circuit elements -- however, through a lot of manual scrolling, and digging, I decided to just go with 
-                    off the shelf components I found on amazon and aliexpress. I initially went with A4988 stepper motor drivers, integrated with an Arduino CNC Shield, however, after overheating and shorting quite a few of these, I realized that they 
-                    don't operate good enough to power the stepper motors under the tensioning teh CoreXY system had the pulleys under, so i switched to knockoff TMC2208 drivers instead, which worked much better.
-                 </p>
-                 <p>
-                    I also bought a AC to DC 12V 60W power supply from aliexpress, and saved like 30 dollars -- but there was a huge spark and charred the first time i connected it, so I had to buy a replacement -- aliexpress sucks at quality.
-                    </p>
-                <!-- <br>
-                <b>Takeaways</b>
-                <p>This project provided valuable insights into:</p>-->
+                <p>The software was designed to generate GCode, instructing the motors on pen movements based on input images. My vision was for the plotter to trace and draw images, potentially swapping colors in the future. Initially, I applied blur and edge detection kernels, but the results were unsatisfactory. I then implemented k-means clustering to classify image colors, followed by edge detection to create SVG-like chains for the motors to follow. This approach was effective, and I also implemented a 45 degree image rotation and scaling due to the CoreXY configuration. The resulting GCode was extensive, exceeding the Arduino's capacity. To address this, I developed a Python script to send GCode in batches of 50, allowing the Arduino to request more as needed. This solution required extensive tuning of data transmission and baud rates.</p>
+                <b>Electrical:</b>
+                <p>This project was my most complex electronics endeavor. Initially, I used A4988 stepper motor drivers with an Arduino CNC Shield, but they overheated and shorted under the CoreXY tension. I switched to TMC2208 drivers, which performed better. I also purchased a 12V 60W power supply from AliExpress, which failed initially, so I had to debug and buy a replacement.</p>
+                <p><b>Result:</b> After significant debugging, the system functioned as intended. The Arduino simultaneously processes GCode and sends timed pulses to the stepper motor, managing these tasks at different speeds. This project provided valuable insights into integration between mechanical design, software development, and electrical engineering, despite the challenges faced along the way.</p>
             </div> 
         </section>
 

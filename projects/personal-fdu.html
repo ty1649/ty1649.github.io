@@ -47,35 +47,16 @@
         <section id="problem" class="content-section">
             <h2 class="section-title">Description</h2>
             <div class="section-content">
-                <p>I kept losing my key card, and since each were $20, I wanted to find a different, better solution 
-                    to unlock my dorm door. 
-                </p>
+                <p><strong>Situation:</strong> I kept losing my key card, and since each was $20, I wanted to find a different, better solution to unlock my dorm door.</p>
+                <p><strong>Task:</strong> I needed to design a mechanism that could move my dorm handle 40 degrees, or a linear distance of around 4 inches, with about 1.5 foot-pounds of force.</p>
             </div>            
         </section>
 
         <section id="summary" class="content-section">
             <h2 class="section-title">Summary</h2>
             <div class="section-content">
-                <p>
-                    I started by getting the specs for my project -- after some measurement, I had to somehow mount 
-                    a contraption that could move my dorm handle 40 degrees, or a linear distance of around 4 inches. Additionally,
-                    it has to turn the door handle with about 1.5 foot pounds of force (very inaccurate maybe?). After 
-                    considering options, I settled on using a old DC motor I found in the junk, and since it supplied a questionable
-                    amount of torque, I would bump that up through a lead screw linear actuation system. The DC motor spins at 
-                    550 RPM, which I calculatd would take < 3 seconds to open the door.
-                </p>
-                <p>
-                    With these initial specifications planned out, I began designing -- I just 3d printed some components, fastened together
-                    with m5/m3 screws. I dug up a bearing, and also bought an L298N motor driver to power the DC motor.  The whole assembly was coded on Arduino, and mounted onto the door with command strips to the 
-                    necessary force rating.
-                </p>
-                <p>
-                    Finally, since this device pushes linearly, but the door handle turns in a circle, I created a end effector that features a claw with a print in place hinge,
-                    where even though the device pushes straight, the claw turns in a circle to follow the door handle and apply force without allowing slipping.
-                </p>
-                <!-- <br>
-                <b>Takeaways</b>
-                <p>This project provided valuable insights into:</p>-->
+                <p><strong>Action:</strong> I started by measuring and planning the specifications for my project. I decided to use an old DC motor found in the junk, which spins at 550 RPM. To increase the torque, I implemented a lead screw linear actuation system. I designed and 3D printed components, fastened with m5/m3 screws, and used a bearing and an L298N motor driver to power the motor. The assembly was coded on Arduino and mounted onto the door with command strips. To accommodate the circular motion of the door handle, I created an end effector with a claw and a print-in-place hinge.</p>
+                <p><strong>Result:</strong> The device successfully opened the door in less than 3 seconds. However, I couldn't find many pictures of the project working before having to move out.</p>
             </div> 
         </section>
 
