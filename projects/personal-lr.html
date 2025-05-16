@@ -29,25 +29,16 @@
         <a href="/notes/">NOTES</a>
     </nav>
 
-    <nav class="table-of-contents">
-        <!-- <h2 class="toc-title">Jump To</h2> -->
-        <ul class="toc-list">
-            <li><a href="#problem">Description</a></li>
-            <li><a href="#work">My Work</a></li>
-            <li><a href="#results">Results</a></li>
-            <li><a href="#lessons">Lessons Learned</a></li>
-        </ul>
-    </nav>
-
     <main>
         <header class="project-header">
             <h1 class="project-title">3D Printable Recirculating Ball Linear Rails</h1>
             <div class="skills-section">
                 <h2 class="skills-title">Skills Gained</h2>
                 <div class="skills-list">
-                    <span class="skill-tag">3D Design</span>
-                    <span class="skill-tag">FDM Printing</span>
-                    <span class="skill-tag">Mechanical Design</span>
+                    <span class="skill-tag">CAD</span>
+                    <span class="skill-tag">FDM 3D Printing</span>
+                    <span class="skill-tag">Compliant Mechanisms</span>
+                    <span class="skill-tag">Rapid Prototyping/Iterations</span>
                     <span class="skill-tag">Tolerance Analysis</span>
                     <span class="skill-tag">Bearing Design</span>
                     <span class="skill-tag">Design for Manufacturing</span>
@@ -56,57 +47,79 @@
         </header>
 
         <section id="problem" class="content-section">
-            <h2 class="section-title">Problem Statement</h2>
+            <h2 class="section-title">Description</h2>
             <div class="section-content">
-                <p>Traditional linear rails, while precise and robust, are often expensive and require specialized manufacturing processes. This makes them inaccessible for many hobbyist projects and rapid prototyping applications. Commercial linear rails also come in fixed sizes and preload settings, limiting their adaptability to specific project needs. The challenge was to create a fully 3D printable linear rail system that could match the smooth operation and precision of commercial rails while being cost-effective and customizable.</p>
-                
-                <img src="/api/placeholder/800/400" alt="3D printed linear rail assembly showing recirculating ball mechanism" />
+                <strong>Situation/Task:</strong> <p>Wanted to custom design and manufacture accurate linear rails which are able to seta x amount of weight, while also moving accurately and smoothly.</p>
             </div>
         </section>
-
-        <section id="work" class="content-section">
-            <h2 class="section-title">My Work</h2>
+        <section id="summary" class="content-section">
+            <h2 class="section-title">Summary</h2>
             <div class="section-content">
-                <p>I developed a complete linear rail system that could be manufactured primarily through 3D printing, with only the bearing balls needing to be purchased. The design incorporates several innovative features to achieve smooth, precise motion while maintaining adjustability.</p>
+                <p>After iterating 7-8 times, I developed a complete linear rail system that is all 3D printed, with only tiny bearing balls to be bought.</p>
                 <ul>
-                    <li>Designed a recirculating ball bearing system that allows for continuous linear motion with minimal friction</li>
-                    <li>Created an adjustable preload mechanism that can be tuned after assembly to optimize between smoothness and rigidity</li>
+                    <li>Created an adjustable preload mechanism with a compliant mechanism that can be tuned after assembly to optimize between smoothness and rigidity for accuracy and speed</li>
                     <li>Engineered precise ball return pathways to ensure smooth transition of bearing balls between loaded and return channels</li>
-                    <li>Developed a modular design that allows for easy customization of rail length and bearing block size</li>
-                    <li>Optimized the design for FDM 3D printing, considering layer adhesion strength and print orientation</li>
-                    <li>Implemented features to allow for easy assembly and maintenance, including access points for ball insertion and removal</li>
+                    <li>Developed a modular design that allows for easy adjustment of rail length and block size</li>
+                    <li>Implemented features to allow for easy printing and assembly</li>
                 </ul>
+                <p><strong>Result</strong>: Successfully created fully functional linear rails, used in my pen plotter project. Also taught me a lot about DFM (especially for 3d printing), the iterative process and problem solving, and helped me gain a deep understanding on how bearings/linear rails work.</p>
+                <p>A couple of the iterations can be seen below:</p>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="step1.png" alt="Image" class="gallery-image">
+                        <p class="gallery-caption">No Preload</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="step2.png" alt="Image" class="gallery-image">
+                        <p class="gallery-caption">Different Alignment Methods</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="step3.png" alt="Image" class="gallery-image">
+                        <p class="gallery-caption">Cutouts in Top for Preload Adjustment</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="step4.png" alt="Image" class="gallery-image">
+                        <p class="gallery-caption">Final Version for 3d Pen Plotter</p>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <section id="results" class="content-section">
-            <h2 class="section-title">Results</h2>
+        <section id="images" class="content-section">
+            <h2 class="section-title">Images</h2>
             <div class="section-content">
-                <p>The 3D printed linear rail system successfully achieved its goals of creating an accessible, customizable alternative to commercial linear rails.</p>
-                <ul>
-                    <li>Successfully created fully functional recirculating ball linear rails using primarily 3D printed components</li>
-                    <li>Achieved smooth, low-friction motion comparable to entry-level commercial linear rails</li>
-                    <li>Significantly reduced cost compared to commercial alternatives while maintaining functionality</li>
-                    <li>Created a design that can be easily modified for different applications and size requirements</li>
-                    <li>Implemented adjustable preload that allows for fine-tuning of bearing performance</li>
-                    <li>Developed a system that can be manufactured using consumer-grade 3D printers</li>
-                </ul>
+                <p>Not too many pictures/videos for this, will add more later maybe -- here's the first iteration working!</p>
+                <iframe width="198" height="350" src="https://www.youtube.com/embed/rmzdUWwRgZY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
-        </section>
-
-        <section id="lessons" class="content-section">
-            <h2 class="section-title">Lessons Learned</h2>
-            <div class="section-content">
-                <p>This project provided invaluable experience in precision mechanical design and the limitations and capabilities of 3D printing for functional components.</p>
-                <ul>
-                    <li>Gained deep understanding of bearing design principles and the importance of precise tolerance control</li>
-                    <li>Learned techniques for optimizing 3D printed parts for strength and dimensional accuracy</li>
-                    <li>Developed skills in designing adjustable mechanical systems that can be tuned after assembly</li>
-                    <li>Discovered methods for creating smooth ball return pathways that minimize friction and noise</li>
-                    <li>Understood the importance of considering assembly and maintenance requirements during the design phase</li>
-                    <li>Learned to balance theoretical design ideals with practical manufacturing constraints</li>
-                </ul>
-            </div>
+            <!-- <div class="image-grid">
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="lr-cover.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im1.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im4.png" alt="Image">
+                    </div>
+                    <div class="image-container">
+                        <img src="im5.png" alt="Image 5">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im2.png" alt="Image">
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im3.png" alt="Image 5">
+                    </div>
+                </div>
+            </div> -->
         </section>
     </main>
 
