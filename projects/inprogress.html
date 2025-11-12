@@ -95,14 +95,14 @@
 
         .construction-container {
             text-align: center;
-            padding: 100px 20px;
+            padding: 10px 20px;
             max-width: 500px;
             margin: 0 auto;
         }
 
         .construction-symbol {
             font-size: 14px;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             letter-spacing: 5px;
             font-family: monospace;
         }
@@ -119,6 +119,32 @@
             font-size: 14px;
             line-height: 2;
             opacity: 0.8;
+        }
+
+        .sneak-peek-section {
+            margin-top: 0px;
+            text-align: center;
+        }
+
+        .sneak-peek-text {
+            font-size: 14px;
+            line-height: 2;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        .presentation-iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            border: 1px solid var(--line-color-light);
+            border-radius: 8px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        body.dark-mode .presentation-iframe {
+            border-color: var(--line-color-dark);
         }
 
         .table-of-contents {
@@ -298,6 +324,10 @@
             .construction-container {
                 padding: 60px 20px;
             }
+
+            .presentation-iframe {
+                height: 400px;
+            }
         }
     </style>
 </head>
@@ -338,9 +368,14 @@
             <h2 class="construction-title">In Development</h2>
             <p class="construction-message">
                 This page is currently being worked on.<br>
-                Will be done soon!
             </p>
         </section>
+
+        <section class="sneak-peek-section">
+            <p class="sneak-peek-text">
+                in the meantime, sneak peek at some slides I made for a design review 😄:
+            </p>
+            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ_qmNU0TPDIjW_cBAMExAqcv7uWxdigAlwBbs2_aCl52-IUFisPUxF9taBysxJAOG6mpU0VbIoUPAD/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>        </section>
     </main>
 
     <script src="/scripts/theme-toggle.js"></script>
