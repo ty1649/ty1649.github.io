@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PIGLR | Terry Yu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+        name="description"
+        content="PIGLR Project"
+    >
+    <link rel="stylesheet" href="/styles/project-styles.css">
+    <base href="images/piglr/" />
+
+    <style>
+        /*
+            Page-specific additions for the scrollable progress log.
+            These use the same variables and general styling as project-styles.css.
+        */
+
+        .log-disclaimer {
+            margin-bottom: 20px;
+            padding: 14px 16px;
+            border: 1px solid var(--line-color-light);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            background-color: var(--bg-color-light);
+        }
+
+        body.dark-mode .log-disclaimer {
+            background-color: var(--bg-color-dark);
+            border-color: var(--line-color-dark);
+            border-left-color: var(--accent-color);
+        }
+
+        .log-disclaimer p {
+            margin: 0;
+        }
+
+        .progress-log {
+            width: 95%;
+            max-height: 490px;
+            margin: 0 auto;
+            overflow-y: auto;
+            overflow-x: hidden;
+            overscroll-behavior: contain;
+
+            padding: 0 18px;
+
+            background-color: rgba(0, 0, 0, 0.035);
+            border: 1px solid var(--line-color-light);
+            border-radius: 8px;
+
+            scrollbar-width: thin;
+            scrollbar-color: var(--text-color-light) transparent;
+        }
+
+        body.dark-mode .progress-log {
+            background-color: rgba(255, 255, 255, 0.055);
+            border-color: var(--line-color-dark);
+            scrollbar-color: var(--text-color-dark) transparent;
+        }
+
+        .progress-log::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .progress-log::-webkit-scrollbar-track {
+            background: var(--bg-color-light);
+        }
+
+        .progress-log::-webkit-scrollbar-thumb {
+            background: var(--text-color-light);
+            border-radius: 8px;
+        }
+
+        body.dark-mode .progress-log::-webkit-scrollbar-track {
+            background: var(--bg-color-dark);
+        }
+
+        body.dark-mode .progress-log::-webkit-scrollbar-thumb {
+            background: var(--text-color-dark);
+        }
+
+        .progress-entry {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        body.dark-mode .progress-entry {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .progress-entry:last-child {
+            border-bottom: none;
+        }
+
+        .progress-date {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            display: inline-block;
+            margin: 0 0 12px;
+            padding: 4px 10px;
+            border: 1px solid var(--line-color-light);
+            border-radius: 15px;
+            background-color: var(--bg-color-light);
+            color: var(--text-color-light);
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        body.dark-mode .progress-date {
+            background-color: var(--bg-color-dark);
+            color: var(--text-color-dark);
+            border-color: var(--line-color-dark);
+        }
+
+        .progress-entry p {
+            margin-bottom: 12px;
+        }
+
+        .progress-entry p:last-child {
+            margin-bottom: 0;
+        }
+
+        .progress-entry ul,
+        .progress-entry ol {
+            padding-left: 22px;
+            margin: 10px 0 14px;
+        }
+
+        .progress-entry li {
+            margin-bottom: 7px;
+        }
+
+        .progress-entry code {
+            overflow-wrap: anywhere;
+            font-family: monospace;
+        }
+
+        .log-code {
+            margin: 14px 0;
+            padding: 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.035);
+            color: var(--text-color-light);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        body.dark-mode .log-code {
+            color: var(--text-color-dark);
+            border-color: rgba(255, 255, 255, 0.25);
+            background-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .hold-notice {
+            margin: 24px auto 0;
+            width: 95%;
+            padding: 20px 24px;
+
+            background-color: #9f1d2a;
+            border: 2px solid #75141e;
+            border-radius: 8px;
+            color: #ffffff;
+
+            text-align: center;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+
+            box-shadow: 0 3px 10px rgba(117, 20, 30, 0.22);
+        }
+
+        body.dark-mode .hold-notice {
+            background-color: #7f1822;
+            border-color: #d85b66;
+            color: #ffffff;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+        }
+
+                .hold-notice-title,
+        .hold-notice-text {
+            display: block;
+        }
+
+        .hold-notice-title {
+            margin-bottom: 4px;
+            font-size: 18px;
+            letter-spacing: 0.8px;
+        }
+
+        .hold-notice-text {
+            font-size: 14px;
+            font-weight: normal;
+            letter-spacing: 0.2px;
+        }
+
+@media screen and (max-width: 768px) {
+    .hold-notice {
+        width: 100%;
+        padding: 17px 15px;
+    }
+
+    .hold-notice-title {
+        font-size: 16px;
+    }
+
+    .hold-notice-text {
+        font-size: 13px;
+    }
+}
+
+        @media screen and (max-width: 768px) {
+            .progress-log {
+                width: 100%;
+                max-height: 52vh;
+                padding: 0 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/projects/" class="back-button">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Return to Projects
+    </a>
+
+    <nav class="sidenav">
+        <button class="theme-toggle" id="theme-toggle">🌞</button>
+
+        <a href="/" class="home-link">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+
+        <a href="/projects/">PROJECTS</a>
+        <a href="/notes/">NOTES</a>
+    </nav>
+
+    <main>
+        <header class="project-header">
+            <h1 class="project-title">PIGLR</h1>
+
+            <div class="skills-section">
+                <h2 class="skills-title">Skills Gained</h2>
+
+                <div class="skills-list">
+                    <span class="skill-tag">Embedded Firmware</span>
+                    <span class="skill-tag">Zephyr RTOS</span>
+                    <span class="skill-tag">LTE-M / NB-IoT</span>
+                    <span class="skill-tag">GNSS</span>
+                    <span class="skill-tag">MQTT / TLS</span>
+                    <span class="skill-tag">KiCad</span>
+                    <span class="skill-tag">PCB Design</span>
+                    <span class="skill-tag">Power Electronics</span>
+                    <span class="skill-tag">Hardware Integration</span>
+                </div>
+            </div>
+        </header>
+
+        <section id="problem" class="content-section">
+            <h2 class="section-title">Description</h2>
+
+            <div class="section-content">
+                <p>
+                    PIGLR is a pair of handheld, battery-powered devices that can locate
+                    each other outdoors and send a simple “bump” or ping.
+                </p>
+
+                <!-- <p>
+                    each device uses lte + gnss to share its location through a cloud
+                    relay, then displays the distance and general direction to the other
+                    device. ble is mainly there for nearby / very close proximity stuff,
+                    and there is haptic feedback when a bump is sent or received.
+                </p> -->
+<!-- 
+                <p>
+                    the overall goal is to make something that feels like a realistic
+                    consumer device instead of putting a dev board in a box: compact,
+                    reliable, power-aware, and honest when the location is stale or there
+                    is no fix.
+                </p> -->
+            </div>
+        </section>
+
+        <!-- <section id="summary" class="content-section">
+            <h2 class="section-title">Summary</h2>
+
+            <div class="section-content">
+                <p><strong>Current work:</strong></p>
+
+                <ul>
+                    <li>
+                        built a self-hosted mosquitto mqtt broker using docker on a
+                        digitalocean vm
+                    </li>
+                    <li>
+                        established mqtt/tls communication between an nrf9160 development
+                        board and the cloud over lte
+                    </li>
+                    <li>
+                        developed the main firmware loop for wake, lte registration,
+                        time sync, mqtt communication, retries, persistent state, and sleep
+                    </li>
+                    <li>
+                        defined location and bump topics, json payloads, qos behavior,
+                        retained messages, and device-side deduplication
+                    </li>
+                    <li>
+                        designed the rev a schematic and custom four-layer carrier pcb
+                        around the ln60e840f module
+                    </li>
+                    <li>
+                        integrated charging, power-path control, a buck-boost regulator,
+                        fuel gauge, display, sensors, haptics, buttons, antennas, and debug
+                        access
+                    </li>
+                </ul>
+
+                <p>
+                    <strong>Current result:</strong>
+                    the firmware/backend proof of concept works, and the custom rev a pcb
+                    has reached the final checking stage before fabrication and bring-up.
+                </p>
+            </div>
+        </section> -->
+
+        <section id="progress" class="content-section">
+            <h2 class="section-title">Day-to-Day Logs</h2>
+
+            <div class="section-content">
+                <div class="log-disclaimer">
+                    <p>
+                        <strong>disclaimer:</strong> these are rough day project
+                        logs, not a polished technical report. they are mostly cleaned-up
+                        versions of whatever i wrote down while working, so some parts may
+                        be incomplete, or uncertain. not uploaded is requirements doc, which has been adjusting
+                    </p>
+                </div>
+
+                <div
+                    class="progress-log"
+                    tabindex="0"
+                    aria-label="Scrollable PIGLR progress logs"
+                >
+                    <article class="progress-entry">
+                        <h3 class="progress-date">2/24</h3>
+
+                        <p>
+                            rough overall scope of project defined, overall requirements
+                            and stuff, first starting on the firmware.
+                        </p>
+
+                        <p>
+                            created an ip address on digitalocean, then used mosquitto to
+                            create a docker container running on this vm. called it
+                            <code>lr-broker</code>, and set up the certificates in there
+                            plus password files for the first device.
+                        </p>
+
+                        <p>
+                            this is then called in the firmware to try to connect to it.
+                        </p>
+
+                        <p>
+                            also figured out how to connect and publish to it from my
+                            computer using <code>mosquitto_pub</code>.
+                        </p>
+
+                        <p>
+                            right now i am just trying to get the most basic path working:
+                            computer to broker, and then eventually broker to the nrf over
+                            lte.
+                        </p>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">3/3</h3>
+
+                        <p>
+                            learned how to get everything built and flashed on the nrf. am
+                            running through issues that could cause an error
+                            <code>-111</code> when running the code.
+                        </p>
+
+                        <p>
+                            first i am just trying a one-way handshake between one thing,
+                            to publish a message to my ip.
+                        </p>
+
+                        <p>
+                            the modem library initializes, it connects to the lte network,
+                            and the network time syncs successfully, but then:
+                        </p>
+
+                        <pre class="log-code"><code>mqtt_connect, error: -111
+failed to connect to mqtt, error code: -111</code></pre>
+
+                        <p>things i did to narrow it down:</p>
+
+                        <ul>
+                            <li>
+                                tried to see if it was because things weren’t being enabled
+                                in <code>prj.conf</code>
+                            </li>
+                            <li>checked time sync</li>
+                            <li>checked kconfig symbol traps</li>
+                            <li>
+                                checked tls v2 and the ordering of things being turned on
+                                in <code>mosquitto.conf</code>
+                            </li>
+                            <li>
+                                checked the ca certificate, made sure it matched, and
+                                regenerated it
+                            </li>
+                            <li>
+                                checked for bugs in my <code>main.c</code>, such as
+                                key-sending stuff or not sending names correctly
+                            </li>
+                            <li>
+                                changed from rsa4096 to the smaller ecdsa p256 size
+                            </li>
+                            <li>
+                                got a duckdns host to test whether the ip was the issue:
+                                <code>piglr.duckdns.org</code>
+                            </li>
+                            <li>
+                                found a <code>-1</code> test result coming from a code bug
+                                in my <code>main.c</code>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">3/3, 2:00 am</h3>
+
+                        <p><strong>IT’S WORKING LFGGGG.</strong></p>
+
+                        <p>
+                            the last thing, on top of everything else i changed, made it
+                            work. when i send <code>LEDON</code> from my computer to the
+                            dns, it turns the led on on the board, and when i send
+                            <code>LEDOFF</code>, it turns it off.
+                        </p>
+
+                        <p>
+                            i gave up hope once my computer died but i have revived it.
+                        </p>
+
+                        <p>
+                            this is the first time i have the whole basic path working from
+                            my computer, through the broker, over lte, and onto the actual
+                            board.
+                        </p>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">3/3</h3>
+
+                        <p>
+                            finalizing overall requirements, acceptance tests, and
+                            communication packets required.
+                        </p>
+
+                        <p>
+                            set up the acl file, created a new topic subscribe and deny
+                            channel, and added and built the loop in
+                            <code>main.c</code>.
+                        </p>
+
+                        <p>the current pseudocode is basically:</p>
+
+                        <pre class="log-code"><code>INITIALIZATION:
+    initialize LEDs, buttons, and flash storage
+    load persistent variables from flash:
+    bump_id, loc_seq, last_received_bump_id, next_gps_time
+
+BOOT MODEM:
+    provision TLS certificate
+    register with LTE network
+    request power saving mode from the tower
+
+MAIN LOOP:
+    check if LTE is still registered
+    sync UTC time if needed for TLS
+
+    connect to piglr.duckdns.org over TLS
+    subscribe to "my bumps" and "peer location" topics
+
+    open a short polling window
+    wait and listen for incoming messages from the peer
+
+    if a bump JSON arrives:
+        parse the bump_id
+
+        if bump_id &gt; last_seen:
+            accept the bump
+            trigger haptics
+            save the new last_seen value to flash
+
+        otherwise:
+            ignore it as a duplicate
+
+    if the button was pressed while asleep:
+        build the bump JSON
+        publish it to the peer’s bump topic
+        increment bump_id and save it to flash
+
+    if enough time has passed since the last GPS update:
+        run the GPS logic
+        publish retained location JSON
+        calculate and save next_gps_time
+
+    disconnect MQTT
+    reset or increment fail_count
+    sleep</code></pre>
+
+                        <p>
+                            the overall idea is that the device wakes up every five
+                            minutes, connects, checks for stuff, does whatever it needs to
+                            do, and then sleeps again.
+                        </p>
+
+                        <p>
+                            if something fails, it waits 60 seconds, 120 seconds, 300
+                            seconds, etc. instead of instantly trying over and over.
+                        </p>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">3/6</h3>
+
+                        <p>
+                            feel like this code finally makes more sense to me.
+                        </p>
+
+                        <p>possible optimizations:</p>
+
+                        <ul>
+                            <li>
+                                instead of keeping it open for 15 seconds during polling,
+                                keep this adaptive. if no bump has been received, just
+                                close the polling window early
+                            </li>
+                            <li>
+                                keep the five-minute sleeping window adaptive, maybe based
+                                on time of day or whether a bump was just sent or received.
+                                probably not doing this yet
+                            </li>
+                            <li>don’t ensure time is valid every cycle</li>
+                        </ul>
+
+                        <p>
+                            still need to think about what actually has to happen on every
+                            wake and what can be reused instead of repeating setup stuff
+                            and wasting power.
+                        </p>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">3/9</h3>
+
+                        <p>finalizing:</p>
+
+                        <ul>
+                            <li>topic schema</li>
+                            <li>payload fields</li>
+                            <li>qos/retain policy</li>
+                            <li>bump dedupe rule</li>
+                            <li>gnss timeout rule</li>
+                            <li>retry cadence</li>
+                        </ul>
+
+                        <p>
+                            need to actually write all of those down instead of leaving
+                            them scattered around.
+                        </p>
+
+                        <p>location is published to:</p>
+
+                        <pre class="log-code"><code>pairs/&lt;pair_id&gt;/loc/&lt;device_id&gt;</code></pre>
+
+                        <p>
+                            and each device reads from the peer’s version of that topic.
+                        </p>
+
+                        <p>
+                            location uses qos 0 and is retained, since the other device
+                            should be able to wake up and immediately get the latest known
+                            location.
+                        </p>
+
+                        <p>bumps are sent to:</p>
+
+                        <pre class="log-code"><code>pairs/&lt;pair_id&gt;/bump/&lt;target_device_id&gt;</code></pre>
+
+                        <p>
+                            bumps use qos 1 and are not retained. each one has a
+                            <code>bump_id</code> so the receiving device can dedupe it
+                            instead of vibrating multiple times if mqtt redelivers
+                            something.
+                        </p>
+
+                        <p>
+                            implementing a-gps, ui/ux and states, hardware
+                            display/magnetometer/power stuff, and long soak later.
+                        </p>
+
+                        <p>transitioning over to hardware/pcb support now.</p>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">3/26</h3>
+
+                        <p>
+                            been a while, but i have mainly been working on the schematic.
+                        </p>
+
+                        <p>
+                            i’ve done the hardware summaries and chosen the hardware.
+                            hopefully this is already half and i can finish by the end of
+                            april.
+                        </p>
+
+                        <p>the current main hardware is:</p>
+
+                        <ul>
+                            <li>ln60e840f main module</li>
+                            <li>sharp ls027b7dh01 display</li>
+                            <li>lis2mdl magnetometer</li>
+                            <li>lis2dw12 accelerometer</li>
+                            <li>drv2605l haptic driver</li>
+                            <li>bq24074 charger and power path</li>
+                            <li>max17048 fuel gauge</li>
+                            <li>protected 1s lipo</li>
+                            <li>tps63802 main 3.3 v buck-boost</li>
+                            <li>external lte and gnss antennas</li>
+                            <li>usb-c charging</li>
+                            <li>tag-connect swd and uart pads for debugging</li>
+                        </ul>
+
+                        <p>
+                            rev a is supposed to be a working prototype carrier board
+                            around the module. it is optimized for bring-up success, low
+                            integration risk, strong debug visibility, compact but not
+                            over-minimized layout, and preserving a path to later
+                            miniaturization.
+                        </p>
+
+                        <p>
+                            basically, rev a is not trying to be the smallest final
+                            product. it just needs to be electrically robust, easy to
+                            debug, mechanically plausible, rf-aware, sensor-aware, and good
+                            enough to become a real working handheld prototype.
+                        </p>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">3/27, 2:00 am</h3>
+
+                        <p>
+                            should be pretty done with the schematic now, hopefully.
+                        </p>
+
+                        <p>the main power path is:</p>
+
+                        <pre class="log-code"><code>USB-C 5 V
+→ BQ24074 charger and power path
+→ battery / VSYS
+→ TPS63802 buck-boost
+→ 3V3_MAIN</code></pre>
+
+                        <p>
+                            there is also a separate display power block because the sharp
+                            display needs an approximately 5 v panel rail while the logic
+                            stays in the 3.3 v domain.
+                        </p>
+
+                        <p>
+                            one thing i changed was going from a normal buck regulator to
+                            a buck-boost. a buck-only setup was looking electrically
+                            marginal because <code>VSYS</code> can fall below 3.3 v during
+                            realistic battery operation and lte current bursts.
+                        </p>
+
+                        <p>
+                            the buck-boost should keep the main 3.3 v rail regulated
+                            through that.
+                        </p>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">4/8</h3>
+
+                        <p>
+                            so stuck in this layout thing. it has been almost two weeks
+                            already and i should really set myself a timeline for one more
+                            week.
+                        </p>
+
+                        <p>trying to fit so many things:</p>
+
+                        <ol>
+                            <li>battery thickness/size</li>
+                            <li>m.2 connector and module thickness</li>
+                            <li>jst connector thickness</li>
+                            <li>minimum bend radius for the display</li>
+                            <li>organizing power rails close by</li>
+                            <li>
+                                keepout zones, keeping the lis2mdl, haptic motor, inductor,
+                                and gnss antenna apart
+                            </li>
+                            <li>
+                                button placement—not under the display, and somewhere easy
+                                to access
+                            </li>
+                            <li>
+                                the m.2 module needs a bolt to retain it and hold it down
+                            </li>
+                            <li>test point type</li>
+                        </ol>
+
+                        <p>target rev 1:</p>
+
+                        <pre class="log-code"><code>projected current thickness: under around 15 mm
+enclosure size: around 70 mm × 70 mm</code></pre>
+
+                        <p>
+                            the actual routing is only part of the issue. most of the
+                            layout problems right now are physical packaging
+                            problems—component height, cable direction, battery volume,
+                            antenna areas, and being able to actually press the buttons
+                            once everything is assembled.
+                        </p>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">4/20</h3>
+
+                        <p>okay i really need to rethink everything.</p>
+
+                        <p>
+                            i realized multiple things, such as how my current button
+                            configuration isn’t going to work because i need something
+                            like a pcb connected to the main pcb with the tactile buttons
+                            smt soldered onto there.
+                        </p>
+
+                        <p>
+                            the biggest thing is that my c-shaped pcb around the battery
+                            isn’t going to work.
+                        </p>
+
+                        <p>
+                            this is mainly due to the display fpc connector being too
+                            short. since i’m wrapping the cable around the main four-layer
+                            pcb anyway, it will only go around 1 mm above the pcb’s
+                            backside.
+                        </p>
+
+                        <p>
+                            i also realized that the m.2 connector is shorter than
+                            expected. it is actually only around 2.5 mm above the pcb
+                            instead of 4.2 mm, and the module is also thicker on the side
+                            above the pcb.
+                        </p>
+
+                        <p>
+                            this leaves not enough thickness for a 5–6 mm battery to fit
+                            under the display.
+                        </p>
+
+                        <p>there are a couple solutions:</p>
+
+                        <ol>
+                            <li>
+                                display angled—not cool, but i can keep the current pcb
+                                shape
+                            </li>
+                            <li>
+                                make the whole thing thicker, around 15 mm. wondering how
+                                thick this actually feels, but this could fit a 500–1000
+                                mah battery
+                            </li>
+                            <li>
+                                smaller battery. found some smaller ones, but they are
+                                closer to 150 mah
+
+                                <ul>
+                                    <li>
+                                        could also have an optional extra battery pack
+                                        adapter, which attaches another battery in
+                                        parallel to extend battery life
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <p>
+                            leaning toward number 3 unless i test-fit number 2 later and it
+                            actually feels good and 15 mm doesn’t feel too thick.
+                        </p>
+
+                        <p>
+                            the rest of it is kind of wired. also had to fix a lot of
+                            solder-mask expansion issues and a lot of clearance errors.
+                        </p>
+
+                        <p>
+                            i should really finish this even sooner. i wanted to have at
+                            least a day or two to test the stuff at formula using their
+                            oscilloscope, but i don’t think i’ll be able to make that
+                            timeline anymore rip.
+                        </p>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">4/20</h3>
+
+                        <p>
+                            c shape scrapped for more of a square shape, with things
+                            slightly reorganized.
+                        </p>
+
+                        <p>decided:</p>
+
+                        <ul>
+                            <li>button placement</li>
+                            <li>battery placement/connection</li>
+                        </ul>
+
+                        <p>
+                            i think that pretty much wraps up the big stuff to do for the
+                            time being. now it is just finishing the wiring and
+                            double-checking everything, and then i should be pretty much
+                            good.
+                        </p>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">4/20</h3>
+
+                        <p>through-hole buttons not working.</p>
+
+                        <p>
+                            the physical button stack-up does not fit the way i thought it
+                            would, so i need to switch to surface-mount buttons and
+                            reorganize that whole side of the board.
+                        </p>
+                    </article>
+
+                    <article class="progress-entry">
+                        <h3 class="progress-date">4/27</h3>
+
+                        <p>
+                            rewired everything with the new layout, edited a lot of things
+                            around, and just about almost finished it.
+                        </p>
+
+                        <p>a lot of stuff changed around, as you can see:</p>
+
+                        <ul>
+                            <li>
+                                through-hole buttons were not going to work, so i found
+                                surface-mounted ones
+                            </li>
+                            <li>
+                                reordered stuff around, including the battery and test
+                                points
+                            </li>
+                            <li>labeled things with silkscreen</li>
+                            <li>added a slot for module retention</li>
+                            <li>added mounting holes</li>
+                            <li>changed the regulator</li>
+                            <li>added another bulk capacitance</li>
+                            <li>finalized the haptic motor</li>
+                            <li>finalized the sensor location</li>
+                            <li>finished wiring everything up</li>
+                            <li>finished the zone pours and the such</li>
+                        </ul>
+
+                        <p>
+                            the noisy power section is kept away from the magnetometer, the
+                            haptic motor is separated from the sensor area, and the lte and
+                            gnss antenna areas have their own keepout considerations.
+                        </p>
+
+                        <p>
+                            the board is now much closer to an actual thing that could fit
+                            into an enclosure instead of just a collection of components
+                            connected together.
+                        </p>
+
+                        <p>
+                            still need to double-check footprints, cable directions,
+                            clearances, test points, the bom, and all the mechanical stuff
+                            before ordering.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="hold-notice">
+                    <span class="hold-notice-title">PROJECT CURRENTLY ON HOLD</span>
+                    <span class="hold-notice-text">
+                        pending summer internship — will resume pcb bring-up after the summer
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section id="images" class="content-section">
+            <h2 class="section-title">Images</h2>
+
+            <div class="section-content">
+                <p>more pictures coming soon!</p>
+            </div>
+
+            <div class="image-grid">
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="piglr-cover.png" alt="PIGLR project cover">
+                    </div>
+
+                    <div class="image-container">
+                        <img src="im4.png" alt="Early PIGLR PCB layout">
+                    </div>
+                </div>
+
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im2.png" alt="PIGLR PCB front view">
+                    </div>
+
+                    <!-- <div class="image-container">
+                        <img src="im5.png" alt="PIGLR PCB rear view">
+                    </div> -->
+                </div>
+
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im3.png" alt="PIGLR component layout">
+                    </div>
+                </div>
+
+                <div class="image-column">
+                    <div class="image-container">
+                        <img src="im1.png" alt="Updated PIGLR PCB layout">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p style="text-align: left;">
+            Made by Terry Yu
+
+            <span style="float: right;">
+                <i>last updated 2026</i>
+            </span>
+        </p>
+    </footer>
+
+    <script src="/scripts/theme-toggle.js"></script>
+</body>
+</html>
