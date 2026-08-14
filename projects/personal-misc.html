@@ -5,95 +5,18 @@
         <title>Misc Projects | Terry Yu</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Miscellaneous Engineering Projects">
+        <link rel="stylesheet" href="/styles/site.css">
+        <link rel="stylesheet" href="/styles/project-styles.css">
         <style>
-            :root {
-                --bg-color-light: #ffffff;
-                --text-color-light: #333333;
-                --bg-color-dark: #121212;
-                --text-color-dark: #dddddd;
-                --line-color-light: #000000;
-                --line-color-dark: #ffffff;
-                --border-color: #e0e0e0;
-                --accent-color: #e63946;
-            }
-    
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: Georgia, Garamond;
-            }
-    
-            body {
-                background-color: var(--bg-color-light);
-                color: var(--text-color-light);
-                padding: 30px;
-                padding-left: 90px;
-                max-width: 1200px;
-                margin: 0 auto;
-                line-height: 1.6;
-                transition: background-color 0.3s, color 0.3s;
-            }
-    
-            body.dark-mode {
-                background-color: var(--bg-color-dark);
-                color: var(--text-color-dark);
-            }
-    
-            .back-button {
-                position: fixed;
-                top: 30px;
-                left: 90px;
-                padding: 5px 10px;
-                background-color: var(--bg-color-light);
-                border: 1px solid var(--text-color-light);
-                color: var(--text-color-light);
-                text-decoration: none;
-                font-size: 12px;
-                transition: all 0.2s ease;
-                z-index: 3;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                border-radius: 15px;
-            }
-
-            body.dark-mode .back-button {
-                border-color: var(--text-color-dark);
-                color: var(--text-color-dark);
-                background-color: var(--bg-color-dark);
-            }
-
-            .back-button:hover {
-                transform: scale(1.05);
-            }
-
-            .back-button svg {
-                width: 14px;
-                height: 14px;
-            }
-    
-            .project-header {
-                margin-bottom: 40px;
-                border-bottom: 1px solid var(--line-color-light);
-                padding-top: 70px;
-                padding-bottom: 20px;
-            }
-    
-            .project-title {
-                font-size: 20px;
-                margin-bottom: 20px;
-                font-weight: bold;
-                letter-spacing: 0.5px;
-            }
-    
+            /* Page-specific: this page uses its own card-grid layout for sub-projects,
+               distinct from the shared image-grid gallery pattern. */
             .projects-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
                 gap: 30px;
                 margin-top: 30px;
             }
-    
+
             .project-card {
                 border: 1px solid var(--line-color-light);
                 border-radius: 8px;
@@ -102,33 +25,29 @@
                 display: flex;
                 flex-direction: column;
             }
-    
+
             body.dark-mode .project-card {
                 border-color: var(--line-color-dark);
             }
-    
-            /* .project-card:hover {
-                transform: translateY(-5px);
-            } */
-    
+
             .project-image {
                 width: 100%;
                 height: 200px;
                 object-fit: cover;
                 border-bottom: 1px solid var(--line-color-light);
             }
-    
+
             body.dark-mode .project-image {
                 border-color: var(--line-color-dark);
             }
-    
+
             .project-info {
                 padding: 20px;
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
             }
-    
+
             .project-name-container {
                 display: flex;
                 justify-content: space-between;
@@ -137,205 +56,61 @@
                 padding-bottom: 10px;
                 border-bottom: 1px solid var(--line-color-light);
             }
-    
+
             body.dark-mode .project-name-container {
                 border-color: var(--line-color-dark);
             }
-    
+
             .project-name {
                 font-size: 16px;
                 font-weight: normal;
             }
-    
+
             .github-link {
                 color: var(--text-color-light);
                 transition: transform 0.2s ease;
             }
-    
+
             body.dark-mode .github-link {
                 color: var(--text-color-dark);
             }
-    
+
             .github-link:hover {
                 transform: scale(1.1);
             }
-    
+
             .project-date {
                 font-size: 12px;
                 color: #666;
                 margin-bottom: 10px;
             }
-    
+
             body.dark-mode .project-date {
                 color: #aaa;
             }
-    
+
             .project-description {
                 font-size: 13px;
                 line-height: 1.5;
                 font-style: italic;
                 margin-bottom: 15px;
             }
-    
+
             .project-skills {
                 margin-top: auto;
                 display: flex;
                 flex-wrap: wrap;
                 gap: 8px;
             }
-    
-            .skill-tag {
-                padding: 5px 12px;
-                border: 1px solid var(--accent-color);
-                border-radius: 15px;
-                font-size: 12px;
-                color: var(--accent-color);
-            }
 
-            .footer {
-                margin-top: 40px;
-                padding-top: 20px;
-                border-top: 1px solid var(--line-color-light);
-                font-size: 14px;
-                transition: border-color 0.3s;
-            }
-
-            body.dark-mode .footer {
-                border-top-color: var(--line-color-dark);
-            }
-    
-            .sidenav {
-                position: fixed;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 60px;
-                border-right: 1px solid var(--line-color-light);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 30px;
-                background: var(--bg-color-light);
-                z-index: 2;
-            }
-
-            body.dark-mode .sidenav {
-                background-color: var(--bg-color-dark);
-                border-right-color: var(--line-color-dark);
-            }
-
-            .sidenav a {
-                writing-mode: vertical-rl;
-                transform: rotate(180deg);
-                text-decoration: none;
-                color: var(--text-color-light);
-                font-size: 14px;
-                transition: transform 0.2s;
-            }
-
-            body.dark-mode .sidenav a {
-                color: var(--text-color-dark);
-            }
-
-            .sidenav a:hover {
-                text-decoration: underline;
-                transform: rotate(180deg) scale(1.1);
-            }
-
-    
-            .home-link {
-                position: absolute;
-                top: 20px;
-                writing-mode: horizontal-tb !important;
-                transform: none !important;
-            }
-    
-            .home-link:hover {
-                transform: scale(1.1) !important;
-            }
-    
-
-            .theme-toggle {
-                position: absolute;
-                bottom: 20px;
-                cursor: pointer;
-                background-color: var(--bg-color-light);
-                color: var(--text-color-light);
-                font-size: 16px;
-                border: 1px solid var(--line-color-light);
-                padding: 8px 12px;
-                border-radius: 5px;
-                transition: background-color 0.3s, color 0.3s;
-            }
-
-            .theme-toggle.hover {
-                transform: rotate(10deg);
-                transition: transform 0.3s ease, background-color 0.3s ease;
-            }
-
-            .theme-toggle.clicked {
-                transform: scale(1.3);
-            }
-
-            .theme-toggle.dark-mode {
-                background-color: var(--bg-color-dark);
-                color: var(--text-color-dark);
-            }
-    
             @media screen and (max-width: 768px) {
-                body {
-                    padding: 15px;
-                    padding-bottom: 80px;
-                }
-    
-                .back-button {
-                    left: 30px;
-                    position: fixed;
-                    margin-bottom: 20px;
-                }
-    
                 .project-header {
                     padding-top: 60px;
                 }
-    
+
                 .projects-grid {
                     grid-template-columns: 1fr;
                     max-width: 502px;
-                }
-    
-                .sidenav {
-                    height: 60px;
-                    width: 100%;
-                    bottom: 0;
-                    top: auto;
-                    flex-direction: row;
-                    border-right: none;
-                    border-top: 1px solid var(--line-color-light);
-                }
-    
-                body.dark-mode .sidenav {
-                    border-top-color: var(--line-color-dark);
-                }
-    
-                .sidenav a {
-                    writing-mode: horizontal-tb;
-                    transform: none;
-                }
-    
-                .sidenav a:hover {
-                    transform: scale(1.1);
-                }
-    
-                .home-link {
-                    left: 20px;
-                    top: auto;
-                }
-    
-                .theme-toggle {
-                    right: 20px;
-                    vertical-align: middle;
-                    bottom: auto;
                 }
             }
         </style>
@@ -387,7 +162,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="project-card">
                 <img src="/projects/images/misc/windupcar.png" alt="filler" class="project-image">
                 <div class="project-info">
@@ -403,7 +178,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="project-card">
                 <img src="/api/placeholder/400/320" alt="filler" class="project-image">
                 <div class="project-info">
@@ -418,7 +193,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="project-card">
                 <img src="/api/placeholder/400/320" alt="filler" class="project-image">
                 <div class="project-info">
@@ -433,7 +208,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="project-card">
                 <img src="/projects/images/misc/pointcloudmodeling.png" alt="filler" class="project-image">
                 <div class="project-info">
@@ -484,7 +259,7 @@
                     <div class="project-date">2020</div>
                     <p class="project-description">Coded the Snake Game using Java Swing, with 3 difficulty levels, a game over/high score page, and a fun twist.</p>
                     <div class="project-skills">
-                        <span class="skill-tag">Java</span> 
+                        <span class="skill-tag">Java</span>
                         <span class="skill-tag">Game Dev</span>
                     </div>
                 </div>
@@ -502,7 +277,7 @@
             </span>
         </p>
     </footer>
-    
+
     <script src="/scripts/theme-toggle.js"></script>
 </body>
 </html>

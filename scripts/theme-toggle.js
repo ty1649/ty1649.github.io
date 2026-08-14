@@ -2,9 +2,13 @@ const toggleButton = document.getElementById('theme-toggle');
 const body = document.body;
 let cantoggle = true;
 
-// Initialize theme from localStorage on page load
+// Initialize theme from localStorage on page load, falling back to the
+// visitor's OS-level preference when no saved choice exists yet.
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const useDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+
+if (useDark) {
     body.classList.add('dark-mode');
     toggleButton.textContent = '🌚';
 } else {
