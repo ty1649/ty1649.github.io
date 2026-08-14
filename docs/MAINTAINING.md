@@ -118,10 +118,3 @@ Work happens on `overhaul/phase-N-*` branches per `CLAUDE.md`'s phased-overhaul
 convention (or any feature branch for smaller changes) and merges into `main` when
 ready. Since `main` is what's served, avoid merging partially-finished work into it.
 
-## Known follow-up: resume PDF date mismatch
-
-`Terry_Yu_resume.pdf` — the file actually committed in this repo and linked from the
-header resume button — currently reads **"May 2026 – Present"** for Terry's current
-role, while the up-to-date resume reads **"May 2026 – Aug 2026"**. The served PDF needs
-to be refreshed with the current version before this is accurate. This is a content fix
-(swap the PDF file), not a code change — flagged here so it doesn't get lost.
