@@ -95,44 +95,16 @@
             letter-spacing: 0.5px;
         }
 
-        .construction-container {
-            text-align: center;
-            padding: 10px 20px;
-            max-width: 500px;
-            margin: 0 auto;
+        .project-intro {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--line-color-light);
         }
 
-        .construction-symbol {
-            font-size: 14px;
-            margin-bottom: 10px;
-            letter-spacing: 5px;
-            font-family: monospace;
-        }
-
-        .construction-title {
-            font-size: 16px;
-            margin-bottom: 0px;
-            letter-spacing: 2px;
-            font-weight: normal;
-            text-transform: uppercase;
-        }
-
-        .construction-message {
-            font-size: 14px;
-            line-height: 2;
-            opacity: 0.8;
-        }
-
-        .sneak-peek-section {
-            margin-top: 0px;
-            text-align: center;
-        }
-
-        .sneak-peek-text {
-            font-size: 14px;
-            line-height: 2;
-            opacity: 0.8;
-            margin-bottom: 30px;
+        body.dark-mode .project-intro {
+            border-bottom-color: var(--line-color-dark);
         }
 
         .presentation-iframe {
@@ -323,24 +295,12 @@
                 bottom: auto;
             }
 
-            .construction-container {
-                padding: 60px 20px;
-            }
-
             .presentation-iframe {
                 height: 400px;
             }
         }
     </style>
     <style>
-    .sneak-peek-section {
-        width: 100%;
-    }
-
-    .sneak-peek-text {
-        margin-bottom: 20px;
-    }
-
     .sneak-peek-viewers {
         display: flex;
         align-items: center;
@@ -458,59 +418,62 @@
             <h1 class="project-title">Mk 11 Drivetrain Lead</h1>
         </header>
 
-        <!-- <section id="construction" class="construction-container"> -->
-            <!-- <div class="construction-symbol">/ / / / /</div> -->
-            <!-- <h2 class="construction-title">Still In Development</h2> -->
-            <!-- <p class="construction-message">
-                This page is currently being worked on.<br>
-            </p> -->
-        <!-- </section> -->
+        <p class="project-intro">Mk 11 is Bruin Formula Racing's Formula SAE car; as Drivetrain Lead, I owned the concept-through-competition development of its drivetrain system.</p>
 
-        <!-- <section class="sneak-peek-section"> -->
-    <!-- <p class="sneak-peek-text"> -->
-        <!-- in the meantime, images below! also a sneak peek at some slides I made for a design review 😄: -->
-    <!-- </p> -->
+        <section id="outcome" class="content-section">
+            <h2 class="section-title">Outcome</h2>
+            <div class="section-content">
+                <ul>
+                    <li>Helped the car achieve its highest-ever design score and highest-ever event score in team history.</li>
+                    <li>First-ever completion of autocross, skidpad, and endurance runs.</li>
+                </ul>
+            </div>
+        </section>
 
-    <div class="sneak-peek-viewers">
-        <!-- PowerPoint -->
-        <div class="viewer-container">
-            <iframe
-                src="https://docs.google.com/presentation/d/e/2PACX-1vQ_qmNU0TPDIjW_cBAMExAqcv7uWxdigAlwBbs2_aCl52-IUFisPUxF9taBysxJAOG6mpU0VbIoUPAD/pubembed?start=false&loop=false&delayms=3000"
-                title="Design review slides"
-                allowfullscreen
-            ></iframe>
-        </div>
+        <section id="design-review" class="content-section">
+            <h2 class="section-title">Design Review</h2>
+            <div class="sneak-peek-viewers">
+                <!-- PowerPoint -->
+                <div class="viewer-container">
+                    <iframe
+                        src="https://docs.google.com/presentation/d/e/2PACX-1vQ_qmNU0TPDIjW_cBAMExAqcv7uWxdigAlwBbs2_aCl52-IUFisPUxF9taBysxJAOG6mpU0VbIoUPAD/pubembed?start=false&loop=false&delayms=3000"
+                        title="Design review slides"
+                        allowfullscreen
+                    ></iframe>
+                </div>
 
-        <!-- PDF poster -->
-        <div class="viewer-container poster-container" id="posterContainer">
-            <iframe
-                src="mk11dt.pdf#view=FitH&toolbar=1"
-                title="Drivetrain design poster"
-            ></iframe>
+                <!-- PDF poster -->
+                <div class="viewer-container poster-container" id="posterContainer">
+                    <iframe
+                        src="mk11dt.pdf#view=FitH&toolbar=1"
+                        title="Drivetrain design poster"
+                    ></iframe>
 
-            <button
-                class="poster-fullscreen-button"
-                type="button"
-                onclick="openPosterFullscreen()"
-                aria-label="View poster fullscreen"
-            >
-                ⛶
-            </button>
-        </div>
-    </div>
+                    <button
+                        class="poster-fullscreen-button"
+                        type="button"
+                        onclick="openPosterFullscreen()"
+                        aria-label="View poster fullscreen"
+                    >
+                        ⛶
+                    </button>
+                </div>
+            </div>
+        </section>
 
+        <section id="what-i-did" class="content-section">
+            <h2 class="section-title">What I Did</h2>
+            <div class="section-content">
+                <ul>
+                    <li>Led a 20-member team building the drivetrain, from concept through competition.</li>
+                    <li>Developed new torque-transfer and chain-tensioning systems, using topology optimization and nonlinear FEA to cut drivetrain mass by 25% and rotational inertia by 37%.</li>
+                    <li>Validated the design through component and vehicle testing, using the results to improve wear resistance, fit, and durability at critical interfaces.</li>
+                </ul>
+            </div>
+        </section>
 
-
-
-<br>
-    <section id="images" class="content-section">
-            <h2 class="section-title"><b>Images</b></h2>
-            Successfully helped bring car to 
-            <ul>
-                <li>highest ever design score</li>
-                <li>highest ever event score</li>
-                <li>first ever autocross, skidpad, and endurance run completion!</li>
-            </ul>
+        <section id="deep-dive" class="content-section">
+            <h2 class="section-title">Deep Dive</h2>
             <div class="image-grid">
                 <div class="image-column">
                     <div class="image-container">
@@ -598,18 +561,9 @@
                         <img src="im22.png" alt="Image">
                     </div>
                 </div>
-                <!-- <div class="image-column">
-                    <div class="image-container">
-                        <img src="/api/placeholder/300/250" alt="Image 10">
-                    </div>
-                    <div class="image-container">
-                        <img src="/api/placeholder/300/300" alt="Image 11">
-                    </div>
-                </div> -->
             </div>
         </section>
-
-        </main>
+    </main>
 
     <script src="/scripts/theme-toggle.js"></script>
     <script>
