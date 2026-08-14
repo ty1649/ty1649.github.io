@@ -42,7 +42,6 @@ function findHtmlFilesWithFooterDate() {
     return out
         .split('\n')
         .filter(Boolean)
-        .filter((f) => !f.startsWith('projects/old_layout/'))
         .filter((f) => LAST_UPDATED_RE.test(readFileSync(path.join(repoRoot, f), 'utf8')));
 }
 

@@ -193,26 +193,6 @@
       ]
     },
     {
-      "slug": "pw",
-      "href": "personal-pw.html",
-      "title": "Portfolio Website",
-      "category": "personal",
-      "affiliation": "",
-      "year": "2024",
-      "description": "Responsive portfolio website built with HTML, CSS, and JavaScript to showcase engineering projects.",
-      "cover": "/projects/images/pw/pw-cover.png",
-      "onResume": false,
-      "published": false,
-      "note": "Excluded from the grid pending Q8/Phase 6 (restore or delete). projects.json carries the metadata so build-projects-grid.mjs can flip `published` to true without re-authoring the entry.",
-      "skillTags": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "UI Design",
-        "Responsive Design"
-      ]
-    },
-    {
       "slug": "lr",
       "href": "personal-lr.html",
       "title": "Linear Rails",

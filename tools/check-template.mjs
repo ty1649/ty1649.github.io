@@ -27,7 +27,7 @@ const BANNED_HEADINGS = ['summary', 'lessons learned', 'best visual'];
 function findProjectPages() {
     return readdirSync(projectsDir)
         .filter((f) => extname(f) === '.html')
-        .filter((f) => f !== 'projtemplate.html' && f !== 'index.html' && f !== 'inprogress.html')
+        .filter((f) => f !== 'projtemplate.html' && f !== 'index.html')
         .sort()
         .map((f) => join(projectsDir, f));
 }

@@ -30,7 +30,6 @@ function findHtmlFiles(dir, out = []) {
         const full = join(dir, entry);
         const stat = statSync(full);
         if (stat.isDirectory()) {
-            if (full.startsWith(join(repoRoot, 'projects', 'old_layout'))) continue;
             findHtmlFiles(full, out);
         } else if (extname(entry) === '.html') {
             out.push(full);
