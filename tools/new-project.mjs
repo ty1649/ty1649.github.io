@@ -122,13 +122,15 @@ function main() {
     writeFileSync(projectsJsonPath, JSON.stringify(projectsJson, null, 2) + '\n');
 
     console.log(`Created projects/${href}`);
-    console.log(`Created projects/images/${slug}/ (add ${slug}-cover.png and remove .gitkeep)`);
+    console.log(`Created projects/images/${slug}/ (add ${slug}-cover.png, any gallery photos, and remove .gitkeep)`);
     console.log(`Added "${slug}" to projects/projects.json (skillTags: [] -- fill in by hand)`);
     console.log('\nNext steps:');
-    console.log('  1. Replace the remaining PROJECT_* / OUTCOME_* / WHAT_I_DID_* / LOG_* tokens with real prose.');
-    console.log('  2. node tools/build-projects-grid.mjs   (regenerates the projects/index.html card grid)');
-    console.log('  3. node tools/check-links.mjs           (must exit zero before committing)');
-    console.log('  4. node tools/check-template.mjs        (confirm zero schema drift)');
+    console.log('  1. Add your real photos to projects/images/' + slug + '/.');
+    console.log(`  2. node tools/optimize-images.mjs --slug=${slug}   (the page and the grid both serve from images-optimized/, not images/)`);
+    console.log('  3. Replace the remaining PROJECT_* / OUTCOME_* / WHAT_I_DID_* / LOG_* tokens with real prose.');
+    console.log('  4. node tools/build-projects-grid.mjs   (regenerates the projects/index.html card grid)');
+    console.log('  5. node tools/check-links.mjs           (must exit zero before committing)');
+    console.log('  6. node tools/check-template.mjs        (confirm zero schema drift)');
 }
 
 main();

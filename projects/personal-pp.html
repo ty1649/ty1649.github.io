@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <title>Pen Plotter | Terry Yu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Project">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="description" content="CoreXY Pen Plotter is a plotter I'm designing and building end-to-end -- mechanical structure, electrical wiring, and motor control theory from scratch -- to draw images and write letters; the pen-holding mechanism's 3D printing is still in progress, though the electrical and software sides are complete.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pen Plotter | Terry Yu">
+    <meta property="og:description" content="CoreXY Pen Plotter is a plotter I'm designing and building end-to-end -- mechanical structure, electrical wiring, and motor control theory from scratch -- to draw images and write letters; the pen-holding mechanism's 3D printing is still in progress, though the electrical and software sides are complete.">
+    <meta property="og:url" content="https://ty1649.github.io/projects/personal-pp.html">
+    <meta property="og:image" content="https://ty1649.github.io/projects/images-optimized/pp/pp-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pen Plotter | Terry Yu">
+    <meta name="twitter:description" content="CoreXY Pen Plotter is a plotter I'm designing and building end-to-end -- mechanical structure, electrical wiring, and motor control theory from scratch -- to draw images and write letters; the pen-holding mechanism's 3D printing is still in progress, though the electrical and software sides are complete.">
+    <meta name="twitter:image" content="https://ty1649.github.io/projects/images-optimized/pp/pp-cover.png">
     <link rel="stylesheet" href="/styles/site.css">
     <link rel="stylesheet" href="/styles/project-styles.css">
-    <base href="images/pp/" />
+    <base href="images-optimized/pp/" />
 </head>
 <body>
     <a href="/projects/" class="back-button">
@@ -58,19 +70,31 @@
                 <div class="gallery-container">
                     <div class="gallery-grid">
                         <div class="gallery-item">
-                            <img src="step1.png" alt="Image" class="gallery-image">
+                            <picture>
+                                <source srcset="step1.webp" type="image/webp">
+                                <img src="step1.png" alt="Image" class="gallery-image" width="400" height="466" loading="lazy">
+                            </picture>
                             <p class="gallery-caption">Input Image for Pen Plotter</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="step2.png" alt="Image" class="gallery-image">
+                            <picture>
+                                <source srcset="step2.webp" type="image/webp">
+                                <img src="step2.png" alt="Image" class="gallery-image" width="1050" height="1048" loading="lazy">
+                            </picture>
                             <p class="gallery-caption">Color Classification/Clustering (rotated to account for CoreXY motion)</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="step3.png" alt="Image" class="gallery-image">
+                            <picture>
+                                <source srcset="step3.webp" type="image/webp">
+                                <img src="step3.png" alt="Image" class="gallery-image" width="1050" height="1052" loading="lazy">
+                            </picture>
                             <p class="gallery-caption">Edge Detection/Pen Plotter Movement Slicer</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="step4.png" alt="Image" class="gallery-image">
+                            <picture>
+                                <source srcset="step4.webp" type="image/webp">
+                                <img src="step4.png" alt="Image" class="gallery-image" width="446" height="652" loading="lazy">
+                            </picture>
                             <p class="gallery-caption">Generated GCode, sent via Python to Arduino in batches of 50</p>
                         </div>
                     </div>
@@ -90,36 +114,54 @@
             <div class="image-grid">
                 <div class="image-column">
                     <div class="image-container">
-                        <img src="pp-cover.png" alt="Image">
+                        <picture>
+                            <source srcset="pp-cover.webp" type="image/webp">
+                            <img src="pp-cover.png" alt="Image" width="958" height="778" loading="lazy">
+                        </picture>
                     </div>
                     <div class="image-container">
-                        <img src="im1.png" alt="Image">
-                    </div>
-                </div>
-                <div class="image-column">
-                    <div class="image-container">
-                        <img src="im4.png" alt="Image">
-                    </div>
-                    <div class="image-container">
-                        <img src="im5.png" alt="Image 5">
+                        <picture>
+                            <source srcset="im1.webp" type="image/webp">
+                            <img src="im1.png" alt="Image" width="1862" height="1408" loading="lazy">
+                        </picture>
                     </div>
                 </div>
                 <div class="image-column">
                     <div class="image-container">
-                        <img src="im2.png" alt="Image">
+                        <picture>
+                            <source srcset="im4.webp" type="image/webp">
+                            <img src="im4.png" alt="Image" width="1416" height="948" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="image-container">
+                        <picture>
+                            <source srcset="im5.webp" type="image/webp">
+                            <img src="im5.png" alt="Image 5" width="2110" height="1112" loading="lazy">
+                        </picture>
                     </div>
                 </div>
                 <div class="image-column">
                     <div class="image-container">
-                        <img src="im3.png" alt="Image 5">
+                        <picture>
+                            <source srcset="im2.webp" type="image/webp">
+                            <img src="im2.png" alt="Image" width="1096" height="1242" loading="lazy">
+                        </picture>
+                    </div>
+                </div>
+                <div class="image-column">
+                    <div class="image-container">
+                        <picture>
+                            <source srcset="im3.webp" type="image/webp">
+                            <img src="im3.png" alt="Image 5" width="1056" height="1278" loading="lazy">
+                        </picture>
                     </div>
                 </div>
                 <!-- <div class="image-column">
                     <div class="image-container">
-                        <img src="/api/placeholder/300/250" alt="Image 10">
+                        <img src="/api/placeholder/300/250" alt="Image 10" width="300" height="250" loading="lazy">
                     </div>
                     <div class="image-container">
-                        <img src="/api/placeholder/300/300" alt="Image 11">
+                        <img src="/api/placeholder/300/300" alt="Image 11" width="300" height="300" loading="lazy">
                     </div>
                 </div> -->
             </div>

@@ -1,0 +1,9 @@
+{
+  "name": "ty1649-github-io-tools",
+  "private": true,
+  "type": "module",
+  "description": "Build/authoring tooling for the portfolio site. Not part of the deployed static output.",
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
+}

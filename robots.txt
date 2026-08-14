@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /projects/old_layout/
+Disallow: /projects/inprogress.html
+Disallow: /projects/projtemplate.html
+
+Sitemap: https://ty1649.github.io/sitemap.xml

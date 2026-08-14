@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <title>PROJECT_TITLE | Terry Yu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="description" content="PROJECT_DESCRIPTION">
     <link rel="stylesheet" href="/styles/site.css">
     <link rel="stylesheet" href="/styles/project-styles.css">
-    <base href="images/PROJECT_SLUG/" />
+    <base href="images-optimized/PROJECT_SLUG/" />
 </head>
 <body>
     <a href="/projects/" class="back-button">
@@ -77,7 +80,7 @@
 
                     <div class="viewer-container poster-container" id="posterContainer">
                         <iframe
-                            src="EMBED_POSTER.pdf#view=FitH&toolbar=1"
+                            src="/projects/images/PROJECT_SLUG/EMBED_POSTER.pdf#view=FitH&toolbar=1"
                             title="Project poster"
                         ></iframe>
 
@@ -144,7 +147,10 @@
             <div class="image-grid">
                 <div class="image-column">
                     <div class="image-container">
-                        <img src="PROJECT_SLUG-cover.png" alt="IMAGE_ALT_TEXT" loading="lazy">
+                        <picture>
+                            <source srcset="PROJECT_SLUG-cover.webp" type="image/webp">
+                            <img src="PROJECT_SLUG-cover.png" alt="IMAGE_ALT_TEXT" loading="lazy">
+                        </picture>
                     </div>
                 </div>
             </div>

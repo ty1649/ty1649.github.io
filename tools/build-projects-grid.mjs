@@ -28,6 +28,22 @@ function escapeHtml(str) {
         .replaceAll('"', '&quot;');
 }
 
+const MIME_BY_EXT = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' };
+
+// projects.json's cover always points at the raw original under /projects/images/ --
+// tools/optimize-images.mjs mirrors every project directory into
+// /projects/images-optimized/ with the same filenames plus a .webp copy, so the
+// optimized/WebP pair below is derived rather than stored redundantly in the data.
+function optimizedBackgroundImage(cover) {
+    const dot = cover.lastIndexOf('.');
+    const ext = cover.slice(dot);
+    const base = cover.slice(0, dot);
+    const fallback = base.replace('/projects/images/', '/projects/images-optimized/') + ext;
+    const webp = base.replace('/projects/images/', '/projects/images-optimized/') + '.webp';
+    const mime = MIME_BY_EXT[ext.toLowerCase()] || 'image/png';
+    return `background-image: url('${fallback}'); background-image: image-set(url('${webp}') type('image/webp'), url('${fallback}') type('${mime}'))`;
+}
+
 function renderCard(p) {
     const affLine = p.affiliation
         ? `\n                        <p class="project-aff">${escapeHtml(p.affiliation)}</p>`
@@ -37,7 +53,7 @@ function renderCard(p) {
     // "&" in a slug (clubs-mk10s&c.html) round-trips exactly through check-links.mjs's
     // regex-based (non-entity-decoding) href parser.
     return `                <a href="${p.href}" class="project-link">
-                    <div class="project-card" style="background-image: url('${p.cover}')">
+                    <div class="project-card" style="${optimizedBackgroundImage(p.cover)}">
                         <span class="project-year">${escapeHtml(p.year)}</span>
                         <h2 class="project-title">${escapeHtml(p.title)}</h2>${affLine}
                         <p class="project-description">${escapeHtml(p.description)}</p>${star}
