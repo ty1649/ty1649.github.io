@@ -16,6 +16,8 @@
     --border-color: #e0e0e0;
     --accent-color: #e63946;
     --star-color: #ffd700;
+    --muted-text-light: #555555;
+    --muted-text-dark: #bbbbbb;
 }
 
 * {

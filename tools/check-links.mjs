@@ -9,6 +9,10 @@ import { fileURLToPath } from 'node:url';
 
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SKIP_DIRS = new Set(['.git', 'node_modules']);
+// projtemplate.html is scaffold input for tools/new-project.mjs, not a page anyone
+// visits — its src/href attributes are intentionally unresolved PROJECT_* tokens
+// that new-project.mjs fills in when it copies the template into a real page.
+const SKIP_FILES = new Set(['projects/projtemplate.html']);
 
 const EXTERNAL_PREFIXES = ['http://', 'https://', '//', 'mailto:', 'tel:', 'javascript:', 'data:'];
 
@@ -116,7 +120,9 @@ function checkFile(filePath) {
 }
 
 function main() {
-  const htmlFiles = findHtmlFiles(REPO_ROOT).sort();
+  const htmlFiles = findHtmlFiles(REPO_ROOT)
+    .filter((f) => !SKIP_FILES.has(f.slice(REPO_ROOT.length + 1)))
+    .sort();
   const results = htmlFiles.map(checkFile).filter((r) => r.issues.length > 0);
 
   const KIND_LABEL = { img: 'img src', a: 'a href', bg: 'background-image url()' };

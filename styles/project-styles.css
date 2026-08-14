@@ -15,42 +15,14 @@ body {
 }
 
 .project-header {
-    margin-bottom: 40px;
-    border-bottom: 1px solid var(--line-color-light);
+    margin-bottom: 12px;
     padding-top: 70px;
-    padding-bottom: 20px;
-}
-body.dark-mode .project-header {
-    border-color: var(--line-color-dark);
 }
 
 .project-title {
     font-size: 20px;
-    margin-bottom: 20px;
     font-weight: bold;
     letter-spacing: 0.5px;
-}
-
-.skills-section {
-    margin-bottom: 0;
-}
-
-.skills-title {
-    display: none;
-}
-
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.skill-tag {
-    padding: 5px 12px;
-    border: 1px solid var(--accent-color);
-    border-radius: 15px;
-    font-size: 12px;
-    color: var(--accent-color);
 }
 
 .table-of-contents {
@@ -111,6 +83,21 @@ body.dark-mode .toc-list a {
 .content-section {
     margin-bottom: 40px;
     scroll-margin-top: 30px;
+}
+
+/* Intro line — one italic, muted sentence directly below the title, no heading,
+   no border (see the project page schema in CLAUDE.md and clubs-mk11dt.html,
+   the reference implementation). Replaces the old standalone "What it is" section. */
+.project-intro {
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--muted-text-light);
+    margin-bottom: 35px;
+}
+
+body.dark-mode .project-intro {
+    color: var(--muted-text-dark);
 }
 
 .section-title {
@@ -287,5 +274,305 @@ body.dark-mode .gallery-caption {
         box-shadow: none;
         border-left: none;
         border-right: none;
+    }
+}
+
+/* ==========================================================================
+   Module: embeds — Google Slides / PDF poster viewers, for a "Best visual"
+   section built from existing slides or a poster instead of photos.
+   Extracted from clubs-mk11dt.html (Phase 3 deferred this; Phase 4 module
+   extraction, see CLAUDE.md). Markup lives in tools/partials/module-embeds.html.
+   ========================================================================== */
+.sneak-peek-viewers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+}
+
+.viewer-container {
+    position: relative;
+    flex: 1 1 0;
+    max-width: 720px;
+    height: 427px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #111;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.viewer-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.poster-fullscreen-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 8px;
+
+    background: rgba(0, 0, 0, 0.72);
+    color: white;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.poster-fullscreen-button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.05);
+}
+
+.poster-container:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    border-radius: 0;
+    background: white;
+}
+
+.poster-container:-webkit-full-screen {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    border-radius: 0;
+    background: white;
+}
+
+@media (max-width: 900px) {
+    .sneak-peek-viewers {
+        flex-direction: column;
+    }
+
+    .viewer-container {
+        width: 100%;
+        flex: none;
+    }
+}
+
+/* ==========================================================================
+   Module: day-logs — dated progress-log entries for projects with a
+   day-by-day build log. Extracted from personal-piglr.html (Phase 3
+   deferred this; Phase 4 module extraction, see CLAUDE.md). Markup lives
+   in tools/partials/module-day-logs.html.
+   ========================================================================== */
+.log-disclaimer {
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border: 1px solid var(--line-color-light);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 8px;
+    background-color: var(--bg-color-light);
+}
+
+body.dark-mode .log-disclaimer {
+    background-color: var(--bg-color-dark);
+    border-color: var(--line-color-dark);
+    border-left-color: var(--accent-color);
+}
+
+.log-disclaimer p {
+    margin: 0;
+}
+
+.progress-log {
+    width: 95%;
+    max-height: 490px;
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+
+    padding: 0 18px;
+
+    background-color: rgba(0, 0, 0, 0.035);
+    border: 1px solid var(--line-color-light);
+    border-radius: 8px;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-color-light) transparent;
+}
+
+body.dark-mode .progress-log {
+    background-color: rgba(255, 255, 255, 0.055);
+    border-color: var(--line-color-dark);
+    scrollbar-color: var(--text-color-dark) transparent;
+}
+
+.progress-log::-webkit-scrollbar {
+    width: 8px;
+}
+
+.progress-log::-webkit-scrollbar-track {
+    background: var(--bg-color-light);
+}
+
+.progress-log::-webkit-scrollbar-thumb {
+    background: var(--text-color-light);
+    border-radius: 8px;
+}
+
+body.dark-mode .progress-log::-webkit-scrollbar-track {
+    background: var(--bg-color-dark);
+}
+
+body.dark-mode .progress-log::-webkit-scrollbar-thumb {
+    background: var(--text-color-dark);
+}
+
+.progress-entry {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.dark-mode .progress-entry {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.progress-entry:last-child {
+    border-bottom: none;
+}
+
+.progress-date {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: inline-block;
+    margin: 0 0 12px;
+    padding: 4px 10px;
+    border: 1px solid var(--line-color-light);
+    border-radius: 15px;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    font-size: 13px;
+    font-weight: normal;
+}
+
+body.dark-mode .progress-date {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+    border-color: var(--line-color-dark);
+}
+
+.progress-entry p {
+    margin-bottom: 12px;
+}
+
+.progress-entry p:last-child {
+    margin-bottom: 0;
+}
+
+.progress-entry ul,
+.progress-entry ol {
+    padding-left: 22px;
+    margin: 10px 0 14px;
+}
+
+.progress-entry li {
+    margin-bottom: 7px;
+}
+
+.progress-entry code {
+    overflow-wrap: anywhere;
+    font-family: monospace;
+}
+
+.log-code {
+    margin: 14px 0;
+    padding: 14px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.035);
+    color: var(--text-color-light);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+body.dark-mode .log-code {
+    color: var(--text-color-dark);
+    border-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.hold-notice {
+    margin: 24px auto 0;
+    width: 95%;
+    padding: 20px 24px;
+
+    background-color: #9f1d2a;
+    border: 2px solid #75141e;
+    border-radius: 8px;
+    color: #ffffff;
+
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+
+    box-shadow: 0 3px 10px rgba(117, 20, 30, 0.22);
+}
+
+body.dark-mode .hold-notice {
+    background-color: #7f1822;
+    border-color: #d85b66;
+    color: #ffffff;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+.hold-notice-title,
+.hold-notice-text {
+    display: block;
+}
+
+.hold-notice-title {
+    margin-bottom: 4px;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+}
+
+.hold-notice-text {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.2px;
+}
+
+@media screen and (max-width: 768px) {
+    .hold-notice {
+        width: 100%;
+        padding: 17px 15px;
+    }
+
+    .hold-notice-title {
+        font-size: 16px;
+    }
+
+    .hold-notice-text {
+        font-size: 13px;
+    }
+
+    .progress-log {
+        width: 100%;
+        max-height: 52vh;
+        padding: 0 12px;
     }
 }

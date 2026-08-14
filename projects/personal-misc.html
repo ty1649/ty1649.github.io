@@ -12,14 +12,14 @@
                distinct from the shared image-grid gallery pattern. */
             .projects-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 30px;
+                grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+                gap: 20px;
                 margin-top: 30px;
             }
 
             .project-card {
                 border: 1px solid var(--line-color-light);
-                border-radius: 8px;
+                border-radius: 5px;
                 overflow: hidden;
                 transition: transform 0.2s ease;
                 display: flex;
@@ -32,7 +32,7 @@
 
             .project-image {
                 width: 100%;
-                height: 200px;
+                height: 130px;
                 object-fit: cover;
                 border-bottom: 1px solid var(--line-color-light);
             }
@@ -42,7 +42,7 @@
             }
 
             .project-info {
-                padding: 20px;
+                padding: 13px;
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
@@ -52,8 +52,8 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                margin-bottom: 10px;
-                padding-bottom: 10px;
+                margin-bottom: 7px;
+                padding-bottom: 7px;
                 border-bottom: 1px solid var(--line-color-light);
             }
 
@@ -82,7 +82,7 @@
             .project-date {
                 font-size: 12px;
                 color: #666;
-                margin-bottom: 10px;
+                margin-bottom: 7px;
             }
 
             body.dark-mode .project-date {
@@ -93,14 +93,7 @@
                 font-size: 13px;
                 line-height: 1.5;
                 font-style: italic;
-                margin-bottom: 15px;
-            }
-
-            .project-skills {
-                margin-top: auto;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 8px;
+                margin-bottom: 10px;
             }
 
             @media screen and (max-width: 768px) {
@@ -110,7 +103,7 @@
 
                 .projects-grid {
                     grid-template-columns: 1fr;
-                    max-width: 502px;
+                    max-width: 326px;
                 }
             }
         </style>
@@ -139,9 +132,16 @@
     <main>
         <header class="project-header">
             <h1 class="project-title">Miscellaneous Projects</h1>
-            <p style="font-style: italic;">A collection of smaller-scale projects exploring various aspects of engineering and design.</p>
         </header>
 
+        <p class="project-intro">Misc is a collection of smaller-scale projects exploring various aspects of engineering and design.</p>
+
+        <!-- Outcome and What I Did sections intentionally omitted per CLAUDE.md's project
+             page schema (Misc is named as a case where the finished object IS the outcome
+             -- and this page is itself an index of many finished objects). -->
+
+        <section id="projects" class="content-section">
+            <h2 class="section-title">Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <img src="/api/placeholder/400/320" alt="filler" class="project-image">
@@ -156,10 +156,6 @@
                     </div>
                     <div class="project-date">2023</div>
                     <p class="project-description">Using MNIST database and Python to classify handwritten digits with a Convolutional Neural Network, 99%+ accuracy.</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Machine Learning</span>
-                    </div>
                 </div>
             </div>
 
@@ -171,11 +167,6 @@
                     </div>
                     <div class="project-date">2023</div>
                     <p class="project-description">Designed and 3d Printed rubber band powered wind-up car within given dimensions, iterated over 2 versions. </p>
-                    <div class="project-skills">
-                        <span class="skill-tag">3D Printing</span>
-                        <span class="skill-tag">Rapid Prototyping</span>
-                        <span class="skill-tag">DFM/DFA</span>
-                    </div>
                 </div>
             </div>
 
@@ -187,10 +178,6 @@
                     </div>
                     <div class="project-date">2023</div>
                     <p class="project-description">Designed and 3d printed a funnel, perfect size for siphoning oil into 1995 Honda Accord for use during oil changes.</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Surface Modeling</span>
-                        <span class="skill-tag">3D Printing</span>
-                    </div>
                 </div>
             </div>
 
@@ -202,10 +189,6 @@
                     </div>
                     <div class="project-date">2024</div>
                     <p class="project-description">Needed a shovel for backpacking last minute, so designed and 3D Printed a durable lightweight shovel designed to hang off side of backpack.</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Rapid Prototyping</span>
-                        <span class="skill-tag">3D Printing</span>
-                    </div>
                 </div>
             </div>
 
@@ -217,11 +200,6 @@
                     </div>
                     <div class="project-date">2023</div>
                     <p class="project-description">Professor Beel needed a part accurately measured and modeled in CAD -- however, the drawing for the part was lost, so I used a Coordinate Measuring Machine to obtain point cloud data, then used ScanTo3D in SolidWorks and splines to accurately model the geometry.</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Point Cloud</span>
-                        <span class="skill-tag">CAD</span>
-                        <span class="skill-tag">Surface Modeling</span>
-                    </div>
                 </div>
             </div>
 
@@ -238,10 +216,6 @@
                     </div>
                     <div class="project-date">2020</div>
                     <p class="project-description">One day, I decided to code the Pong Game just for fun, because I couldn't find a website to play it on with my friend.</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Game Dev</span>
-                    </div>
                 </div>
             </div>
 
@@ -258,13 +232,10 @@
                     </div>
                     <div class="project-date">2020</div>
                     <p class="project-description">Coded the Snake Game using Java Swing, with 3 difficulty levels, a game over/high score page, and a fun twist.</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Game Dev</span>
-                    </div>
                 </div>
             </div>
         </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -272,7 +243,7 @@
             Made by Terry Yu
             <span style="float:right;">
                 <i>
-                    last updated Mar 2025
+                    last updated Aug 2026
                 </i>
             </span>
         </p>

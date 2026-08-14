@@ -33,35 +33,19 @@
     <main>
         <header class="project-header">
             <h1 class="project-title">MK10 Sprocket and Chain Assembly</h1>
-            <div class="skills-section">
-                <h2 class="skills-title">Skills Gained</h2>
-                <div class="skills-list">
-                    <span class="skill-tag">CAD Modeling</span>
-                    <span class="skill-tag">FEA Analysis</span>
-                    <span class="skill-tag">Topology Optimization</span>
-                    <span class="skill-tag">DFM/DFA</span>
-                    <span class="skill-tag">GD&T</span>
-                    <span class="skill-tag">Manufacturing</span>
-                </div>
-            </div>
         </header>
 
-        <section id="problem" class="content-section">
-            <h2 class="section-title">Description</h2>
-            <div class="section-content">
-                <p><strong>Situation/Task:</strong> As the Sprocket Responsible Engineer for Bruin Formula Racing, I was tasked with designing the sprocket and chain assembly, which included the</p>
-                <ul>
-                    <li>Front/Rear Sprocket</li>
-                    <li>Transmission Shaft</li>
-                    <li>Chain</li>
-                </ul>
-            </div>            
-        </section>
+        <p class="project-intro">MK10 Sprocket and Chain Assembly is Bruin Formula Racing's front/rear sprockets, transmission shaft, and chain; as Sprocket Responsible Engineer, I designed and analyzed the full assembly.</p>
 
-        <section id="summary" class="content-section">
-            <h2 class="section-title">Summary</h2>
+        <section id="outcome" class="content-section">
+            <h2 class="section-title">Outcome</h2>
             <div class="section-content">
-                <p>Slides for Preliminary Design Review (PDR), Critical Design Review (CDR), and Final Design Review (FDR), 
+                <ul>
+                    <li>Delivered a sprocket and chain assembly -- a 59-tooth rear sprocket, 12-tooth front sprocket, and topology-optimized geometry -- that passed static analysis with a 2&times; factor of safety.</li>
+                    <li>Switched to the smaller 428VX chain (from the prior year's 520), letting the sprockets sit closer together and increasing the final drive ratio -- simulations showed this would gain points on course.</li>
+                </ul>
+
+                <p>Slides for Preliminary Design Review (PDR), Critical Design Review (CDR), and Final Design Review (FDR),
                     showing the evolution of the front sprocket, rear sprocket, and motor shaft over the course of the past couple of months:
                 </p>
                 <div class="iframe-container">
@@ -69,17 +53,20 @@
                     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRy276XktaVas20VI3wodfvbKanV4gtUr1bU77tfe0ocgH8X245VdwutIPwU0sEE1tFNaygvAHXfOZ0/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
                     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTTvdVYzH8OS0QTIDmmM-T3AdHPVoeVdmYMWytPJYBtsflCTJE62HCHoEhG6Cgq-Mri-u3KC1alPRkB/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
                 </div>
-                <p><strong>Action</strong>:
-                    <ul>
-                        <li>I used SolidWorks to model the sprocket teeth geometry for a 59-tooth rear sprocket and a 12-tooth front sprocket, based on final drive ratio values simulated on OptimumLap.</li>
-                        <li>The involute splines at the center of the sprockets and on the motor shaft were also modeled to ensure proper alignment and functionality.</li>
-                        <li>To reduce weight, I ran a Topology Optimization on the rear sprocket using Altair Inspire and iterated over cutouts.</li>
-                        <li>Static simulations on Ansys Mechanical were conducted to verify that both sprockets passed with a 2x factor of safety, based on chain tension calculations.</li>
-                        <li>For the motor shaft, I selected a 17 teeth 17 DP 45-degree pressure angle (after performing analysis over the 30-degree pressure angle) spline and maximized the bore hole cutout, ensuring it didn't fail using hand calculations derived from maximum shear stress and normal stress theories.</li>
-                        <li>A smaller chain, the 428VX, was selected over the previous year's 520 chain, allowing for closer sprockets and a larger FDR, which simulations indicated would maximize points.</li>
-                    </ul>
-                </p>
-                <p><strong>Result</strong>: Delivered a sprocket and chain assembly — a 59-tooth rear sprocket, 12-tooth front sprocket, and topology-optimized geometry — that passed static analysis with a 2× factor of safety. Switching to the smaller 428VX chain (from the prior year's 520) let the sprockets sit closer together and increased the final drive ratio, which simulations showed would gain points on course.</p>
+            </div>
+        </section>
+
+        <section id="what-i-did" class="content-section">
+            <h2 class="section-title">What I Did</h2>
+            <div class="section-content">
+                <ul>
+                    <li>Used SolidWorks to model the sprocket teeth geometry for a 59-tooth rear sprocket and a 12-tooth front sprocket, based on final drive ratio values simulated on OptimumLap.</li>
+                    <li>Modeled the involute splines at the center of the sprockets and on the motor shaft to ensure proper alignment and functionality.</li>
+                    <li>Ran a Topology Optimization on the rear sprocket using Altair Inspire, iterating over cutouts to reduce weight.</li>
+                    <li>Ran static simulations on Ansys Mechanical to verify both sprockets passed with a 2x factor of safety, based on chain tension calculations.</li>
+                    <li>Selected a 17 teeth 17 DP 45-degree pressure angle spline for the motor shaft (after evaluating a 30-degree pressure angle) and maximized the bore hole cutout, verified against failure using hand calculations from maximum shear and normal stress theories.</li>
+                    <li>Selected the smaller 428VX chain over the previous year's 520 chain, allowing closer sprockets and a larger FDR that simulations indicated would maximize points.</li>
+                </ul>
             </div>
         </section>
 
@@ -147,7 +134,7 @@
             Made by Terry Yu
             <span style="float:right;">
                 <i>
-                    last updated May 2025
+                    last updated Aug 2026
                 </i>
             </span>
         </p>

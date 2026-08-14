@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-template-version="2.0">
 <head>
     <meta charset="UTF-8">
     <title>Mk 11 Drivetrain Lead | Terry Yu</title>
@@ -8,104 +8,6 @@
     <link rel="stylesheet" href="/styles/site.css">
     <link rel="stylesheet" href="/styles/project-styles.css">
     <base href="images/mk11dt/" />
-        <style>
-        .project-intro {
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 35px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid var(--line-color-light);
-        }
-
-        body.dark-mode .project-intro {
-            border-bottom-color: var(--line-color-dark);
-        }
-    </style>
-    <style>
-    .sneak-peek-viewers {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 24px;
-        width: 100%;
-    }
-
-    .viewer-container {
-        position: relative;
-        flex: 1 1 0;
-        max-width: 720px;
-        height: 427px;
-        overflow: hidden;
-        border-radius: 10px;
-        background: #111;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    }
-
-    .viewer-container iframe {
-        display: block;
-        width: 100%;
-        height: 100%;
-        border: 0;
-    }
-
-    .poster-fullscreen-button {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        z-index: 10;
-
-        width: 42px;
-        height: 42px;
-        border: 0;
-        border-radius: 8px;
-
-        background: rgba(0, 0, 0, 0.72);
-        color: white;
-        font-size: 24px;
-        line-height: 1;
-        cursor: pointer;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        transition:
-            background 0.2s ease,
-            transform 0.2s ease;
-    }
-
-    .poster-fullscreen-button:hover {
-        background: rgba(0, 0, 0, 0.9);
-        transform: scale(1.05);
-    }
-
-    .poster-container:fullscreen {
-        width: 100vw;
-        height: 100vh;
-        max-width: none;
-        border-radius: 0;
-        background: white;
-    }
-
-    .poster-container:-webkit-full-screen {
-        width: 100vw;
-        height: 100vh;
-        max-width: none;
-        border-radius: 0;
-        background: white;
-    }
-
-    @media (max-width: 900px) {
-        .sneak-peek-viewers {
-            flex-direction: column;
-        }
-
-        .viewer-container {
-            width: 100%;
-            flex: none;
-        }
-    }
-</style>
 </head>
 <body>
     <a href="/projects/" class="back-button">
@@ -148,36 +50,33 @@
                     <li>Helped the car achieve its highest-ever design score and highest-ever event score in team history.</li>
                     <li>First-ever completion of autocross, skidpad, and endurance runs.</li>
                 </ul>
-            </div>
-        </section>
 
-        <section id="design-review" class="content-section">
-            <h2 class="section-title">Design Review</h2>
-            <div class="sneak-peek-viewers">
-                <!-- PowerPoint -->
-                <div class="viewer-container">
-                    <iframe
-                        src="https://docs.google.com/presentation/d/e/2PACX-1vQ_qmNU0TPDIjW_cBAMExAqcv7uWxdigAlwBbs2_aCl52-IUFisPUxF9taBysxJAOG6mpU0VbIoUPAD/pubembed?start=false&loop=false&delayms=3000"
-                        title="Design review slides"
-                        allowfullscreen
-                    ></iframe>
-                </div>
+                <div class="sneak-peek-viewers">
+                    <!-- PowerPoint -->
+                    <div class="viewer-container">
+                        <iframe
+                            src="https://docs.google.com/presentation/d/e/2PACX-1vQ_qmNU0TPDIjW_cBAMExAqcv7uWxdigAlwBbs2_aCl52-IUFisPUxF9taBysxJAOG6mpU0VbIoUPAD/pubembed?start=false&loop=false&delayms=3000"
+                            title="Design review slides"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
 
-                <!-- PDF poster -->
-                <div class="viewer-container poster-container" id="posterContainer">
-                    <iframe
-                        src="mk11dt.pdf#view=FitH&toolbar=1"
-                        title="Drivetrain design poster"
-                    ></iframe>
+                    <!-- PDF poster -->
+                    <div class="viewer-container poster-container" id="posterContainer">
+                        <iframe
+                            src="mk11dt.pdf#view=FitH&toolbar=1"
+                            title="Drivetrain design poster"
+                        ></iframe>
 
-                    <button
-                        class="poster-fullscreen-button"
-                        type="button"
-                        onclick="openPosterFullscreen()"
-                        aria-label="View poster fullscreen"
-                    >
-                        ⛶
-                    </button>
+                        <button
+                            class="poster-fullscreen-button"
+                            type="button"
+                            onclick="openPosterFullscreen()"
+                            aria-label="View poster fullscreen"
+                        >
+                            ⛶
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -193,8 +92,8 @@
             </div>
         </section>
 
-        <section id="deep-dive" class="content-section">
-            <h2 class="section-title">Deep Dive</h2>
+        <section id="images" class="content-section">
+            <h2 class="section-title">Images</h2>
             <div class="image-grid">
                 <div class="image-column">
                     <div class="image-container">
@@ -285,6 +184,17 @@
             </div>
         </section>
     </main>
+
+    <footer class="footer">
+        <p style="text-align:left;">
+            Made by Terry Yu
+            <span style="float:right;">
+                <i>
+                    last updated Aug 2026
+                </i>
+            </span>
+        </p>
+    </footer>
 
     <script src="/scripts/theme-toggle.js"></script>
     <script>

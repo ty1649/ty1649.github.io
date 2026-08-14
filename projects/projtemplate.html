@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-template-version="2.0">
 <head>
     <meta charset="UTF-8">
-    <title>FILLER | Terry Yu</title>
+    <title>PROJECT_TITLE | Terry Yu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Project">
+    <meta name="description" content="PROJECT_DESCRIPTION">
     <link rel="stylesheet" href="/styles/site.css">
     <link rel="stylesheet" href="/styles/project-styles.css">
+    <base href="images/PROJECT_SLUG/" />
 </head>
 <body>
     <a href="/projects/" class="back-button">
@@ -31,83 +32,150 @@
 
     <main>
         <header class="project-header">
-            <h1 class="project-title">FILLERTITLE</h1>
-            <div class="skills-section">
-                <h2 class="skills-title">Skills Gained</h2>
-                <div class="skills-list">
-                    <span class="skill-tag">FILLER</span>
-                    <span class="skill-tag">FILLER</span>
-                </div>
-            </div>
+            <h1 class="project-title">PROJECT_TITLE</h1>
         </header>
 
-        <section id="problem" class="content-section">
-            <h2 class="section-title">Description</h2>
+        <!-- INTRO LINE — one concise sentence: the object, the scope, my role. The
+             problem/context folds into this sentence. Rendered as a single italic,
+             muted line directly below the title — no heading, no section wrapper.
+             See clubs-mk11dt.html, the reference implementation this template was
+             extracted from. -->
+        <p class="project-intro">PROJECT_WHAT_IT_IS</p>
+
+        <!-- OUTCOME — the first real (headed) section, immediately after the intro
+             line. The strongest 1-3 results, quantified where real, as CONCISE
+             SCANNABLE BULLETS with the strongest result first — not dense prose.
+             There is no separate "Best visual" section: if slides, a poster, or a
+             demo video are this project's strongest proof, that visual goes inside
+             this section (see the @module:embeds block below) rather than getting
+             its own stop on the page.
+             Optional: delete this whole <section> when the finished object IS the
+             outcome (see CLAUDE.md's project page schema — Pen Plotter, Linear Rails,
+             Misc, Fingerprint Unlocker all skip this) AND there's no visual that needs
+             a home. Never invent a figure — if you need one and can't source it, leave
+             an HTML comment GAP stub instead of filling with soft/reflective language. -->
+        <section id="outcome" class="content-section">
+            <h2 class="section-title">Outcome</h2>
             <div class="section-content">
-                <strong>Situation/Task:</strong> <p>FILLER</p>
+                <ul>
+                    <li>OUTCOME_1</li>
+                    <li>OUTCOME_2</li>
+                </ul>
+
+                <!-- @module:embeds — Google Slides / PDF poster viewers, or swap for a
+                     single demo video. Use when a visual is this project's strongest
+                     outcome evidence. Delete this whole block (through @endmodule:embeds)
+                     otherwise. -->
+                <div class="sneak-peek-viewers">
+                    <div class="viewer-container">
+                        <iframe
+                            src="EMBED_SLIDES_URL"
+                            title="Design review slides"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+
+                    <div class="viewer-container poster-container" id="posterContainer">
+                        <iframe
+                            src="EMBED_POSTER.pdf#view=FitH&toolbar=1"
+                            title="Project poster"
+                        ></iframe>
+
+                        <button
+                            class="poster-fullscreen-button"
+                            type="button"
+                            onclick="openPosterFullscreen()"
+                            aria-label="View poster fullscreen"
+                        >
+                            ⛶
+                        </button>
+                    </div>
+                </div>
+                <!-- @endmodule:embeds -->
             </div>
         </section>
 
-        <section id="summary" class="content-section">
-            <h2 class="section-title">Summary</h2>
+        <!-- WHAT I DID — 3-5 technical points, bullets or short prose, whichever
+             better shows the reasoning. -->
+        <section id="what-i-did" class="content-section">
+            <h2 class="section-title">What I Did</h2>
             <div class="section-content">
-                <p><strong>Action</strong>:
-                    <ul>
-                        <li>FILLER</li>
-                        <li>FILLER</li>
-                        <li>FILLER</li>
-                    </ul>
-                </p>
-                <p><strong>Result</strong>: FILLER</p>
+                <ul>
+                    <li>WHAT_I_DID_1</li>
+                    <li>WHAT_I_DID_2</li>
+                    <li>WHAT_I_DID_3</li>
+                </ul>
             </div>
         </section>
 
+        <!-- @module:day-logs — dated progress-log entries for projects with a
+             day-by-day build log (see personal-piglr.html). Typically placed here,
+             before or as part of "Images". Delete this whole block (through
+             @endmodule:day-logs) if the project has no day-log material. -->
+        <section id="progress" class="content-section">
+            <h2 class="section-title">Day-to-Day Logs</h2>
+            <div class="section-content">
+                <div class="log-disclaimer">
+                    <p>
+                        <strong>disclaimer:</strong> these are rough day project
+                        logs, not a polished technical report.
+                    </p>
+                </div>
+
+                <div class="progress-log" tabindex="0" aria-label="Scrollable progress logs">
+                    <article class="progress-entry">
+                        <h3 class="progress-date">LOG_DATE</h3>
+                        <p>LOG_ENTRY_TEXT</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- @endmodule:day-logs -->
+
+        <!-- IMAGES — full gallery, slides, poster, day-logs, GitHub. Keep this
+             section named "Images" unless that word would genuinely mislead for this
+             page's content; if so, use an equally plain substitute label. -->
         <section id="images" class="content-section">
             <h2 class="section-title">Images</h2>
-            <div class="section-content">
-                <p>More pictures coming soon!</p>
-            </div>
+
+            <!-- @module:gallery — the standard column-based image grid. This is the
+                 default Images content; delete this whole block (through
+                 @endmodule:gallery) only if the project has no photos to show. -->
             <div class="image-grid">
                 <div class="image-column">
                     <div class="image-container">
-                        <img src="pp-cover.png" alt="Image">
-                    </div>
-                    <div class="image-container">
-                        <img src="im1.png" alt="Image">
-                    </div>
-                </div>
-                <div class="image-column">
-                    <div class="image-container">
-                        <img src="im4.png" alt="Image">
-                    </div>
-                    <div class="image-container">
-                        <img src="im5.png" alt="Image 5">
-                    </div>
-                </div>
-                <div class="image-column">
-                    <div class="image-container">
-                        <img src="im2.png" alt="Image">
-                    </div>
-                </div>
-                <div class="image-column">
-                    <div class="image-container">
-                        <img src="im3.png" alt="Image 5">
+                        <img src="PROJECT_SLUG-cover.png" alt="IMAGE_ALT_TEXT" loading="lazy">
                     </div>
                 </div>
             </div>
+            <!-- @endmodule:gallery -->
         </section>
     </main>
+
     <footer class="footer">
         <p style="text-align:left;">
             Made by Terry Yu
             <span style="float:right;">
                 <i>
-                    last updated May 2025
+                    last updated Aug 2026
                 </i>
             </span>
         </p>
     </footer>
-    
+
     <script src="/scripts/theme-toggle.js"></script>
+    <!-- @module:embeds -->
+    <script>
+    function openPosterFullscreen() {
+        const poster = document.getElementById("posterContainer");
+
+        if (poster.requestFullscreen) {
+            poster.requestFullscreen();
+        } else if (poster.webkitRequestFullscreen) {
+            poster.webkitRequestFullscreen();
+        }
+    }
+    </script>
+    <!-- @endmodule:embeds -->
 </body>
 </html>

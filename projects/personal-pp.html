@@ -33,36 +33,25 @@
     <main>
         <header class="project-header">
             <h1 class="project-title">CoreXY Pen Plotter</h1>
-            <div class="skills-section">
-                <h2 class="skills-title">Skills Gained</h2>
-                <div class="skills-list">
-                    <span class="skill-tag">FDM 3D Printing</span>
-                    <span class="skill-tag">DFM/DFA</span>
-                    <span class="skill-tag">CAM</span>
-                    <span class="skill-tag">Rapid Prototyping</span>
-                    <span class="skill-tag">Image Processing</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Arduino</span>
-                </div>
-            </div>
         </header>
 
-        <section id="problem" class="content-section">
-            <h2 class="section-title">Description</h2>
-            <div class="section-content">
-                <p><b>Situation:</b> I wanted to make a pen plotter to be able to draw better pictures and write neater letters. The goal was to design and construct every component of the plotter, from the mechanical parts to the electrical wiring, and to develop the control theory from scratch to determine motor actions.</p>
-                <p><b>Task:</b> The project is still a work in progress, with the final task being the 3D printing of the pen holding mechanism. The electrical and software components have been completed, but the mechanical aspect requires further development.</p>
-            </div>            
-        </section>
+        <p class="project-intro">CoreXY Pen Plotter is a plotter I'm designing and building end-to-end -- mechanical structure, electrical wiring, and motor control theory from scratch -- to draw images and write letters; the pen-holding mechanism's 3D printing is still in progress, though the electrical and software sides are complete.</p>
 
-        <section id="summary" class="content-section">
-            <h2 class="section-title">Summary</h2>
+        <!-- No bullet claims added here per CLAUDE.md's project page schema (Pen Plotter
+             is named as a case where the finished object IS the outcome) -- this section
+             exists only to hold the video proof that used to anchor a separate Best Visual
+             section. -->
+        <section id="outcome" class="content-section">
+            <h2 class="section-title">Outcome</h2>
             <div class="section-content">
                 <p>Video of a mid-way checkpoint of this working, slowly -- there's been improvements since then.</p>
                 <iframe width="445" height="250" src="https://www.youtube.com/embed/Ts7QY2lUJlk?si=lprFeApaEcbYLpIj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <br>
-                <p><b>Action:</b></p>
+            </div>
+        </section>
+
+        <section id="what-i-did" class="content-section">
+            <h2 class="section-title">What I Did</h2>
+            <div class="section-content">
                 <b>Mechanical:</b>
                 <p>I began by designing the mechanical components, aiming to have as much of these components designed and created by myself. That's why I chose to avoided purchasing linear rails, opting instead to buy bearing balls and 3D print recirculating ball bearing cages. This decision required seven to eight iterations for tolerance adjustments, finally with me opting for a compliant mechanism able to apply preload onto the balls for straight motion (<a href="../../personal-lr.html">more documentation here</a>). I chose a CoreXY belt configuration after evaluating other gantry designs, as it allowed the large stepper motors to remain stationary. Designing this system was challenging, ensuring belt alignment and pulley placement were correct, and that the assembly can be assembled correctly and accurately (requiring several iterations). Additionally, I developed a secure belt tensioning system and a stable frame to support the gantry's movement.</p>
                 <b>Software:</b>
@@ -89,8 +78,8 @@
                 <p>The software was designed to generate GCode, instructing the motors on pen movements based on input images. My overall goal was for the plotter to trace and draw images, potentially swapping colors in the future. Initially, I applied blur and edge detection kernels, but the results weren't great. I then implemented k-means clustering to classify image colors, followed by edge detection to create SVG-like chains for the motors to follow. This approach was effective, and I also implemented a 45 degree image rotation and scaling due to the CoreXY configuration. The resulting GCode was wayyy too long, exceeding the Arduino's capacity -- to address this, I developed a Python script to send GCode in batches of 50, allowing the Arduino to request more as needed. This solution required extensive tuning of data transmission and baud rates.</p>
                 <b>Electrical:</b>
                 <p>This project was my first more complicated electronics project. After doing lots of research, initially, I used A4988 stepper motor drivers with an Arduino CNC Shield, but they overheated and shorted under the CoreXY tension. I switched to TMC2208 drivers, which performed better. I also purchased a 12V 60W power supply from AliExpress, which failed initially, so I had to debug and buy a replacement.</p>
-                <p><b>Result:</b> After significant debugging, the system functioned as intended. The Arduino simultaneously processes GCode and sends timed pulses to the stepper motor, managing these tasks at different speeds. This project provided valuable insights into integration between mechanical design, software development, and electrical engineering, despite the challenges faced along the way.</p>
-            </div> 
+                <p>After significant debugging, the system functioned as intended. The Arduino simultaneously processes GCode and sends timed pulses to the stepper motor, managing these tasks at different speeds. This project provided valuable insights into integration between mechanical design, software development, and electrical engineering, despite the challenges faced along the way.</p>
+            </div>
         </section>
 
         <section id="images" class="content-section">
@@ -142,7 +131,7 @@
             Made by Terry Yu
             <span style="float:right;">
                 <i>
-                    last updated May 2025
+                    last updated Aug 2026
                 </i>
             </span>
         </p>

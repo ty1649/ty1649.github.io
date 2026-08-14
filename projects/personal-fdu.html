@@ -33,32 +33,21 @@
     <main>
         <header class="project-header">
             <h1 class="project-title">Fingerprint Door Unlocker</h1>
-            <div class="skills-section">
-                <h2 class="skills-title">Skills Gained</h2>
-                <div class="skills-list">
-                    <span class="skill-tag">Arduino</span>
-                    <span class="skill-tag">3D Printing</span>
-                    <span class="skill-tag">DFM/DFA</span>
-                    <span class="skill-tag">CAD</span>
-                    <span class="skill-tag">Mechatronics</span>
-                </div>
-            </div>
         </header>
 
-        <section id="problem" class="content-section">
-            <h2 class="section-title">Description</h2>
-            <div class="section-content">
-                <p><strong>Situation:</strong> I kept losing my key card, and since each was $20, I wanted to find a different, better solution to unlock my dorm door.</p>
-                <p><strong>Task:</strong> I needed to design a mechanism that could move my dorm handle 40 degrees, or a linear distance of around 4 inches, with about 1.5 foot-pounds of force.</p>
-            </div>            
-        </section>
+        <p class="project-intro">Fingerprint Door Unlocker is an Arduino-driven mechanism I designed to unlock my dorm door, after getting tired of paying $20 each time I lost a key card, moving the handle 40 degrees (about 4 inches of linear travel) with roughly 1.5 foot-pounds of force.</p>
 
-        <section id="summary" class="content-section">
-            <h2 class="section-title">Summary</h2>
+        <!-- Outcome section intentionally omitted per CLAUDE.md's project page schema
+             (Fingerprint Unlocker is named as a case where the finished object IS the
+             outcome). The device's headline result -- opening the door in under 3
+             seconds -- is folded into What I Did below instead. -->
+
+        <section id="what-i-did" class="content-section">
+            <h2 class="section-title">What I Did</h2>
             <div class="section-content">
-                <p><strong>Action:</strong> I started by measuring and planning the specifications for my project. I decided to use an old DC motor found in the junk, which spins at 550 RPM. To increase the torque, I implemented a lead screw linear actuation system. I designed and 3D printed components, fastened with m5/m3 screws, and used a bearing and an L298N motor driver to power the motor. The assembly was coded on Arduino and mounted onto the door with command strips. To account for the circular motion of the door handle, I created an end effector with a claw and a print-in-place hinge.</p>
-                <p><strong>Result:</strong> The device successfully opened the door in less than 3 seconds. However, I couldn't find many pictures of the project working before having to move out.</p>
-            </div> 
+                <p>I started by measuring and planning the specifications for the project. I decided to use an old DC motor found in the junk, which spins at 550 RPM; to increase the torque, I implemented a lead screw linear actuation system. I designed and 3D printed components, fastened with m5/m3 screws, and used a bearing and an L298N motor driver to power the motor. The assembly was coded on Arduino and mounted onto the door with command strips. To account for the circular motion of the door handle, I created an end effector with a claw and a print-in-place hinge.</p>
+                <p>The finished device opened the door in less than 3 seconds.</p>
+            </div>
         </section>
 
         <section id="images" class="content-section">
@@ -107,7 +96,7 @@
             Made by Terry Yu
             <span style="float:right;">
                 <i>
-                    last updated Mar 2025
+                    last updated Aug 2026
                 </i>
             </span>
         </p>

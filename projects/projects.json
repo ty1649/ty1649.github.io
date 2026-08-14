@@ -1,0 +1,248 @@
+{
+  "$schema": "Per CLAUDE.md Phase 4 (Q6: Node scaffold). Edited by hand or via tools/new-project.mjs. projects/index.html's card grid is generated FROM this file by tools/build-projects-grid.mjs -- do not hand-edit the grid in projects/index.html directly, it will be overwritten.",
+  "projects": [
+    {
+      "slug": "mk11dt",
+      "href": "clubs-mk11dt.html",
+      "title": "Mk 11 Drivetrain Lead",
+      "category": "clubs",
+      "affiliation": "Formula SAE",
+      "year": "2026",
+      "description": "Led development of drivetrain system for our Mk11 Formula SAE car.",
+      "cover": "/projects/images/mk11dt/mk11dt-cover.png",
+      "onResume": true,
+      "skillTags": [
+        "Team Leadership",
+        "Topology Optimization",
+        "Nonlinear FEA",
+        "DFM/DFA"
+      ]
+    },
+    {
+      "slug": "mk10s&c",
+      "href": "clubs-mk10s&c.html",
+      "title": "Mk 10 Sprocket and Chain",
+      "category": "clubs",
+      "affiliation": "Formula SAE",
+      "year": "2025",
+      "description": "Designed and optimized sprockets, chain, and transmission shaft.",
+      "cover": "/projects/images/mk10s&c/mk10s&c-cover.png",
+      "onResume": false,
+      "skillTags": [
+        "CAD Modeling",
+        "FEA Analysis",
+        "Topology Optimization",
+        "DFM/DFA",
+        "GD&T",
+        "Manufacturing"
+      ]
+    },
+    {
+      "slug": "hfc",
+      "href": "clubs-hfc.html",
+      "title": "Hydrogen Fuel Cell",
+      "category": "clubs",
+      "affiliation": "Bruin Supermileage",
+      "year": "2025",
+      "description": "Designed and implemented a 1kW hydrogen fuel cell system.",
+      "cover": "/projects/images/hfc/hfc-cover.png",
+      "onResume": false,
+      "skillTags": [
+        "CAD Modeling",
+        "CFD Analysis",
+        "Thermal Analysis",
+        "CAM Programming",
+        "DFM/DFA",
+        "Project Management",
+        "Technical Documentation",
+        "Team Leadership"
+      ]
+    },
+    {
+      "slug": "cb",
+      "href": "clubs-mk9cb.html",
+      "title": "Mk 9 CV Boot & Mold",
+      "category": "clubs",
+      "affiliation": "Formula SAE",
+      "year": "2024",
+      "description": "Created innovative CV boot molds for cost-effective joint protection.",
+      "cover": "/projects/images/cb/cb-cover.png",
+      "onResume": false,
+      "skillTags": [
+        "CAD Modeling",
+        "DFM/DFA",
+        "FDM 3d Printing",
+        "Mold Design/Pouring"
+      ]
+    },
+    {
+      "slug": "pdmsch",
+      "href": "research-pdmsch.html",
+      "title": "PDMS Chip/Housing",
+      "category": "research",
+      "affiliation": "Beel Research Group",
+      "year": "2024",
+      "description": "Engineered microfluidics chip with serpentine channel design for Xenopus embryo sorting applications.",
+      "cover": "/projects/images/pdmsch/pdmsch-cover.png",
+      "onResume": false,
+      "skillTags": [
+        "Mechatronics",
+        "Microfluidics",
+        "SLA Printing",
+        "FDM Printing",
+        "PDMS Mold Design",
+        "Hardware Integration"
+      ]
+    },
+    {
+      "slug": "piglr",
+      "href": "personal-piglr.html",
+      "title": "PIGLR -- Pair Outdoor Locator",
+      "category": "personal",
+      "affiliation": "",
+      "year": "2026",
+      "description": "Coolest thing ever; creating electronic devices.",
+      "cover": "/projects/images/piglr/piglr-cover.png",
+      "onResume": true,
+      "skillTags": [
+        "Embedded Firmware",
+        "Zephyr RTOS",
+        "LTE-M / NB-IoT",
+        "GNSS",
+        "MQTT / TLS",
+        "KiCad",
+        "PCB Design",
+        "Power Electronics",
+        "Hardware Integration"
+      ]
+    },
+    {
+      "slug": "sbr",
+      "href": "personal-sbr.html",
+      "title": "Self Balancing Robot",
+      "category": "personal",
+      "affiliation": "",
+      "year": "2025",
+      "description": "Cute compact self balancing robot featuring PID control.",
+      "cover": "/projects/images/sbr/sbr-cover.png",
+      "onResume": false,
+      "skillTags": [
+        "Arduino Nano",
+        "Soldering",
+        "Product Design",
+        "Surface Modeling"
+      ]
+    },
+    {
+      "slug": "pp",
+      "href": "personal-pp.html",
+      "title": "Pen Plotter",
+      "category": "personal",
+      "affiliation": "",
+      "year": "2024",
+      "description": "Custom CoreXY pen plotter featuring 3D-printed recirculating ball linear rails with integrated GCode processing.",
+      "cover": "/projects/images/pp/pp-cover.png",
+      "onResume": false,
+      "skillTags": [
+        "FDM 3D Printing",
+        "DFM/DFA",
+        "CAM",
+        "Rapid Prototyping",
+        "Image Processing",
+        "Java",
+        "Python",
+        "Arduino"
+      ]
+    },
+    {
+      "slug": "egk",
+      "href": "personal-egk.html",
+      "title": "Electric Go Kart",
+      "category": "personal",
+      "affiliation": "",
+      "year": "2024",
+      "description": "Budget-friendly electric go kart featuring single wheel steering.",
+      "cover": "/projects/images/egk/egk-cover.png",
+      "onResume": false,
+      "skillTags": [
+        "CAD",
+        "Laser Cutting",
+        "Plasma Cutting",
+        "FDM 3d Printing",
+        "Machine Shop Tools",
+        "Cost Optimization",
+        "Metal Fabrication"
+      ]
+    },
+    {
+      "slug": "fdu",
+      "href": "personal-fdu.html",
+      "title": "Fingerprint Dorm Unlocker",
+      "category": "personal",
+      "affiliation": "",
+      "year": "2024",
+      "description": "Arduino-based fingerprint authentication system for automated door unlocking.",
+      "cover": "/projects/images/fdu/fdu-cover.png",
+      "onResume": false,
+      "skillTags": [
+        "Arduino",
+        "3D Printing",
+        "DFM/DFA",
+        "CAD",
+        "Mechatronics"
+      ]
+    },
+    {
+      "slug": "pw",
+      "href": "personal-pw.html",
+      "title": "Portfolio Website",
+      "category": "personal",
+      "affiliation": "",
+      "year": "2024",
+      "description": "Responsive portfolio website built with HTML, CSS, and JavaScript to showcase engineering projects.",
+      "cover": "/projects/images/pw/pw-cover.png",
+      "onResume": false,
+      "published": false,
+      "note": "Excluded from the grid pending Q8/Phase 6 (restore or delete). projects.json carries the metadata so build-projects-grid.mjs can flip `published` to true without re-authoring the entry.",
+      "skillTags": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "UI Design",
+        "Responsive Design"
+      ]
+    },
+    {
+      "slug": "lr",
+      "href": "personal-lr.html",
+      "title": "Linear Rails",
+      "category": "personal",
+      "affiliation": "",
+      "year": "2024",
+      "description": "3D printable recirculating ball linear rail system designed for high-precision applications.",
+      "cover": "/projects/images/lr/step1.png",
+      "onResume": false,
+      "skillTags": [
+        "CAD",
+        "FDM 3D Printing",
+        "Compliant Mechanisms",
+        "Rapid Prototyping/Iterations",
+        "Tolerance Analysis",
+        "Bearing Design",
+        "Design for Manufacturing"
+      ]
+    },
+    {
+      "slug": "misc",
+      "href": "personal-misc.html",
+      "title": "Misc",
+      "category": "personal",
+      "affiliation": "",
+      "year": "20xx",
+      "description": "Various small-scale projects exploring mechanical design, electronics, and programming.",
+      "cover": "/projects/images/misc/pointcloudmodeling.png",
+      "onResume": false,
+      "skillTags": []
+    }
+  ]
+}

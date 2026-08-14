@@ -245,24 +245,12 @@
 
     <nav class="sidenav">
         <button class="theme-toggle" id="theme-toggle">🌞</button>
-
         <a href="/" class="home-link">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
             </svg>
         </a>
-
         <a href="/projects/">PROJECTS</a>
         <a href="/notes/">NOTES</a>
     </nav>
@@ -270,48 +258,17 @@
     <main>
         <header class="project-header">
             <h1 class="project-title">PIGLR</h1>
-
-            <div class="skills-section">
-                <h2 class="skills-title">Skills Gained</h2>
-
-                <div class="skills-list">
-                    <span class="skill-tag">Embedded Firmware</span>
-                    <span class="skill-tag">Zephyr RTOS</span>
-                    <span class="skill-tag">LTE-M / NB-IoT</span>
-                    <span class="skill-tag">GNSS</span>
-                    <span class="skill-tag">MQTT / TLS</span>
-                    <span class="skill-tag">KiCad</span>
-                    <span class="skill-tag">PCB Design</span>
-                    <span class="skill-tag">Power Electronics</span>
-                    <span class="skill-tag">Hardware Integration</span>
-                </div>
-            </div>
         </header>
 
-        <section id="problem" class="content-section">
-            <h2 class="section-title">Description</h2>
+        <p class="project-intro">
+            PIGLR is a pair of handheld, battery-powered devices I'm designing and
+            building that can locate each other outdoors and send a simple "bump" or
+            ping.
+        </p>
 
-            <div class="section-content">
-                <p>
-                    PIGLR is a pair of handheld, battery-powered devices that can locate
-                    each other outdoors and send a simple “bump” or ping.
-                </p>
-
-                <!-- <p>
-                    each device uses lte + gnss to share its location through a cloud
-                    relay, then displays the distance and general direction to the other
-                    device. ble is mainly there for nearby / very close proximity stuff,
-                    and there is haptic feedback when a bump is sent or received.
-                </p> -->
-<!-- 
-                <p>
-                    the overall goal is to make something that feels like a realistic
-                    consumer device instead of putting a dev board in a box: compact,
-                    reliable, power-aware, and honest when the location is stale or there
-                    is no fix.
-                </p> -->
-            </div>
-        </section>
+        <!-- GAP: PIGLR is still on hold (see the hold-notice below) with no finished,
+             quantified outcome yet — an Outcome section is omitted rather than filled
+             with invented figures. Add one once the rev A board is bring-up tested. -->
 
         <!-- <section id="summary" class="content-section">
             <h2 class="section-title">Summary</h2>
@@ -982,11 +939,12 @@ enclosure size: around 70 mm × 70 mm</code></pre>
     </main>
 
     <footer class="footer">
-        <p style="text-align: left;">
+        <p style="text-align:left;">
             Made by Terry Yu
-
-            <span style="float: right;">
-                <i>last updated Jul 2026</i>
+            <span style="float:right;">
+                <i>
+                    last updated Aug 2026
+                </i>
             </span>
         </p>
     </footer>
