@@ -1,5 +1,5 @@
 /*
- * site.css — single shared base for every page (Phase 3 theme unification).
+ * site.css — single shared base for every page.
  * Holds the one :root token block, reset, sidenav/footer/back-button/theme-toggle,
  * and shared responsive rules. Content width and left padding are intentionally
  * NOT set here — they differ by page type (homepage / notes index / projects index /
@@ -128,7 +128,7 @@ body.dark-mode .sidenav a {
     color: var(--text-color-dark);
 }
 
-/* Resume star badge (Q4 resolved: keep hover-only tooltip exactly as-is) */
+/* Resume star badge — hover-only tooltip is deliberate, see CLAUDE.md */
 .resume-star {
     position: absolute;
     bottom: 10px;

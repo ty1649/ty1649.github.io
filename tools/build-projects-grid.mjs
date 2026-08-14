@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Regenerates projects/index.html's card grid from projects/projects.json,
 // writing between the `<!-- projects-grid:start -->` / `<!-- projects-grid:end -->`
-// markers and committing the result as static HTML. Kills the hand-maintained
-// 13-card block (Phase 4, see CLAUDE.md).
+// markers and committing the result as static HTML. projects.json is the source
+// of truth for project metadata; never hand-edit the grid markup directly.
 //
 // Usage: node tools/build-projects-grid.mjs
 

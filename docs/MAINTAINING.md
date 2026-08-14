@@ -84,8 +84,7 @@ for the portfolio site. Not part of the deployed static output." Its only depend
 5. Run the checks below before committing.
 
 To pull a project out of the grid without deleting it, set `"published": false` on its
-`projects.json` entry and re-run `build-projects-grid.mjs` — this is how
-`personal-pw.html` was excluded pending the Phase 6 decision before it was deleted.
+`projects.json` entry and re-run `build-projects-grid.mjs`.
 
 ## Running the tools
 
@@ -114,7 +113,6 @@ and no `CNAME` (the site is served at the default `ty1649.github.io` domain). Pu
 within a minute or two. There is no CI/deploy workflow in `.github/` — none is needed
 because the repo already contains committed static output.
 
-Work happens on `overhaul/phase-N-*` branches per `CLAUDE.md`'s phased-overhaul
-convention (or any feature branch for smaller changes) and merges into `main` when
-ready. Since `main` is what's served, avoid merging partially-finished work into it.
+Work happens on feature branches and merges into `main` when ready. Since `main` is
+what's served, avoid merging partially-finished work into it.
 

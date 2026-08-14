@@ -3,7 +3,7 @@
 // on <html>) and which have drifted from the canonical section schema defined in
 // CLAUDE.md ("Project page schema": title -> italic intro line -> Outcome (visual
 // proof folds in here, no separate Best Visual) -> What I did -> Images).
-// Report-only -- never rewrites a page (Q9, Phase 4).
+// Report-only -- never rewrites a page.
 //
 // Usage: node tools/check-template.mjs
 
@@ -14,11 +14,11 @@ import { fileURLToPath } from 'node:url';
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const projectsDir = join(repoRoot, 'projects');
 
-// "images" is now a canonical id (the old "Deep Dive" section, renamed). "best-visual"
-// and "design-review" are newly legacy: Best Visual no longer gets its own section --
-// its content (slides/poster/demo video) now lives inside Outcome. The rest are
-// leftover ids from the pre-Phase-4 Description/Summary/Images and Problem Statement/
-// My Work/Results/Lessons Learned schemas.
+// "images" is the canonical id for the gallery section. "best-visual" and
+// "design-review" are legacy: Best Visual no longer gets its own section -- its
+// content (slides/poster/demo video) lives inside Outcome instead. The rest are
+// leftover ids from schemas this site no longer uses (Description/Summary/Images
+// and Problem Statement/My Work/Results/Lessons Learned).
 const BANNED_SECTION_IDS = new Set([
     'problem', 'summary', 'work', 'results', 'lessons', 'best-visual', 'design-review',
 ]);

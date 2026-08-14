@@ -1,11 +1,11 @@
 /*
  * project-styles.css — project-detail additions layered on top of site.css.
- * Every project detail page links BOTH site.css (base) AND this file (Phase 3).
+ * Every project detail page links BOTH site.css (base) AND this file.
  * Do not redefine :root, sidenav, footer, back-button, or theme-toggle here —
  * those live in site.css.
  */
 
-/* Page-specific: project-detail layout width/padding (Phase 3 — see CLAUDE.md) */
+/* Page-specific: project-detail layout width/padding (see CLAUDE.md "Theme & styling") */
 body {
     padding: 30px;
     padding-left: 150px;
@@ -278,10 +278,10 @@ body.dark-mode .gallery-caption {
 }
 
 /* ==========================================================================
-   Module: embeds — Google Slides / PDF poster viewers, for a "Best visual"
-   section built from existing slides or a poster instead of photos.
-   Extracted from clubs-mk11dt.html (Phase 3 deferred this; Phase 4 module
-   extraction, see CLAUDE.md). Markup lives in tools/partials/module-embeds.html.
+   Module: embeds — Google Slides / PDF poster viewers, used as outcome
+   evidence inside a project's Outcome section (see CLAUDE.md's project page
+   schema — there is no separate "Best Visual" section).
+   Extracted from clubs-mk11dt.html. Markup lives in tools/partials/module-embeds.html.
    ========================================================================== */
 .sneak-peek-viewers {
     display: flex;
@@ -369,8 +369,7 @@ body.dark-mode .gallery-caption {
 
 /* ==========================================================================
    Module: day-logs — dated progress-log entries for projects with a
-   day-by-day build log. Extracted from personal-piglr.html (Phase 3
-   deferred this; Phase 4 module extraction, see CLAUDE.md). Markup lives
+   day-by-day build log. Extracted from personal-piglr.html. Markup lives
    in tools/partials/module-day-logs.html.
    ========================================================================== */
 .log-disclaimer {

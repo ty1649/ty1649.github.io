@@ -1,5 +1,5 @@
 {
-  "$schema": "Per CLAUDE.md Phase 4 (Q6: Node scaffold). Edited by hand or via tools/new-project.mjs. projects/index.html's card grid is generated FROM this file by tools/build-projects-grid.mjs -- do not hand-edit the grid in projects/index.html directly, it will be overwritten.",
+  "$schema": "Source of truth for project metadata. Edited by hand or via tools/new-project.mjs. projects/index.html's card grid is generated FROM this file by tools/build-projects-grid.mjs -- do not hand-edit the grid in projects/index.html directly, it will be overwritten.",
   "projects": [
     {
       "slug": "mk11dt",
